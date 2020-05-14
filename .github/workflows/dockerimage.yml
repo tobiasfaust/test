@@ -17,7 +17,7 @@ jobs:
       uses: arduino/setup-arduino-cli@v1.0.0
       
     - name: Checkout Git
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
       
     - name: Install Dependencies
       run: npm install
