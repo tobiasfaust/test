@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Test for Github actions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toiasfaust/test.git"
+  },
+  "author": "Tobias Faust",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.0.0",
+    "@actions/tool-cache": "^1.1.0"
+  },
+  "devDependencies": {
+    "@actions/io": "^1.0.0"
+  }
+}
