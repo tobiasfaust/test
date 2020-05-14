@@ -13,10 +13,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: arduino/setup-arduino-cli@v1.0.0
+    - name: Install Arduino CLI
+      uses: arduino/setup-arduino-cli@v1.0.0
+      
+    - name: Checkout Git
     - uses: actions/checkout@v2
+      
     - name: Install Dependencies
       run: npm install
+      
+    - name: Run Test
+      run: npm run test
+    
+    - name: Run
+      run: npm build
+      
+    - name: Remove Dependencies
+      run: rm -rf node_modules
+      
+    - name: Add runtime Dependencies
+      run: npm install --production
+      
+    - name: Add to Git
+      run: git add lib node_modules
+      
     - name: Display the path
       run: echo $PATH
       shell: bash
