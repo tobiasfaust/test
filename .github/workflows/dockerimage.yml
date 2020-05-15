@@ -1,31 +1,66 @@
 name: LibraryBuild
-on: [push, pull_request]
+on:
+  push: # see: https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
+    paths:
+    - '**.ino'
+    - '**.cpp'
+    - '**.h'
+    - '**LibraryBuild.yml'
+  pull_request:
 jobs:
   build:
-    name: Test compiling examples for esp8266
+    name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-      with:
-        arduino-board-fqbn: esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
-        platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
-        required-libraries: Servo,Adafruit NeoPixel
-        examples-exclude: WhistleSwitch 50Hz
-        examples-build-properties: '{ "WhistleSwitch": "-DDEBUG -DFREQUENCY_RANGE_LOW", "SimpleFrequencyDetector": "-DINFO" }'
-      
-      # We use the `arduino/setup-arduino-cli` action to install and
-      # configure the Arduino CLI on the system.
-    - name: Setup Arduino CLI
-      uses: arduino/setup-arduino-cli@v1.0.0
+    env:
+      REQUIRED_LIBRARIES: Adafruit NeoPixel,Servo
+    strategy:
+      matrix:
+        arduino-boards-fqbn:
+          - arduino:avr:uno
+          - arduino:avr:uno|All-DEBUG
+          - arduino:avr:uno|trace
+          - esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
 
-      # We then install the platform, which one will be determined
-      # dynamically by the build matrix.
-    - name: Install platform
-      run: |
-        arduino-cli core update-index
-        arduino-cli core install esp8266:esp8266
-        
+        include:
+          - arduino-boards-fqbn: arduino:avr:uno
+            sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
+            examples-build-properties:
+              WhistleSwitch:
+                -DDEBUG
+                -DFREQUENCY_RANGE_LOW
+              SimpleFrequencyDetector:
+                -DINFO
 
+          - arduino-boards-fqbn: arduino:avr:uno|All-DEBUG # UNO board with -DDEBUG for all examples
+            examples-exclude: 50Hz # Comma separated list of (unique substrings of) example names to exclude in build
+            examples-build-properties:
+              All:
+                -DDEBUG
 
+          - arduino-boards-fqbn: arduino:avr:uno|trace # UNO board with different build properties
+            examples-exclude: 50Hz # Comma separated list of (unique substrings of) example names to exclude in build
+            examples-build-properties:
+              WhistleSwitch:
+                -DDEBUG
+                -DTRACE
+
+          - arduino-boards-fqbn: esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
+            platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+            examples-exclude: WhistleSwitch,50Hz,SimpleFrequencyDetector          
+
+      fail-fast: false
+      steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Compile all examples using the bash script arduino-test-compile.sh
+        env:
+          # Passing parameters to the script by setting the appropriate ENV_* variables.
+          ENV_ARDUINO_BOARD_FQBN: ${{ matrix.arduino-boards-fqbn }}
+          ENV_PLATFORM_URL: ${{ matrix.platform-url }}
+          ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
+          ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
+          ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
+        run: |
+          wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
+          chmod +x arduino-test-compile.sh
+          ./arduino-test-compile.sh
