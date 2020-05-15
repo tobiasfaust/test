@@ -1,6 +1,3 @@
-# https://github.com/muesli/knopp/blob/master/.github/workflows/esp8266.yml
-# https://github.com/arduino-libraries/ArduinoMqttClient/blob/master/.github/workflows/compile-examples.yml
-
 name: Build & Deploy
 
 on:
