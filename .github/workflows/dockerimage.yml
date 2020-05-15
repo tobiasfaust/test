@@ -1,3 +1,4 @@
+# https://github.com/marketplace/actions/test-compile-for-arduino
 # https://github.com/marketplace/actions/test-compile-for-arduino#multiple-boards-with-parameter-using-the-script-directly
 
 name: LibraryBuild
@@ -9,7 +10,13 @@ jobs:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
     env:
-      REQUIRED_LIBRARIES: WiFiManager,pubsubclient,ESP8266 and ESP32 OLED driver for SSD1306 displays,WEMOS Motor Shield,PCF8574 library,Uptime Library
+      REQUIRED_LIBRARIES: 
+        WiFiManager,
+        pubsubclient,
+        ESP8266 and ESP32 OLED driver for SSD1306 displays,
+        WEMOS Motor Shield,
+        PCF8574 library,
+        Uptime Library
    
     strategy:
       matrix:
