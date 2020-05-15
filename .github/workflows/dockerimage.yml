@@ -49,7 +49,7 @@ jobs:
             examples-exclude: WhistleSwitch,50Hz,SimpleFrequencyDetector          
 
       fail-fast: false
-    steps:
+  steps:
       - name: Checkout
         uses: actions/checkout@master
       - name: Compile all examples using the bash script arduino-test-compile.sh
