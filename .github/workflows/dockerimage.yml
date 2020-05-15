@@ -1,3 +1,5 @@
+# https://github.com/marketplace/actions/test-compile-for-arduino#multiple-boards-with-parameter-using-the-script-directly
+
 name: LibraryBuild
 on:
   [push, pull_request]
@@ -7,7 +9,7 @@ jobs:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
     env:
-      REQUIRED_LIBRARIES: Adafruit NeoPixel,Servo
+      REQUIRED_LIBRARIES: Adafruit NeoPixel,Servo,WiFiManager,pubsubclient,esp8266-oled-ssd1306,WEMOS_Motor_Shield_Arduino_Library,PCF8574_library,Uptime-Library
    
     strategy:
       matrix:
