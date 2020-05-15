@@ -50,4 +50,6 @@ jobs:
             # Finally, we compile the sketch, using the FQBN that was set
       
       - name: Compile Sketch
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./test
+        run: |
+          which arduino-cli
+          arduino-cli compile --verbose --warnings all --fqbn esp8266:esp8266:huzzah:eesz=4M3M,xtal=80 --build-properties compiler.cpp.extra_flags="" ./test
