@@ -50,4 +50,4 @@ jobs:
             # Finally, we compile the sketch, using the FQBN that was set
       
       - name: Compile Sketch
-        run: which arduino-cli
+        run: arduino-cli lib install Servo
