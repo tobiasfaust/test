@@ -34,7 +34,7 @@ jobs:
           - arduino-platform: "arduino:avr"
             fqbn: "arduino:avr:unowifi"
           - arduino-platform: "esp8266:esp8266"
-            fqbn: '"esp8266:esp8266:huzzah" "https://arduino.esp8266.com/stable/package_esp8266com_index.json"'
+            fqbn: '"esp8266:esp8266:Generic ESP8266 Module" "https://arduino.esp8266.com/stable/package_esp8266com_index.json"'
 
     # This is the platform GitHub will use to run our workflow, we
     # pick Windows for no particular reason.
