@@ -46,3 +46,8 @@ jobs:
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
+
+            # Finally, we compile the sketch, using the FQBN that was set
+      
+      - name: Compile Sketch
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./test
