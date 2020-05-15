@@ -14,7 +14,7 @@ jobs:
         WiFiManager,
         pubsubclient,
         ESP8266 and ESP32 OLED driver for SSD1306 displays,
-        WEMOS Motor Shield,
+        https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library,
         PCF8574 library,
         Uptime Library
    
