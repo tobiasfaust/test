@@ -1,57 +1,30 @@
 name: LibraryBuild
 on:
-  push: # see: https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
-    paths:
-    - '**.ino'
-    - '**.cpp'
-    - '**.h'
-    - '**LibraryBuild.yml'
-  pull_request:
+  [push, pull_request]
+  
 jobs:
   build:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
     env:
       REQUIRED_LIBRARIES: Adafruit NeoPixel,Servo
+   
     strategy:
       matrix:
         arduino-boards-fqbn:
           - arduino:avr:uno
-          - arduino:avr:uno|All-DEBUG
-          - arduino:avr:uno|trace
           - esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
 
         include:
           - arduino-boards-fqbn: arduino:avr:uno
-            sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
-            examples-build-properties:
-              WhistleSwitch:
-                -DDEBUG
-                -DFREQUENCY_RANGE_LOW
-              SimpleFrequencyDetector:
-                -DINFO
-
-          - arduino-boards-fqbn: arduino:avr:uno|All-DEBUG # UNO board with -DDEBUG for all examples
-            examples-exclude: 50Hz # Comma separated list of (unique substrings of) example names to exclude in build
-            examples-build-properties:
-              All:
-                -DDEBUG
-
-          - arduino-boards-fqbn: arduino:avr:uno|trace # UNO board with different build properties
-            examples-exclude: 50Hz # Comma separated list of (unique substrings of) example names to exclude in build
-            examples-build-properties:
-              WhistleSwitch:
-                -DDEBUG
-                -DTRACE
+            #sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
 
           - arduino-boards-fqbn: esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
-            platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
-            examples-exclude: WhistleSwitch,50Hz,SimpleFrequencyDetector          
-
-      fail-fast: false
+            platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json        
   steps:
     - name: Checkout
       uses: actions/checkout@master
+
     - name: Compile all examples using the bash script arduino-test-compile.sh
       env:
         # Passing parameters to the script by setting the appropriate ENV_* variables.
