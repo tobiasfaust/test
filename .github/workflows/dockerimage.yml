@@ -7,38 +7,30 @@ on:
     branches: [ master ]
 
 jobs:
+ build:
+   runs-on: ubuntu-latest
+   env:
+     LIBRARIES: WiFi101 WiFiNINA
 
-  build:
+   strategy:
+     matrix:
+       fqbn: [
+         '"esp8266:esp8266:huzzah" "https://arduino.esp8266.com/stable/package_esp8266com_index.json"'
+       ]
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Install Arduino CLI
-      uses: arduino/setup-arduino-cli@v1.0.0
-      
-    - name: Checkout Git
-      uses: actions/checkout@v2
-      
-    - name: Install Dependencies
-      run: |
-        npm init
-        npm install debug
-      
-    - name: Run Test
-      run: npm run test
-    
-    - name: Run
-      run: npm build
-      
-    - name: Remove Dependencies
-      run: rm -rf node_modules
-      
-    - name: Add runtime Dependencies
-      run: npm install --production
-      
-    - name: Add to Git
-      run: git add lib node_modules
-      
-    - name: Display the path
-      run: echo $PATH
-      shell: bash
+   steps:
+     - uses: actions/checkout@v1
+       with:
+         fetch-depth: 1
+     - name: compile-examples for official Arduino boards
+       if: startsWith(matrix.fqbn, '"esp8266:esp8266') != true
+       uses: arduino/actions/libraries/compile-examples@master
+       with:
+         fqbn: ${{ matrix.fqbn }}
+         libraries: ${{ env.LIBRARIES }}
+     - name: compile-examples for ESP8266 boards
+       if: startsWith(matrix.fqbn, '"esp8266:esp8266')
+       uses: arduino/actions/libraries/compile-examples@master
+       with:
+         fqbn: ${{ matrix.fqbn }}
+         entrypoint: /github/workspace/.github/workflows/install-python-wrapper.sh
