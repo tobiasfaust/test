@@ -74,5 +74,14 @@ jobs:
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
+
       - shell: bash
-        run: ls -ail ./test
+        run: |
+          ls -ail ./test
+          cp *.bin ESP8266PumpControl.bin
+
+      - name: Upload as Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Binary
+          path: ESP8266PumpControl.bin
