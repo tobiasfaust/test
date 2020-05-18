@@ -82,4 +82,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Binary
-          path: test.esp8266.esp8266.d1_mini.bin
+          path: ./test/test.esp8266.esp8266.d1_mini.bin
