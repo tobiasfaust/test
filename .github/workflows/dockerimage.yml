@@ -10,7 +10,7 @@ jobs:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
     env:
-      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,PCF8574 library,Uptime Library
+      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
    
     strategy:
       matrix:
@@ -41,6 +41,13 @@ jobs:
           repository: tobiasfaust/i2cdetect
           ref: master
           path: i2cDetect_Custom_Library
+
+      - name: Checkout PCF8574_library 
+        uses: actions/checkout@v2
+        with:
+          repository: xreef/PCF8574_library
+          ref: master
+          path: PCF8574_Custom_Library
         
       - name: Compile all examples using the bash script arduino-test-compile.sh
         env:
