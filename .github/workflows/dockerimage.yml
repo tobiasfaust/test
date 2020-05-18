@@ -89,13 +89,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+
       # https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
       - name: Download Artifact
         uses: actions/download-artifact@v1
         with:
           name: ESP8266_PumpControl.bin
           path: release/test.esp8266.esp8266.d1_mini.bin
-      - uses: actions/checkout@master
       
       - shell: bash
         run: pwd
