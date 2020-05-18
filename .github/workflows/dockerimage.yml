@@ -96,7 +96,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: ESP8266_PumpControl.bin
-          path: release/test.esp8266.esp8266.d1_mini.bin
+          path: release
       
       - shell: bash
         run: pwd
