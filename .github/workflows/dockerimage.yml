@@ -94,7 +94,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: ESP8266_PumpControl.bin
-#          path: ./test/test.esp8266.esp8266.d1_mini.bin
+          path: ./test/test.esp8266.esp8266.d1_mini.bin
       - uses: actions/checkout@master
       - uses: jakejarvis/s3-sync-action@master
         with:
