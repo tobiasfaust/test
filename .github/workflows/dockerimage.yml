@@ -1,7 +1,7 @@
 # https://github.com/marketplace/actions/test-compile-for-arduino
 # https://github.com/marketplace/actions/test-compile-for-arduino#multiple-boards-with-parameter-using-the-script-directly
 
-name: LibraryBuild
+name: Build&Deploy
 on:
   [push, pull_request]
   
@@ -16,17 +16,19 @@ jobs:
       matrix:
         arduino-boards-fqbn:
 #          - arduino:avr:uno
-          - esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
+          - esp8266:esp8266:d1_mini
 
         include:
 #          - arduino-boards-fqbn: arduino:avr:uno
 #            #sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
 
-          - arduino-boards-fqbn: esp8266:esp8266:huzzah:eesz=4M3M,xtal=80
+          - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
-            examples-build-properties:
-              All:
-                -DDEBUG    
+            sketch-names: test.ino
+#            examples-build-properties:
+#              All:
+#                -DDEBUG    
+
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -66,6 +68,7 @@ jobs:
           ENV_PLATFORM_URL: ${{ matrix.platform-url }}
           ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
           ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
+          ENV_SKETCH_NAMES: ${{ matrix.sketch-names }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
