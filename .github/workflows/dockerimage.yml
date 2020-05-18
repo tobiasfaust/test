@@ -12,9 +12,8 @@ jobs:
     env:
       REQUIRED_LIBRARIES: 
         WiFiManager,
-        pubsubclient,
-        ESP8266 and ESP32 OLED driver for SSD1306 displays,
-        https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library,
+        PubSubClient,
+        'ESP8266 and ESP32 OLED driver for SSD1306 displays',
         PCF8574 library,
         Uptime Library
    
@@ -33,7 +32,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        
+      - name: Checkout Wemos MotorDriver Library
+        uses: actions/checkout@v2
+        with:
+          repository: wemos/WEMOS_Motor_Shield_Arduino_Library
+          ref: master
+          path: WEMOS_Motor_Shield_Custom_Library
 
+      - name: Checkout I2CDetect Library
+        uses: actions/checkout@v2
+        with:
+          repository: tobiasfaust/i2cdetect
+          ref: master
+          path: i2cDetect_Custom_Library
+        
       - name: Compile all examples using the bash script arduino-test-compile.sh
         env:
           # Passing parameters to the script by setting the appropriate ENV_* variables.
