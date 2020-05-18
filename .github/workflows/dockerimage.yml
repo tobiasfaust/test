@@ -76,12 +76,10 @@ jobs:
           ./arduino-test-compile.sh
 
       - shell: bash
-        run: |
-          ls -ail ./test
-          cp *.bin ESP8266PumpControl.bin
+        run: ls -ail ./test
 
       - name: Upload as Artifact
         uses: actions/upload-artifact@v1
         with:
           name: Binary
-          path: ESP8266PumpControl.bin
+          path: test.esp8266.esp8266.d1_mini.bin
