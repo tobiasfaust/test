@@ -102,7 +102,10 @@ jobs:
         
       - shell: bash
         run: ls -ail ./
-      
+
+      - shell: bash
+        run: ls -ail ./test/
+        
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks
