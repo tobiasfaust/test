@@ -10,12 +10,7 @@ jobs:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
     env:
-      REQUIRED_LIBRARIES: 
-        WiFiManager,
-        PubSubClient,
-        'ESP8266 and ESP32 OLED driver for SSD1306 displays',
-        PCF8574 library,
-        Uptime Library
+      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,PCF8574 library,Uptime Library
    
     strategy:
       matrix:
