@@ -7,7 +7,7 @@ on:
   
 jobs:
   build:
-    name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
+    name: Build-${{ matrix.arduino-boards-fqbn }}
     runs-on: ubuntu-latest
     env:
       REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
@@ -78,27 +78,10 @@ jobs:
       - shell: bash
         run: ls -ail ./test
 
-      - name: Upload as Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ matrix.sketch-name }}
-          path: ./test/test.esp8266.esp8266.d1_mini.bin
-
-  deploy:
-    # https://github.com/marketplace/actions/s3-sync
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      # https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
-      - name: Download Artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: ${{ matrix.sketch-name }}
-          path: release
-      
       # Script um JSON Datei anzupassen
+      - name: Schreibe Json File
+        run: |
+          echo "subversion: ${GITHUB_RUN_NUMBER}"
       
       - uses: jakejarvis/s3-sync-action@master
         with:
@@ -108,6 +91,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
-          SOURCE_DIR: 'release'      # optional: defaults to entire repository
+          SOURCE_DIR: 'test'      # optional: defaults to entire repository
           DEST_DIR: 'PumpControl'
 
