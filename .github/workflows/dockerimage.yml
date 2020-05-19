@@ -24,7 +24,7 @@ jobs:
 
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
-            sketch-names: test.ino
+            sketch-name: test.ino
 #            examples-build-properties:
 #              All:
 #                -DDEBUG    
@@ -68,7 +68,7 @@ jobs:
           ENV_PLATFORM_URL: ${{ matrix.platform-url }}
           ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
           ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
-          ENV_SKETCH_NAMES: ${{ matrix.sketch-names }}
+          ENV_SKETCH_NAMES: ${{ matrix.sketch-name }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
@@ -81,7 +81,7 @@ jobs:
       - name: Upload as Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ESP8266_PumpControl.bin
+          name: ${{ matrix.sketch-name }}
           path: ./test/test.esp8266.esp8266.d1_mini.bin
 
   deploy:
@@ -95,7 +95,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v1
         with:
-          name: ESP8266_PumpControl.bin
+          name: ${{ matrix.sketch-name }}
           path: release
       
       # Script um JSON Datei anzupassen
