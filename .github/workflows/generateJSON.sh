@@ -6,8 +6,9 @@ REPOSITORYNAME="$1"     # PumpControl
 SUBVERSION="$2"         # Unique ID -> GITHUB_RUN_NUMBER
 STAGE="$3"              # PROD|PRE|DEV
 BINARYPATH="$4"         # Path of binaryFiles
-RELEASEFILE="$5"        # Path of ReleaseFile, contains versionnumber
-ARCH="$6"               # Archtitcture, ESP8266|ESP32
+DESTPATH="$5"           # Path of Destination, BIN and JSON Files
+RELEASEFILE="$6"        # Path of ReleaseFile, contains versionnumber
+ARCH="$7"               # Archtitcture, ESP8266|ESP32
 
 readonly NC='\033[0m' # No Color
 readonly RED='\033[0;31m'
@@ -24,6 +25,7 @@ if [[ -n $ENV_STAGE ]]; then STAGE=$ENV_STAGE; fi
 if [[ -n $ENV_REPOSITORYNAME ]]; then REPOSITORYNAME=$ENV_REPOSITORYNAME; fi
 if [[ -n $ENV_RELEASEFILE ]]; then RELEASEFILE=$ENV_RELEASEFILE; fi
 if [[ -n $ENV_ARCH ]]; then ARCH=$ENV_ARCH; fi
+if [[ -n $ENV_DESTPATH ]]; then DESTPATH=$ENV_DESTPATH; fi
 
 #
 # Echo input parameter
@@ -33,6 +35,7 @@ echo REPOSITORYNAME=$REPOSITORYNAME
 echo SUBVERSION=$SUBVERSION
 echo STAGE=$STAGE
 echo BINARYPATH=$BINARYPATH
+echo DESTPATH=$DESTPATH
 echo ARCHITECTURE=$ARCH
 
 if [[ ! -d $BINARYPATH ]]; then
@@ -43,6 +46,10 @@ fi
 if [[ ! -f $RELEASEFILE ]]; then
   echo  -e "\n\n"$RED"Releasefile $RELEASEFILE not found\n"$NC
   exit
+fi
+
+if [[ ! -d $DESTPATH ]]; then
+  mkdir $DESTPATH
 fi
 
 VERSION=`sed 's/[^0-9|.]//g' $RELEASEFILE`  # 2.4.2
@@ -64,19 +71,19 @@ do
   DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
 
   JSON='      {
-	"name":"Release '$VERSION'-'$STAGE'",
-	"version":"'$VERSION'",
-	"subversion":'$SUBVERSION',
-	"number":'$NUMBER',
-	"stage":"'$STAGE'",
-	"arch":"'$ARCH'",
-	"download-url":"'$DOWNLOADURL'"
+  "name":"Release '$VERSION'-'$STAGE'",
+  "version":"'$VERSION'",
+  "subversion":'$SUBVERSION',
+  "number":'$NUMBER',
+  "stage":"'$STAGE'",
+  "arch":"'$ARCH'",
+  "download-url":"'$DOWNLOADURL'"
       }'
 
   echo -e "\n\n"$GREEN"Echo json string"$NC
   echo $JSON
 
-  echo $JSON > $BINARYPATH/$BINARYFILENAME".json"
-  mv $FILE $BINARYPATH/$BINARYFILENAME"."$FILEEXT
+  echo $JSON > $DESTPATH/$BINARYFILENAME".json"
+  cp $FILE $DESTPATH/$BINARYFILENAME"."$FILEEXT
 
 done
