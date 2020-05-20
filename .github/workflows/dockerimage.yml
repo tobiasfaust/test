@@ -69,7 +69,7 @@ jobs:
           ENV_PLATFORM_URL: ${{ matrix.platform-url }}
           ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
           ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
-          ENV_SKETCH_NAMES: ${{ matrix.sketch-name }}
+#          ENV_SKETCH_NAMES: ${{ matrix.sketch-name }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
@@ -78,10 +78,15 @@ jobs:
 
       - shell: bash
         run: |
+          pwd
+          echo "\n"
           ls -ail ./
+          echo "\n"
           ls -ail ./.github/workflows
+          echo "\n"
           ls -ail ../
-
+          echo "\n"
+          
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
@@ -94,7 +99,7 @@ jobs:
         run: |
           echo "ls .github/workflows
           chmod +x .github/workflows/generateJSON.sh
-          .github/workflows/generateJSON.sh
+#          .github/workflows/generateJSON.sh
       
       - uses: jakejarvis/s3-sync-action@master
         with:
