@@ -77,7 +77,7 @@ jobs:
           ./arduino-test-compile.sh
 
       - shell: bash
-        run: ls -ail ./test
+        run: ls -ail ./
 
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
