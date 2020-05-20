@@ -77,19 +77,21 @@ jobs:
           ./arduino-test-compile.sh
 
       - shell: bash
-        run: ls -ail ./
+        run: |
+          ls -ail ./
+          ls -ail ./.github/
 
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
           ENV_ARCH: ${{ matrix.architecture }}
-          ENV_REPOSITORYNAME: ${GITHUB_REPOSITORY}
-          ENV_BINARYPATH: "test"
-          ENV_SUBVERSION: ${GITHUB_RUN_NUMBER}
+          ENV_REPOSITORYNAME: ${{ GITHUB_REPOSITORY }}
+          ENV_BINARYPATH: ""
+          ENV_SUBVERSION: ${{ GITHUB_RUN_NUMBER }}
           ENV_RELEASEFILE: "_Release.h"
           ENV_STAGE: "DEV"
         run: |
-          echo "ls .github/workflows"
+          echo "ls .github/workflows
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
       
