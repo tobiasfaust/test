@@ -25,6 +25,7 @@ jobs:
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
             sketch-name: test.ino
+            architecture: ESP8266  
 #            examples-build-properties:
 #              All:
 #                -DDEBUG    
@@ -76,12 +77,21 @@ jobs:
           ./arduino-test-compile.sh
 
       - shell: bash
-        run: ls -ail ./test
+        run: ls -ail ./
 
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
+        env:
+          ENV_ARCH: ${{ matrix.architecture }}
+          ENV_REPOSITORYNAME: ${GITHUB_REPOSITORY}
+          ENV_BINARYPATH: "test"
+          ENV_SUBVERSION: ${GITHUB_RUN_NUMBER}
+          ENV_RELEASEFILE: "_Release.h"
+          ENV_STAGE: "DEV"
         run: |
-          echo "subversion: ${GITHUB_RUN_NUMBER}"
+          echo "ls .github/workflows"
+          chmod +x .github/workflows/generateJSON.sh
+          .github/workflows/generateJSON.sh
       
       - uses: jakejarvis/s3-sync-action@master
         with:
