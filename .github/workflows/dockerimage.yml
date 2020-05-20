@@ -79,7 +79,8 @@ jobs:
       - shell: bash
         run: |
           ls -ail ./
-          ls -ail ./.github/
+          ls -ail ./.github/workflows
+          ls -ail ../
 
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
@@ -87,7 +88,7 @@ jobs:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
           ENV_BINARYPATH: "test"
-          ENV_SUBVERSION: "1"
+          ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "_Release.h"
           ENV_STAGE: "DEV"
         run: |
