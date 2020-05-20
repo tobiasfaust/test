@@ -82,7 +82,7 @@ jobs:
           echo "\n"
           ls -ail ./
           echo "\n"
-          ls -ail ./.github/workflows
+          ls -ail ./test
           echo "\n"
           ls -ail ../
           echo "\n"
@@ -97,9 +97,8 @@ jobs:
           ENV_RELEASEFILE: "_Release.h"
           ENV_STAGE: "DEV"
         run: |
-          echo "ls .github/workflows
           chmod +x .github/workflows/generateJSON.sh
-#          .github/workflows/generateJSON.sh
+          .github/workflows/generateJSON.sh
       
       - uses: jakejarvis/s3-sync-action@master
         with:
