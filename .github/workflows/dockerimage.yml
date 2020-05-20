@@ -86,7 +86,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ GITHUB_REPOSITORY }}
-          ENV_BINARYPATH: ""
+          ENV_BINARYPATH: "test"
           ENV_SUBVERSION: ${{ GITHUB_RUN_NUMBER }}
           ENV_RELEASEFILE: "_Release.h"
           ENV_STAGE: "DEV"
