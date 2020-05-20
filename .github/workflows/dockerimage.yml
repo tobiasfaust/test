@@ -85,7 +85,7 @@ jobs:
       - name: Schreibe Json File
         env:
           ENV_ARCH: ${{ matrix.architecture }}
-          ENV_REPOSITORYNAME: ${{ GITHUB_REPOSITORY }}
+          ENV_REPOSITORYNAME: "PumpControl"
           ENV_BINARYPATH: "test"
           ENV_SUBVERSION: ${{ GITHUB_RUN_NUMBER }}
           ENV_RELEASEFILE: "_Release.h"
