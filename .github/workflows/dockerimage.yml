@@ -1,5 +1,6 @@
 # https://github.com/marketplace/actions/test-compile-for-arduino
 # https://github.com/marketplace/actions/test-compile-for-arduino#multiple-boards-with-parameter-using-the-script-directly
+# https://github.com/actions/upload-release-asset/issues/17
 
 name: Build&Deploy
 on:
@@ -37,7 +38,7 @@ jobs:
       - shell: bash
         run: |
           mkdir ../src
-          cp -r * ../src/
+          cp * ../src/
           mv ../src ./
           ls -ail ./
           ls -ail ./src
@@ -90,7 +91,7 @@ jobs:
           echo "\n"
           ls -ail ./
           echo "\n"
-          ls -ail ./test
+          ls -ail ./src
           echo "\n"
           ls -ail ../
           echo "\n"
@@ -102,7 +103,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: "test"
+          ENV_BINARYPATH: "src"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "_Release.h"
