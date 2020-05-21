@@ -33,7 +33,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-        
+
+      - shell: bash
+        run: |
+          mkdir ../src
+          cp -r * ../src/
+          mv ../src ./
+          ls -ail ./
+          ls -ail ./src
+
       - name: Checkout Wemos MotorDriver Library
         uses: actions/checkout@v2
         with:
@@ -61,14 +69,6 @@ jobs:
           repository: bblanchon/ArduinoJson
           ref: 5.x
           path: ArduinoJson_Custom_Library
-
-      - shell: bash
-        run: |
-          mkdir ../src
-          cp -r * ../src/
-          mv ../src ./
-          ls -ail ./
-          ls -ail ./src
 
       - name: Compile all examples using the bash script arduino-test-compile.sh
         env:
