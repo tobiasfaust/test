@@ -106,7 +106,7 @@ jobs:
           ENV_BINARYPATH: "src"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: "_Release.h"
+          ENV_RELEASEFILE: "src/_Release.h"
           ENV_STAGE: "DEV"
         run: |
           chmod +x .github/workflows/generateJSON.sh
