@@ -86,6 +86,8 @@ jobs:
           echo "\n"
           ls -ail ../
           echo "\n"
+          ls -ail ../../
+          echo "\n"
           
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
@@ -111,5 +113,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
-          DEST_DIR: 'PumpControl'
+          DEST_DIR: ${{ github.repository }}
+
 
