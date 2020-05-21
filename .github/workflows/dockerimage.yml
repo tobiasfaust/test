@@ -62,6 +62,14 @@ jobs:
           ref: 5.x
           path: ArduinoJson_Custom_Library
 
+      - shell: bash
+        run: |
+          mkdir ../src
+          cp -r * ../src/
+          mv ../src ./
+          ls -ail ./
+          ls -ail ./src
+
       - name: Compile all examples using the bash script arduino-test-compile.sh
         env:
           # Passing parameters to the script by setting the appropriate ENV_* variables.
