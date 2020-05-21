@@ -38,7 +38,7 @@ jobs:
       - shell: bash
         run: |
           mkdir ../src
-          cp * ../src/
+          mv ./* ../src/
           mv ../src ./
           ls -ail ./
           ls -ail ./src
