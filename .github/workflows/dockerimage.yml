@@ -21,10 +21,10 @@ jobs:
       sketch-name: test.ino      
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
       BRANCH: ${{ github.ref }} #${GITHUB_REF##*/}
-      if: endsWith(github.ref, 'prod')
-        STAGE: "PROD"
-      if: endsWith(github.ref, 'master')
-        STAGE: "DEV"
+      #if: endsWith(github.ref, 'prod')
+      #  STAGE: "PROD"
+      #if: endsWith(github.ref, 'master')
+      #  STAGE: "DEV"
         
     strategy:
       matrix:
@@ -46,8 +46,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: master
+        #with:
+        #  ref: master
 
       - name: Checkout Wemos MotorDriver Library
         uses: actions/checkout@v2
