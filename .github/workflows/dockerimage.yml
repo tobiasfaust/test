@@ -86,10 +86,10 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: "/home/runner/test/" #${{ format('/home/runner/{0}/ ', env.REPOSITORY) }}
+          ENV_BINARYPATH: "/home/runner/test/release" #${{ format('/home/runner/{0}/release ', env.REPOSITORY) }}
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: ${{ format('"/home/runner/{0}/_Release.h"', env.REPOSITORY) }}
+          ENV_RELEASEFILE: "/home/runner/test/_Release.h" #${{ format('"/home/runner/{0}/_Release.h"', env.REPOSITORY) }}
           ENV_STAGE: "DEV"
         run: |
           mkdir release 
