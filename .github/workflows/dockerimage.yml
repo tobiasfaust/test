@@ -20,7 +20,7 @@ jobs:
       REPOSITORY: ${{ github.event.repository.name }}
       sketch-name: test.ino      
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
-      BRANCH: ${{ github.ref }} #${GITHUB_REF##*/}
+      BRANCH: ${GITHUB_REF##*/}
       #if: endsWith(github.ref, 'prod')
       #  STAGE: "PROD"
       #if: endsWith(github.ref, 'master')
@@ -100,6 +100,7 @@ jobs:
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
+          #if: github.ref == 'refs/heads/integration'
           ENV_STAGE: "DEV"
         run: |
           mkdir release 
