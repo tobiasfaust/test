@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
-      REPOSITORY: ${{ github.event.repository.name }} 
+      REPOSITORY: ${{ github.event.repository.name }}
+      sketch-name: test.ino      
+      #FULLREPO: ${{ github.repository }} # tobiasfaust/test
    
     strategy:
       matrix:
@@ -26,7 +28,6 @@ jobs:
 
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
-            sketch-name: test.ino
             architecture: ESP8266  
 #            examples-build-properties:
 #              All:
@@ -73,35 +74,22 @@ jobs:
           ENV_PLATFORM_URL: ${{ matrix.platform-url }}
           ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
           ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
-#          ENV_SKETCH_NAMES: ${{ matrix.sketch-name }}
+#          ENV_SKETCH_NAMES: ${{ env.sketch-name }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
-
-      - shell: bash
-        run: |
-          pwd
-          echo "\n"
-          ls -ail ./
-          echo "\n"
-          ls -ail ../
-          echo "\n"
-          ls -ail ../../
-          echo "\n"
-          ls -ail ../../../
-          ls -ail /home/runner/test/
           
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: ${{ format('/home/runner/{0} ', env.REPOSITORY) }}
+          ENV_BINARYPATH: ${{ format('/home/runner/{0}/ ', env.REPOSITORY) }}
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: "/home/runner/test/_Release.h"
+          ENV_RELEASEFILE: ${{ format('/home/runner/{0}/_Release.h ', env.REPOSITORY) }}
           ENV_STAGE: "DEV"
         run: |
           mkdir release 
@@ -118,6 +106,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
-          DEST_DIR: ${{ github.repository }}
+          DEST_DIR: ${{ env.REPOSITORY }}
 
 
