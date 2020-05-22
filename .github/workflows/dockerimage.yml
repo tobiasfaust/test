@@ -35,14 +35,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - shell: bash
-        run: |
-          mkdir ../src
-          mv ./* ../src/
-          mv ../src ./
-          ls -ail ./
-          ls -ail ./src
-
       - name: Checkout Wemos MotorDriver Library
         uses: actions/checkout@v2
         with:
@@ -106,14 +98,15 @@ jobs:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
           ENV_BINARYPATH: "/home/runner/test/"
-          ENV_DESTPATH: "/home/runner/test/release"
+          ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "/home/runner/test/_Release.h"
           ENV_STAGE: "DEV"
         run: |
+          mkdir release
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
-          ls -ail /home/runner/test/release
+          ls -ail release
       
       - uses: jakejarvis/s3-sync-action@master
         with:
@@ -123,7 +116,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
-          SOURCE_DIR: '../../../test'      # optional: defaults to entire repository
+          SOURCE_DIR: 'release'      # optional: defaults to entire repository
           DEST_DIR: ${{ github.repository }}
 
 
