@@ -83,8 +83,6 @@ jobs:
           echo "\n"
           ls -ail ./
           echo "\n"
-          ls -ail ./src
-          echo "\n"
           ls -ail ../
           echo "\n"
           ls -ail ../../
