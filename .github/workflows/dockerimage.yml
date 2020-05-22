@@ -86,7 +86,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: "/home/runner/test" #${{ format('/home/runner/{0}/release ', env.REPOSITORY) }}
+          ENV_BINARYPATH: "${{ format('/home/runner/{0}', env.REPOSITORY) }}" # /home/runner/test
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}" # /home/runner/test/_Release.h
@@ -111,4 +111,6 @@ jobs:
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
           DEST_DIR: ${{ env.REPOSITORY }}
 
-
+      - name: List S3
+        run: |
+          aws s3 ls s3://tfa-releases
