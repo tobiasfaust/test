@@ -89,7 +89,7 @@ jobs:
           ENV_BINARYPATH: "/home/runner/test" #${{ format('/home/runner/{0}/release ', env.REPOSITORY) }}
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: "/home/runner/test/_Release.h" #${{ format('"/home/runner/{0}/_Release.h"', env.REPOSITORY) }}
+          ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}" # /home/runner/test/_Release.h
           ENV_STAGE: "DEV"
         run: |
           mkdir release 
