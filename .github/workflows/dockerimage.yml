@@ -97,6 +97,7 @@ jobs:
           echo "\n"
           ls -ail ../../
           echo "\n"
+          ls -ail /home/runner/test/
           
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
