@@ -4,7 +4,12 @@
 
 name: Build&Deploy
 on:
-  [push, pull_request]
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
   
 jobs:
   build:
@@ -15,7 +20,12 @@ jobs:
       REPOSITORY: ${{ github.event.repository.name }}
       sketch-name: test.ino      
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
-   
+      BRANCH: ${{ github.ref }} #${GITHUB_REF##*/}
+      if: endsWith(github.ref, 'prod')
+        STAGE: "PROD"
+      if: endsWith(github.ref, 'master')
+        STAGE: "DEV"
+        
     strategy:
       matrix:
         arduino-boards-fqbn:
