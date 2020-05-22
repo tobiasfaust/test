@@ -95,6 +95,8 @@ jobs:
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
+          ls -ail /home/runner/
+          ls -ail /home/runner/test/
           ls -ail release
       
       - uses: jakejarvis/s3-sync-action@master
