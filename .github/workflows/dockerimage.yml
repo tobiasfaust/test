@@ -74,7 +74,7 @@ jobs:
           ENV_PLATFORM_URL: ${{ matrix.platform-url }}
           ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
           ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
-#          ENV_SKETCH_NAMES: ${{ env.sketch-name }}
+          ENV_SKETCH_NAMES: ${{ env.sketch-name }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
@@ -86,19 +86,15 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: "${{ format('/home/runner/{0}', env.REPOSITORY) }}" # /home/runner/test
+          ENV_BINARYPATH: "${{ format('/home/runner/{0}', env.REPOSITORY) }}"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}" # /home/runner/test/_Release.h
+          ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
           ENV_STAGE: "DEV"
         run: |
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
-          ls -ail /home/runner/
-          ls -ail /home/runner/test/
-          ls -ail release
-          ls -ail ${{ format('/home/runner/{0}/ ', env.REPOSITORY) }}
       
       - uses: jakejarvis/s3-sync-action@master
         with:
@@ -111,6 +107,4 @@ jobs:
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
           DEST_DIR: ${{ env.REPOSITORY }}
 
-      - name: List S3
-        run: |
-          aws s3 ls s3://tfa-releases
+
