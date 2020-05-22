@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
+      REPOSITORY: ${{ github.event.repository.name }} 
    
     strategy:
       matrix:
@@ -32,8 +33,10 @@ jobs:
 #                -DDEBUG    
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: Checkout Wemos MotorDriver Library
         uses: actions/checkout@v2
