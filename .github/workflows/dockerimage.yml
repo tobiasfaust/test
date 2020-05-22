@@ -98,13 +98,13 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ github.repository }}
-          ENV_BINARYPATH: "/home/runner/test/"
+          ENV_BINARYPATH: ${ format('/home/runner/{0} ', { env.REPOSITORY }) }
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "/home/runner/test/_Release.h"
           ENV_STAGE: "DEV"
         run: |
-          mkdir release
+          mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
           ls -ail release
