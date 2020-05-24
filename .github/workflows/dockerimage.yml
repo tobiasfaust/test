@@ -6,9 +6,13 @@ name: Build&Deploy
 on:
   push:
     branches:
+      - master
+      - prelive
       - development
   pull_request:
     branches:
+      - master
+      - prelive
       - development
   
 jobs:
@@ -86,13 +90,17 @@ jobs:
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
      
-      - name: Set Environment Variables
         # https://github.com/actions/starter-workflows/issues/68#issuecomment-617683761
-        if: ${{ endsWith(github.ref, 'master') }}
-          run: echo "::set-env ENV_STAGE::PROD"
-        if: ${{ endsWith(github.ref, 'development') }}
-          run: echo "::set-env ENV_STAGE::DEV"
-
+      - if: ${{ endsWith(github.ref, 'master') }}
+        name: Set Environment Variable "PRODUCTION" 
+        run: echo ::set-env name=ENV_STAGE::PROD
+      - if: ${{ endsWith(github.ref, 'prelive') }}
+        name: Set Environment Variable "PreLive" 
+        run: echo ::set-env name=ENV_STAGE::PRE
+      - if: ${{ endsWith(github.ref, 'development') }}
+        name: Set Environment Variable "Development" 
+        run: echo ::set-env name=ENV_STAGE::DEV
+        
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
