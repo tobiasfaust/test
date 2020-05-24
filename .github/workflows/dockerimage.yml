@@ -20,11 +20,6 @@ jobs:
       REPOSITORY: ${{ github.event.repository.name }}
       sketch-name: test.ino      
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
-      BRANCH: ${{ github.ref##*/ }}
-      #if: endsWith(github.ref, 'prod')
-      #  STAGE: "PROD"
-      #if: endsWith(github.ref, 'master')
-      #  STAGE: "DEV"
         
     strategy:
       matrix:
@@ -90,7 +85,14 @@ jobs:
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
-          
+     
+      - name: Set Environment Variables
+        # https://github.com/actions/starter-workflows/issues/68#issuecomment-617683761
+        if: ${{ endsWith(github.ref, 'master') }}
+          run: echo "::set-env ENV_STAGE::PROD"
+        if: ${{ endsWith(github.ref, 'development') }}
+          run: echo "::set-env ENV_STAGE::DEV"
+
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
@@ -101,7 +103,6 @@ jobs:
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
           #if: github.ref == 'refs/heads/integration'
-          ENV_STAGE: "DEV"
         run: |
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
