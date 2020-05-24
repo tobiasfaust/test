@@ -20,7 +20,7 @@ jobs:
       REPOSITORY: ${{ github.event.repository.name }}
       sketch-name: test.ino      
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
-      BRANCH: ${GITHUB_REF##*/}
+      BRANCH: ${{ GITHUB_REF##*/ }}
       #if: endsWith(github.ref, 'prod')
       #  STAGE: "PROD"
       #if: endsWith(github.ref, 'master')
