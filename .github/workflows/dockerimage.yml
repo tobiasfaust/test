@@ -11,20 +11,18 @@ on:
       - development
   pull_request:
     branches:
-      - master
-      - prelive
       - development
-  
+
 jobs:
   build:
-    name: Build-${{ matrix.arduino-boards-fqbn }}
+    name: BuildAndDeploy-${{ matrix.arduino-boards-fqbn }}
     runs-on: ubuntu-latest
     env:
       REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
       REPOSITORY: ${{ github.event.repository.name }}
-      sketch-name: test.ino      
+      sketch-name: test.ino
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
-        
+
     strategy:
       matrix:
         arduino-boards-fqbn:
@@ -45,8 +43,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        #with:
-        #  ref: master
 
       - name: Checkout Wemos MotorDriver Library
         uses: actions/checkout@v2
@@ -89,7 +85,7 @@ jobs:
           wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
-     
+
         # https://github.com/actions/starter-workflows/issues/68#issuecomment-617683761
       - if: ${{ endsWith(github.ref, 'master') }}
         name: Set Environment Variable "PRODUCTION" 
@@ -100,12 +96,12 @@ jobs:
       - if: ${{ endsWith(github.ref, 'development') }}
         name: Set Environment Variable "Development" 
         run: echo ::set-env name=ENV_STAGE::DEV
-        
+
       # Script um JSON Datei anzupassen
       - name: Schreibe Json File
         env:
           ENV_ARCH: ${{ matrix.architecture }}
-          ENV_REPOSITORYNAME: ${{ github.repository }}
+          ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
           ENV_BINARYPATH: "${{ format('/home/runner/{0}', env.REPOSITORY) }}"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
@@ -115,7 +111,7 @@ jobs:
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
-      
+
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: '--acl public-read --follow-symlinks'
@@ -126,5 +122,3 @@ jobs:
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
           DEST_DIR: ${{ env.REPOSITORY }}
-
-
