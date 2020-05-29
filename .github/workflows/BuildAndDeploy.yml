@@ -17,7 +17,7 @@ jobs:
     env:
       REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library
       REPOSITORY: ${{ github.event.repository.name }}
-      sketch-name: ESP8266_PumpControl.ino
+      sketch-name: test.ino
       #FULLREPO: ${{ github.repository }} # tobiasfaust/test
 
     strategy:
@@ -119,3 +119,26 @@ jobs:
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
           DEST_DIR: ${{ env.REPOSITORY }}
+
+create_release:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ endsWith(github.ref, 'master') }}
+    steps:
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.0.0
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: true
+        prerelease: false
+    - name: Copy release URL into file
+      run: |
+        mkdir release
+        printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
+    - name: Stash file containing the release URL as an artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: release-url
+        path: ./release
