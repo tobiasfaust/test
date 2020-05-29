@@ -154,8 +154,9 @@ jobs:
       - name: Read release URL
         id: set_asset_env
         run: |
+          echo ::set-env name=BOARD::${{ matrix.arduino-boards-fqbn }}
           echo ::set-output name=URL::$(cat release-url/url.txt)
-          echo ::set-output name=AssetName::$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+          echo ::set-output name=AssetName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
           echo ::set-output name=AssetPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
           
       - name: Upload Release Asset
