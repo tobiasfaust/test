@@ -184,7 +184,7 @@ jobs:
       - name: Read release URL
         id: set_asset_env
         run: |
-          zip -j release/source.zip ./*
+          zip -j source.zip ./*
           echo ::set-output name=URL::$(cat release-url/url.txt)
           
       - name: Upload Release Asset
@@ -194,7 +194,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ./release/source.zip
+          asset_path: ./source.zip
           asset_name: source.zip
           asset_content_type: application/gzip      
     
