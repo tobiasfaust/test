@@ -184,6 +184,9 @@ jobs:
       - name: Read release URL
         id: set_asset_env
         run: |
+          pwd
+          ls -ail
+          ls -ail /home/runner/test
           zip -j source.zip ./*
           echo ::set-output name=URL::$(cat release-url/url.txt)
           
