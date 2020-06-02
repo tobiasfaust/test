@@ -204,7 +204,7 @@ jobs:
       - name: collect and zip libraries
         if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} ) # && ${{ needs.createRelease.result == success}}
         run: |
-          zip -jr libraries.zip /home/runner/Arduino/libraries/* -x "\*examples\*" "\*resources\*" "\*.git\*"
+          zip -r libraries.zip /home/runner/Arduino/libraries/* -x "\*examples\*" "\*resources\*" "\*.git\*"
         
       - name: Upload Libraries to Release
         id: upload-release-libs 
