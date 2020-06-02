@@ -54,7 +54,7 @@ jobs:
       run: |
           pwd
           ls -ail
-          zip -jr source.zip ./*
+          zip -r source.zip ./*
           
     - name: Upload Source to Release
       id: upload-release-asset 
