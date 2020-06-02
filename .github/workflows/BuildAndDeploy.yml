@@ -205,7 +205,7 @@ jobs:
           ls -ail /home/runner/Arduino/libraries/
           zip -j test.zip ./*
           cd /home/runner/Arduino/libraries/
-          zip -j libraries.zip ./*
+          zip -r libraries.zip ./*
  
       - name: Upload Libraries to Release
         id: upload-release-libs 
