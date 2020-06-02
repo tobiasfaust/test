@@ -19,14 +19,19 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     
+    - name: set Environment Variables
+      id: set_env_var
+      run: |
+         echo ::set-output VERSION=`sed 's/[^0-9|.]//g' _Release.h`  # zb. 2.4.2
+    
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v.${{ steps.set_env_var.outputs.VERSION }}
+        release_name: Release ${{ steps.set_env_var.outputs.VERSION }}
         draft: true
         prerelease: false
         
@@ -180,8 +185,8 @@ jobs:
         run: |
           echo ::set-env name=BOARD::${{ matrix.arduino-boards-fqbn }}
           echo ::set-output name=URL::$(cat release-url/url.txt)
-          echo ::set-output name=AssetName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
-          echo ::set-output name=AssetPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+          echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+          echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
           
       - name: Upload Release Asset
         id: upload-release-asset 
@@ -190,8 +195,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ${{ steps.set_asset_env.outputs.AssetPath }}
-          asset_name: ${{ steps.set_asset_env.outputs.AssetName }}
+          asset_path: ${{ steps.set_asset_env.outputs.BinaryPath }}
+          asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
           asset_content_type: application/x-binary      
 
+      - name: collect and zip libraries
+        #if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'prelive') }}) && ${{ needs.createRelease.result == success}}
+        run: |
+          zip -j libraries.zip /home/runner/Arduino/libraries/*
  
+      - name: Upload Libraries to Release
+        id: upload-release-libs 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.set_asset_env.outputs.URL }}
+          asset_path: ./libraries.zip
+          asset_name: libraries.zip
+          asset_content_type: application/zip     
