@@ -22,6 +22,10 @@ jobs:
       id: set_env_var
       run: |
          echo ::set-output name=version::$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
+         if [ $REPOSITORY -eq "master" ]; then IS_PRE='false' ; else IS_PRE='true' ; fi
+         echo ::set-output name=IS_PRERELEASE::${IS_PRE}
+      env:
+        REPOSITORY: ${{ github.event.repository.name }}
     
     - name: Create Release
       id: create_release
@@ -31,8 +35,8 @@ jobs:
       with:
         tag_name: v.${{ steps.set_env_var.outputs.version }}
         release_name: Release ${{ steps.set_env_var.outputs.version }}
-        draft: true
-        prerelease: false
+        draft: false
+        prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
     - name: Copy release URL into file
       run: |
@@ -50,8 +54,7 @@ jobs:
       run: |
           pwd
           ls -ail
-          zip -j source.zip ./*
-          #echo ::set-output name=URL::$(cat release-url/url.txt)
+          zip -jr source.zip ./*
           
     - name: Upload Source to Release
       id: upload-release-asset 
