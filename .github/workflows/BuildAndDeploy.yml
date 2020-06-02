@@ -72,7 +72,8 @@ jobs:
 
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
-            architecture: ESP8266  
+            architecture: ESP8266
+            save_libs: libraries.zip # name must be unique, it makes sense to define it only once
 #            examples-build-properties:
 #              All:
 #                -DDEBUG    
@@ -143,7 +144,6 @@ jobs:
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
-          #if: github.ref == 'refs/heads/integration'
         run: |
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
@@ -189,14 +189,14 @@ jobs:
           asset_content_type: application/x-binary      
 
       - name: collect and zip libraries
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
         run: |
           rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
           zip -r libraries.zip libraries/*
         
       - name: Upload Libraries to Release
         id: upload-release-libs 
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
