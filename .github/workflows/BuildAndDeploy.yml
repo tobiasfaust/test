@@ -22,8 +22,9 @@ jobs:
       id: set_env_var
       run: |
          echo ::set-output name=version::$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
-         if [ $REPOSITORY -eq "master" ]; then IS_PRE='false' ; else IS_PRE='true' ; fi
+         if [ $REPOSITORY -eq "master" ]; then IS_PRE='false'; POSTFIX='PreRelease'; else IS_PRE='true'; POSTFIX=''; fi
          echo ::set-output name=IS_PRERELEASE::${IS_PRE}
+         echo ::set-output name=RELEASENAME_POSTFIX::${POSTFIX}
       env:
         REPOSITORY: ${{ github.event.repository.name }}
     
@@ -34,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
         tag_name: v.${{ steps.set_env_var.outputs.version }}
-        release_name: Release ${{ steps.set_env_var.outputs.version }}
+        release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
@@ -49,23 +50,23 @@ jobs:
         name: release-url
         path: ./release
    
-    - name: prepare Variables
-      id: set_asset_env
-      run: |
-          pwd
-          ls -ail
-          zip -r source.zip ./*
-          
-    - name: Upload Source to Release
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./source.zip
-        asset_name: source.zip
-        asset_content_type: application/gzip      
+#    - name: prepare Variables
+#      id: set_asset_env
+#      run: |
+#          pwd
+#          ls -ail
+#          zip -r source.zip ./*
+#          
+#    - name: Upload Source to Release
+#      id: upload-release-asset 
+#      uses: actions/upload-release-asset@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        upload_url: ${{ steps.create_release.outputs.upload_url }}
+#        asset_path: ./source.zip
+#        asset_name: source.zip
+#        asset_content_type: application/gzip      
     
   build:
     name: BuildAndDeploy-${{ matrix.arduino-boards-fqbn }}
