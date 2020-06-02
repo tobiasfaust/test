@@ -13,8 +13,7 @@ on:
 jobs:
   create_Release:
     runs-on: ubuntu-latest
-    #needs: build
-    #if: ${{ endsWith(github.ref, 'master') }}
+    if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} )
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -176,12 +175,14 @@ jobs:
       
       # Download the previously uploaded artifact which contains the release URL
       - name: Retrieve stashed release URL
+        if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} )
         uses: actions/download-artifact@v1
         with:
          name: release-url
       
       - name: Read release URL
         id: set_asset_env
+        if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} )
         run: |
           echo ::set-env name=BOARD::${{ matrix.arduino-boards-fqbn }}
           echo ::set-output name=URL::$(cat release-url/url.txt)
@@ -190,6 +191,7 @@ jobs:
           
       - name: Upload Release Asset
         id: upload-release-asset 
+        if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} )
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -200,14 +202,13 @@ jobs:
           asset_content_type: application/x-binary      
 
       - name: collect and zip libraries
-        #if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'prelive') }}) && ${{ needs.createRelease.result == success}}
+        if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} ) # && ${{ needs.createRelease.result == success}}
         run: |
-          ls -ail /home/runner/Arduino/libraries/
-          zip -r libraries.zip /home/runner/Arduino/libraries/*
-          ls -ail
- 
+          zip -jr libraries.zip /home/runner/Arduino/libraries/* -x "\*examples\*" "\*resources\*" "\*.git\*"
+        
       - name: Upload Libraries to Release
         id: upload-release-libs 
+        if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'development') }} )
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
