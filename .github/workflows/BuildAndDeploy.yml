@@ -203,9 +203,8 @@ jobs:
         #if: (${{ endsWith(github.ref, 'master') }} || ${{ endsWith(github.ref, 'prelive') }}) && ${{ needs.createRelease.result == success}}
         run: |
           ls -ail /home/runner/Arduino/libraries/
-          zip -j test.zip ./*
-          cd /home/runner/Arduino/libraries/
-          zip -r libraries.zip ./*
+          zip -r libraries.zip /home/runner/Arduino/libraries/*
+          ls -ail
  
       - name: Upload Libraries to Release
         id: upload-release-libs 
