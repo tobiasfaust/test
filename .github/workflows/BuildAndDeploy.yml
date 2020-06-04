@@ -22,7 +22,7 @@ jobs:
     - name: set Environment Variables
       id: set_env_var
       run: |
-         echo ::set-env name=VERSION::$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
+         VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
          if [ $REPOSITORY -eq "master" ]; then IS_PRE='false'; else IS_PRE='true'; fi
          if [ $REPOSITORY -eq "master" ]; then POSTFIX=''    ; else POSTFIX='PRE';    fi
          echo ::set-output name=version::${VERSION}
@@ -40,7 +40,7 @@ jobs:
       with:
         tag_name: v.${{ steps.set_env_var.outputs.version }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-        body: ${{ steps.set_env_var.outputs.RELEASEBODY }}
+        #body: ${{ steps.set_env_var.outputs.RELEASEBODY }}
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
