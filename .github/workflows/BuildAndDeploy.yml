@@ -14,7 +14,7 @@ on:
 jobs:
   create_Release:
     runs-on: ubuntu-latest
-    #if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -171,14 +171,14 @@ jobs:
       
       # Download the previously uploaded artifact which contains the release URL
       - name: Retrieve stashed release URL
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         uses: actions/download-artifact@v1
         with:
          name: release-url
       
       - name: Read release URL
         id: set_asset_env
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         run: |
           echo ::set-env name=BOARD::${{ matrix.arduino-boards-fqbn }}
           echo ::set-output name=URL::$(cat release-url/url.txt)
@@ -187,7 +187,7 @@ jobs:
           
       - name: Upload Release Asset
         id: upload-release-asset 
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -198,14 +198,14 @@ jobs:
           asset_content_type: application/x-binary      
 
       - name: collect and zip libraries
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'development')) && endsWith(matrix.save_libs, 'zip')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
         run: |
           rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
           zip -r ${{ matrix.save_libs }} libraries/*
         
       - name: Upload Libraries to Release
         id: upload-release-libs 
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'development')) && endsWith(matrix.save_libs, 'zip')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
