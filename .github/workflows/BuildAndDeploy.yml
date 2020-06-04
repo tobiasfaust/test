@@ -45,7 +45,6 @@ jobs:
       with:
         tag_name: v.${{ steps.set_env_var.outputs.version }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-        #body: ${{ steps.set_env_var.outputs.RELEASEBODY }}
         body: |
             ${{ steps.set_env_var.outputs.RELEASEBODY }}
         draft: false
@@ -135,7 +134,6 @@ jobs:
           chmod +x arduino-test-compile.sh
           ./arduino-test-compile.sh
 
-        # https://github.com/actions/starter-workflows/issues/68#issuecomment-617683761
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
         run: echo ::set-env name=ENV_STAGE::PROD
@@ -146,7 +144,7 @@ jobs:
         name: Set Environment Variable "Development" 
         run: echo ::set-env name=ENV_STAGE::DEV
 
-      # Script um JSON Datei anzupassen
+      # Script um JSON Datei zu erstellen
       - name: Schreibe Json File
         env:
           ENV_ARCH: ${{ matrix.architecture }}
@@ -173,14 +171,14 @@ jobs:
       
       # Download the previously uploaded artifact which contains the release URL
       - name: Retrieve stashed release URL
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
         uses: actions/download-artifact@v1
         with:
          name: release-url
       
       - name: Read release URL
         id: set_asset_env
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
         run: |
           echo ::set-env name=BOARD::${{ matrix.arduino-boards-fqbn }}
           echo ::set-output name=URL::$(cat release-url/url.txt)
@@ -189,7 +187,7 @@ jobs:
           
       - name: Upload Release Asset
         id: upload-release-asset 
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'development')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -200,19 +198,19 @@ jobs:
           asset_content_type: application/x-binary      
 
       - name: collect and zip libraries
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'development')) && endsWith(matrix.save_libs, 'zip')
         run: |
           rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
-          zip -r libraries.zip libraries/*
+          zip -r ${{ matrix.save_libs }} libraries/*
         
       - name: Upload Libraries to Release
         id: upload-release-libs 
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
+        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'development')) && endsWith(matrix.save_libs, 'zip')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ./libraries.zip
-          asset_name: libraries.zip
+          asset_path: ./${{ matrix.save_libs }}
+          asset_name: ${{ matrix.save_libs }}
           asset_content_type: application/zip     
