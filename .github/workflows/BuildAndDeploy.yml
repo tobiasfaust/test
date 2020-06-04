@@ -40,7 +40,11 @@ jobs:
       with:
         tag_name: v.${{ steps.set_env_var.outputs.version }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-        body: ${{ steps.set_env_var.outputs.RELEASEBODY }}
+        #body: ${{ steps.set_env_var.outputs.RELEASEBODY }}
+        body: |
+            Changes in this Release
+            - First Change
+            - Second Change
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
