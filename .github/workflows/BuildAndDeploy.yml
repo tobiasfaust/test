@@ -23,17 +23,17 @@ jobs:
       id: set_env_var
       run: |
          VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
-         if [ $REPOSITORY -eq "master" ]; then IS_PRE='false'; else IS_PRE='true'; fi
-         if [ $REPOSITORY -eq "master" ]; then POSTFIX=''    ; else POSTFIX='PRE';    fi
+         if [ $REPOSITORY = "master" ]; then IS_PRE='false'; else IS_PRE='true'; fi
+         if [ $REPOSITORY = "master" ]; then POSTFIX=''    ; else POSTFIX='PRE';    fi
          RELEASEBODY=$(awk -v RS='Release ' '/$VERSION:(.*)/ {print $0}' ChangeLog.h)
-         RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
-         RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"
+#         RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
+#         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
+#         RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"
          echo "::set-output name=version::${VERSION}"
          echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
          echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
-         echo "::set-output name=RELEASEBODY::$RELEASEBODY"
-         echo ":set-env name=body::$RELEASEBODY"
+         echo "::set-output name=RELEASEBODY::${RELEASEBODY}"
+         echo "::set-env name=body::${RELEASEBODY}"
       env:
         REPOSITORY: ${{ github.event.repository.name }}
     
