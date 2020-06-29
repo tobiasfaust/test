@@ -1,6 +1,7 @@
 Release 2.4.3:  
 	- Bugfixing Automatische Releaseverteilung
-    - Überarbeitung Github Workflow mit automatischer Releaseerstellung 
+  - Überarbeitung Github Workflow mit automatischer Releaseerstellung 
+  - Test mit GitKraken
 
 Release 2.4.2:  
 	- Bugfixing des TB6612 Handlings
@@ -8,4 +9,3 @@ Release 2.4.2:
 
 Release 2.4.1:  
 	- xxxx
-
