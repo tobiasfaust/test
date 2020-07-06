@@ -136,7 +136,6 @@ jobs:
           ls -ail /home/runner/test
           ls -ail /home/runner/test/build
           ls -ail /home/runner/test/build/esp8266.esp8266.d1_mini
-          find /home/runner/test/build/ -name *.bin -exec cp {} 
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
