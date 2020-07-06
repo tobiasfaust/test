@@ -158,7 +158,8 @@ jobs:
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
           pwd
-          ls -ail
+          ls -ail 
+          ls -ail /home/runner/test
 
       - uses: jakejarvis/s3-sync-action@master
         with:
