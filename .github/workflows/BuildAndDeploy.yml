@@ -157,6 +157,8 @@ jobs:
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
+          pwd
+          ls -ail
 
       - uses: jakejarvis/s3-sync-action@master
         with:
