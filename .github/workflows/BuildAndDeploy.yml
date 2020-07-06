@@ -134,7 +134,7 @@ jobs:
           chmod +x .github/workflows/arduino-test-compile.sh
           .github/workflows/arduino-test-compile.sh
           ls -ail /home/runner/test
-          find /home -name test.bin
+          ls -ail /home/runner/test/build
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
