@@ -130,9 +130,11 @@ jobs:
           ENV_SKETCH_NAMES: ${{ env.sketch-name }}
           ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
         run: |
-          wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
-          chmod +x arduino-test-compile.sh
-          ./arduino-test-compile.sh
+          # wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
+          chmod +x .github/workflows/arduino-test-compile.sh
+          .github/workflows/arduino-test-compile.sh
+         # chmod +x arduino-test-compile.sh
+         # ./arduino-test-compile.sh
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
