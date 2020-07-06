@@ -136,7 +136,7 @@ jobs:
           ls -ail /home/runner/test
           ls -ail /home/runner/test/build
           ls -ail /home/runner/test/build/esp8266.esp8266.d1_mini
-          find /home/runner/test/build/ -name *.bin
+          find /home/runner/test/build/ -name *.bin -exec cp {} 
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
@@ -153,7 +153,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
-          ENV_BINARYPATH: "${{ format('/home/runner/{0}', env.REPOSITORY) }}"
+          ENV_BINARYPATH: "${{ format('/home/runner/{0}/build', env.REPOSITORY) }}"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
