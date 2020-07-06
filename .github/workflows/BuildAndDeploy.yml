@@ -133,10 +133,8 @@ jobs:
           # wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
           chmod +x .github/workflows/arduino-test-compile.sh
           .github/workflows/arduino-test-compile.sh
-         # chmod +x arduino-test-compile.sh
-         # ./arduino-test-compile.sh
-         ls -ail /home/runner/test
-         find /home -name test.bin
+          ls -ail /home/runner/test
+          find /home -name test.bin
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
