@@ -1,3 +1,6 @@
+Release 2.5:
+  - Test OneWire with DS2408
+  
 Release 2.4.3:  
 	- Bugfixing Automatische Releaseverteilung
   - Überarbeitung Github Workflow mit automatischer Releaseerstellung 
