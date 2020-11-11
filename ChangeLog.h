@@ -4,7 +4,7 @@ Release 2.5:
 Release 2.4.3:  
 	- Bugfixing Automatische Releaseverteilung
   - Überarbeitung Github Workflow mit automatischer Releaseerstellung 
-  - Test mit GitKraken
+  - Test mit GitKraken 
 
 Release 2.4.2:  
 	- Bugfixing des TB6612 Handlings
