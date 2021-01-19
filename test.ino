@@ -14,14 +14,15 @@
 #include "uptime.h"
 #include "i2cdetect.h"
 */ 
-#include "OW2408.h"  // https://github.com/queezythegreat/arduino-ds2408
+//#include "OW2408.h"  // https://github.com/queezythegreat/arduino-ds2408
                                    // https://github.com/PaulStoffregen/OneWire
 
-ow2408* ds2408test = NULL;
+//ow2408* ds2408test = NULL;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   // put your setup code here, to run once: test
+/*
   ds2408test = new ow2408();
   ds2408test->setDebugMode(5);
   ds2408test->init(5);
@@ -47,6 +48,7 @@ void setup() {
   ds2408test->setOff(7);
   //ds2408test->setOff(8);
   //ds2408test->setOff(15);
+  */
 }
 
 void loop() {
