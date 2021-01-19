@@ -80,11 +80,6 @@ jobs:
 #          - arduino-boards-fqbn: arduino:avr:uno
 #            #sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
 
-          - arduino-boards-fqbn: esp32:esp32:esp32
-            platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
-            architecture: ESP32
-            save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
-            
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
             architecture: ESP8266
@@ -92,6 +87,12 @@ jobs:
 #            examples-build-properties:
 #              All:
 #                -DDEBUG    
+
+          - arduino-boards-fqbn: esp32:esp32:esp32
+            platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
+            architecture: ESP32
+            save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
+            
 
     steps:
       - name: Checkout Repository
