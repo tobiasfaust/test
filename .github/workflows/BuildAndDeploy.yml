@@ -148,13 +148,13 @@ jobs:
 #          ./arduino-test-compile.sh
 
       - name: Arduino build
-        uses: ArminJo/arduino-test-compile
+        uses: ArminJo/arduino-test-compile@v3
         with:
           arduino-board-fqbn: ${{ matrix.arduino-boards-fqbn }}
-          platform-url: {{ matrix.platform-url }}
+          platform-url: ${{ matrix.platform-url }}
           required-libraries: ${{ env.REQUIRED_LIBRARIES }}
           sketch_names: ${{ env.sketch-name }}
-          extra-arduino-cli-args: ${{ matrix.extra-arduino-cli-args }}
+#          extra-arduino-cli-args: ${{ matrix.extra-arduino-cli-args }}
     
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
