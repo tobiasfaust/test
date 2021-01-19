@@ -37,6 +37,7 @@ echo STAGE=$STAGE
 echo BINARYPATH=$BINARYPATH
 echo DESTPATH=$DESTPATH
 echo ARCHITECTURE=$ARCH
+echo RELEASEFILE=$RELEASEFILE
 
 if [[ ! -d $BINARYPATH ]]; then
   echo -e "\n\n"$RED"Binarypath $BINARYPATH not found\n"$NC
@@ -67,7 +68,7 @@ do
   FILENAME=${FILE%.*}
   FILEEXT=${FILE/*./}
 
-  BINARYFILENAME=$(basename $FILENAME".v"$VERSION"-"$SUBVERSION"."$STAGE)
+  BINARYFILENAME=$(basename $FILENAME"."$ARCH".v"$VERSION"-"$SUBVERSION"."$STAGE)
   DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
 
   JSON='      {
