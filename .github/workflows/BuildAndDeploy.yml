@@ -159,6 +159,7 @@ jobs:
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
         run: |
+          ls -ail "${{ format('/home/runner/{0}/build', env.REPOSITORY) }}"
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
