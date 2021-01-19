@@ -90,6 +90,7 @@ jobs:
 
           - arduino-boards-fqbn: esp32:esp32:esp32
             platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
+            extra-arduino-cli-args: "--build-property build.partitions=no_ota --build-property upload.maximum_size=2097152":  
             architecture: ESP32
             save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
 
@@ -132,20 +133,29 @@ jobs:
           ref: master
           path: DS2408_Custom_Library
 
-      - name: Compile all examples using the bash script arduino-test-compile.sh
-        env:
-          # Passing parameters to the script by setting the appropriate ENV_* variables.
-          ENV_ARDUINO_BOARD_FQBN: ${{ matrix.arduino-boards-fqbn }}
-          ENV_PLATFORM_URL: ${{ matrix.platform-url }}
-          ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
-          ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
-          ENV_SKETCH_NAMES: ${{ env.sketch-name }}
-          ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
-        run: |
-          wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
-          chmod +x arduino-test-compile.sh
-          ./arduino-test-compile.sh
+#      - name: Compile all examples using the bash script arduino-test-compile.sh
+#        env:
+#          # Passing parameters to the script by setting the appropriate ENV_* variables.
+#          ENV_ARDUINO_BOARD_FQBN: ${{ matrix.arduino-boards-fqbn }}
+#          ENV_PLATFORM_URL: ${{ matrix.platform-url }}
+#          ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
+#          ENV_EXAMPLES_EXCLUDE: ${{ matrix.examples-exclude }}
+#          ENV_SKETCH_NAMES: ${{ env.sketch-name }}
+#          ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.examples-build-properties) }}
+#        run: |
+#          wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
+#          chmod +x arduino-test-compile.sh
+#          ./arduino-test-compile.sh
 
+      - name: Arduino build
+        uses: ArminJo/arduino-test-compile
+        with:
+          arduino-board-fqbn: ${{ matrix.arduino-boards-fqbn }}
+          platform-url: {{ matrix.platform-url }}
+          required-libraries: ${{ env.REQUIRED_LIBRARIES }}
+          sketch_names: ${{ env.sketch-name }}
+          extra-arduino-cli-args: ${{ matrix.extra-arduino-cli-args }}
+    
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
         run: echo "ENV_STAGE=PROD" >> $GITHUB_ENV
