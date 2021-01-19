@@ -90,7 +90,7 @@ jobs:
 
           - arduino-boards-fqbn: esp32:esp32:esp32
             platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
-            extra-arduino-cli-args: "--build-property build.partitions=no_ota --build-property upload.maximum_size=2097152":  
+            extra-arduino-cli-args: "--build-property build.partitions=no_ota --build-property upload.maximum_size=2097152"
             architecture: ESP32
             save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
 
