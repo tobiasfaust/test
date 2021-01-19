@@ -73,8 +73,8 @@ jobs:
     strategy:
       matrix:
         arduino-boards-fqbn:
-          - esp32:esp32:esp32
           - esp8266:esp8266:d1_mini
+          - esp32:esp32:esp32
 
         include:
 #          - arduino-boards-fqbn: arduino:avr:uno
@@ -92,7 +92,6 @@ jobs:
             platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
             architecture: ESP32
             save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
-            
 
     steps:
       - name: Checkout Repository
