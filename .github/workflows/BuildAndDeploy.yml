@@ -73,7 +73,7 @@ jobs:
     strategy:
       matrix:
         arduino-boards-fqbn:
-          - esp32:esp32:nano32
+          - esp32:esp32:esp32
           - esp8266:esp8266:d1_mini
 
         include:
