@@ -73,17 +73,22 @@ jobs:
     strategy:
       matrix:
         arduino-boards-fqbn:
-#          - arduino:avr:uno
+          - esp32:esp32:nano32
           - esp8266:esp8266:d1_mini
 
         include:
 #          - arduino-boards-fqbn: arduino:avr:uno
 #            #sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
 
+          - arduino-boards-fqbn: esp32:esp32:nano32
+            platform-url: https://dl.espressif.com/dl/package_esp32_index.json  
+            architecture: ESP32
+            save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
+            
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
             architecture: ESP8266
-            save_libs: libraries.zip # name must be unique, it makes sense to define it only once
+            save_libs: libraries_esp8266.zip # name must be unique, it makes sense to define it only once
 #            examples-build-properties:
 #              All:
 #                -DDEBUG    
