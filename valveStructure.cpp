@@ -18,7 +18,7 @@ void valveStructure::addValve(uint8_t Port, String SubTopic) {
 void valveStructure::OnForTimer(String SubTopic, int duration) {
   valve* v = this->GetValveItem(SubTopic);
   if (v && v->OnForTimer(duration)) {
-    if (mqtt) {mqtt->Publish_Int("Threads", (int*)CountActiveThreads()); }
+    if (mqtt) {mqtt->Publish_Int("Threads", (int)this->CountActiveThreads()); }
   }
 }
 
@@ -34,13 +34,13 @@ void valveStructure::SetOn(String SubTopic) {
 
 void valveStructure::SetOn(uint8_t Port) {
   valve* v = this->GetValveItem(Port);
-  if (v && v->SetOn() && mqtt) { mqtt->Publish_Int("Threads", (int*)CountActiveThreads()); }
+  if (v && v->SetOn() && mqtt) { mqtt->Publish_Int("Threads", (int)this->CountActiveThreads()); }
 }
 
 void valveStructure::SetOff(uint8_t Port) {
   valve* v = this->GetValveItem(Port);
   if (v) { v->SetOff(); }
-  if (mqtt) { mqtt->Publish_Int("Threads", (int*)CountActiveThreads()); }
+  if (mqtt) { mqtt->Publish_Int("Threads", (int)this->CountActiveThreads()); }
 }
 
 bool valveStructure::GetState(uint8_t Port) {

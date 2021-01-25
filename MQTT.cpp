@@ -117,10 +117,10 @@ void MQTT::Publish_Bool(const char* subtopic, bool b) {
   Publish_String(subtopic, s);
 }
 
-void MQTT::Publish_Int(const char* subtopic, int* number ) {
+void MQTT::Publish_Int(const char* subtopic, int number ) {
   char buffer[10] = {0};
   memset(&buffer[0], 0, sizeof(buffer));
-  snprintf(buffer, sizeof(buffer), "%d", *number);
+  snprintf(buffer, sizeof(buffer), "%d", number);
   Publish_String(subtopic, buffer);
 }
 
