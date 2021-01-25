@@ -112,8 +112,8 @@ String MQTT::GetRoot() {
 }
 
 void MQTT::Publish_Bool(const char* subtopic, bool b) {
-  char* s = "0"; 
-  if(b) {s = "1";};
+  String s;
+  if(b) {s = "1";} else {s = "0";};
   Publish_String(subtopic, s);
 }
 
