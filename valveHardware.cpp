@@ -180,7 +180,7 @@ uint8_t valveHardware::GetI2CAddress(uint8_t Port) {
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port, bool state, bool reverse) {
-  SetPort(dev, Port,  , state, reverse, 0);
+  SetPort(dev, Port, NULL , state, reverse, 0);
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool state, bool reverse, uint16_t duration) {
