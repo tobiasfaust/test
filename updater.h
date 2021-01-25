@@ -4,7 +4,7 @@
 #include "CommonLibs.h"
 #include <vector>
 #include "ArduinoJson.h"
-#include "_Release.h";
+#include "_Release.h"
 
 #ifdef ESP8266
    #include <ESP8266httpUpdate.h>
