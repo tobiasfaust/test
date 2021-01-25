@@ -1,9 +1,9 @@
 #ifndef BASECONFIG_H
 #define BASECONFIG_H
 
-#if defined(ESP8266) || defined(ESP32)
-  #define min(x,y) _min(x,y)
-#endif
+//#if defined(ESP8266) || defined(ESP32)
+//  #define min(x,y) _min(x,y)
+//#endif
 
 #include "CommonLibs.h"
 #include "ArduinoJson.h"
