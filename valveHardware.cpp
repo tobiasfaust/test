@@ -180,7 +180,7 @@ uint8_t valveHardware::GetI2CAddress(uint8_t Port) {
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port, bool state, bool reverse) {
-  SetPort(dev, Port, NULL , state, reverse, 0);
+  SetPort(dev, Port, 0 , state, reverse, 0);
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool state, bool reverse, uint16_t duration) {
@@ -190,7 +190,7 @@ void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool sta
   if (dev->HWType == PCF) { //schaltet auf LOW
     PCF8574* pcf8574 = static_cast<PCF8574*>(dev->Device); // , pin_sda, pin_scl
     pcf8574->digitalWrite(PortMap1.internalPort, !state); 
-    if (Port2) {
+    if (Port2 && Port2 > 0) {
       pcf8574->digitalWrite(PortMap2.internalPort, reverse);
       delay(duration);
       pcf8574->digitalWrite(PortMap2.internalPort, !reverse); // Normal: HIGH
@@ -206,14 +206,14 @@ void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool sta
   } else if (dev->HWType == OW2408) {
     ow2408* MyDS2408 = static_cast<ow2408*>(dev->Device);
     MyDS2408->setPort(PortMap1.internalPort, state);
-    if (Port2) {
+    if (Port2 && Port2 > 0) {
       MyDS2408->setPort(PortMap2.internalPort, !reverse); // Normal: HIGH
       delay(duration);
       MyDS2408->setPort(PortMap2.internalPort, reverse); // Normal: LOW
     }
   } else if (dev->HWType == ONBOARD) {
     digitalWrite(PortMap1.internalPort,  state);
-    if (Port2) {
+    if (Port2 && Port2 > 0) {
       digitalWrite(PortMap2.internalPort, !reverse); // Normal: HIGH
       delay(duration);
       digitalWrite(PortMap2.internalPort, reverse); // Normal: LOW

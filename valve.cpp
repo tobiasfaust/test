@@ -25,8 +25,16 @@ void valve::AddPort2(valveHardware* Device, uint8_t Port2) {
   this->port2 = Port2;
 }
 
-void valve::SetActive(bool active) {
-  this->enabled = active;
+void valve::SetActive(bool value) {
+  this->enabled = value;
+}
+
+void valve::SetReverse(bool value) {
+  this->reverse = value;
+}
+
+void valve::SetAutoOff(uint16_t value) {
+  this->autooff = value;
 }
 
 bool valve::OnForTimer(int duration) {
