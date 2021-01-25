@@ -74,7 +74,7 @@ void MQTT::reconnect() {
     
     // Once connected, publish basics ...
     this->Publish_IP();
-    this->Publish_String("version", (char*)Config->GetReleaseName().c_str());
+    this->Publish_String("version", Config->GetReleaseName());
     this->Publish_String("state", "Online"); //LWT reset
         
     // ... and resubscribe
@@ -124,12 +124,12 @@ void MQTT::Publish_Int(const char* subtopic, int* number ) {
   Publish_String(subtopic, buffer);
 }
 
-void MQTT::Publish_String(const char* subtopic, char* value ) {
+void MQTT::Publish_String(const char* subtopic, String value ) {
   char topic[50] = {0};
   memset(&topic[0], 0, sizeof(topic));
   snprintf (topic, sizeof(topic), "%s/%s", this->mqtt_root.c_str(), subtopic);
   if (mqtt->connected()) {
-    mqtt->publish((const char*)topic, (const char*)value, true);
+    mqtt->publish((const char*)topic, value.c_str(), true);
     Serial.print(F("Publish ")); Serial.print(FPSTR(topic)); Serial.print(F(": ")); Serial.println(value);
   } else { Serial.println(F("Request for MQTT Publish, but not connected to Broker")); }
 }
