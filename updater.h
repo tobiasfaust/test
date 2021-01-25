@@ -42,7 +42,7 @@ class updater {
     void        loop();
     release_t*  GetCurrentRelease();
     String      GetReleaseName();
-    const int&  GetInterval()     const {return interval;}
+    const uint32_t&  GetInterval()     const {return interval;}
     std::vector<release_t>* GetReleases();
     void        InstallRelease(uint32_t ReleaseNumber);
     void        RefreshReleases();
