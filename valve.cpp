@@ -30,9 +30,9 @@ void valve::SetActive(bool active) {
 }
 
 bool valve::OnForTimer(int duration) {
-  bool ret;
+  bool ret= false;
   if (enabled && ActiveTimeLeft() < duration) {ret = this->HandleSwitch(true, duration);}
-  if (duration == 0) { SetOff(); }
+  if (duration == 0) { ret = this->SetOff(); }
   return ret;
 }
 
@@ -42,7 +42,7 @@ bool valve::SetOn() {
     if (this->autooff > 0) {
       ret = this->HandleSwitch(true, this->autooff);
     } else {
-      ret = this->HandleSwitch(true, NULL);
+      ret = this->HandleSwitch(true, 0);
     }
   }
   return ret;
@@ -50,7 +50,7 @@ bool valve::SetOn() {
 
 bool valve::SetOff() {
   bool ret = false;
-  if (this->active) {ret = this->HandleSwitch(false, NULL);}
+  if (this->active) {ret = this->HandleSwitch(false, 0);}
   return ret;
 }
 
@@ -67,7 +67,7 @@ bool valve::HandleSwitch (bool state, int duration) {
 
   this->active = state;
   
-  if (state && duration) {
+  if (state && duration && duration>0) {
     startmillis = millis();
     lengthmillis = duration * 1000;
   } else {

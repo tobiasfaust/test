@@ -65,13 +65,13 @@ class updater {
     release_t   getLatestRelease();
     void        printRelease(release_t* r);
     
-    String      json_url;
-    stage_t     stage;
-    release_t   currentRelease;
+    bool        DoUpdate = false;
     bool        automode;
     bool        updateError;
     uint32_t    interval;
-    bool        DoUpdate = false;
+    String      json_url;
+    stage_t     stage;
+    release_t   currentRelease;
     uint32_t    lastupdate;
 
     std::vector<release_t>* releases = NULL;

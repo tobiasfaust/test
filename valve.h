@@ -31,13 +31,16 @@ class valve {
     const bool&  GetActive()    const {return enabled;}
     
     bool      active;  // Ventil ist gerade aktiv/geöffnet
+    uint16_t  autooff; // anzahl sek wenn das Ventil nach einem ON automatisch spaetestens schliessen soll -> Sicherheitsabschaltung
     bool      reverse; // Ventil schliesst auf ON, oeffnet auf OFF
     uint16_t  port1ms; // millisekunden bei Type "b" für Port1: 10-999
     uint16_t  port2ms; // millisekunden bei Type "b" für Port2: 10-999
     String    subtopic; //ohne on-for-timer
-    uint16_t  autooff; // anzahl sek wenn das Ventil nach einem ON automatisch spaetestens schliessen soll -> Sicherheitsabschaltung
     
   private:
+    bool      enabled;  //grundsätzlich aktiviert in WebUI
+    vType_t   ValveType;
+    
     HWdev_t*  myHWdev = NULL;      //Pointer auf das Device
     valveHardware* valveHWClass = NULL; // Pointer auf die Klasse um auf die generischen Funktionen zugreifen zu können
     
@@ -45,9 +48,6 @@ class valve {
     uint8_t   port2; //0 - 220 , für bistabile Ventile
     uint32_t  startmillis   = 0;
     uint32_t  lengthmillis  = 0;
-    bool      enabled;  //grundsätzlich aktiviert in WebUI
-
-    vType_t   ValveType;
 
     bool      HandleSwitch (bool state, int duration);
 };

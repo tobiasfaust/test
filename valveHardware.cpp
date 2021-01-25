@@ -88,6 +88,7 @@ HWdev_t* valveHardware::getI2CDevice(uint8_t i2cAddress) {
       return &HWDevice->at(i);
     }
   }
+  return NULL;
 }
 
 void valveHardware::ConnectHWdevice(HWdev_t* dev) {
@@ -179,7 +180,7 @@ uint8_t valveHardware::GetI2CAddress(uint8_t Port) {
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port, bool state, bool reverse) {
-  SetPort(dev, Port, NULL, state, reverse, NULL);
+  SetPort(dev, Port,  , state, reverse, 0);
 }
 
 void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool state, bool reverse, uint16_t duration) {
@@ -196,7 +197,7 @@ void valveHardware::SetPort(HWdev_t* dev, uint8_t Port1, uint8_t Port2, bool sta
     }
   } else if (dev->HWType == TB6612) {
     tb6612* motor = static_cast<tb6612*>(dev->Device);
-    if (duration) {
+    if (duration && duration > 0) {
       motor->setOn(PortMap1.internalPort, state);
       delay(duration);
       motor->setOff(PortMap1.internalPort);
