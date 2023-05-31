@@ -101,13 +101,13 @@ jobs:
 
       - name: Display generated files
         run: |
-          ls -R ./build_output/
+          ls -R .pio/build/${{ matrix.variant }}/
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v3
         with:
           name: firmware
-          path: ./build_output
+          path: .pio/build/${{ matrix.variant }}
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
