@@ -93,8 +93,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install wheel
           pip install -U platformio
+          pip install --upgrade pip
 
       - name: Run PlatformIO
         run: platformio run -e ${{ matrix.variant }}
@@ -124,7 +124,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
-          ENV_BINARYPATH: "${{ format('/home/runner/{0}/.pio/build/{1}/', env.REPOSITORY, matrix.variant) }}"
+          ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
