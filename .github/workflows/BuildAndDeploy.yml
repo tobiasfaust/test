@@ -62,24 +62,32 @@ jobs:
         path: ./release  
     
   build:
-    name: BuildAndDeploy-${{ matrix.arduino-boards-fqbn }}
+    name: BuildAndDeploy-${{ matrix.variant }}
     runs-on: ubuntu-latest
     env:
-      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library,OneWire
+#      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library,OneWire
       REPOSITORY: ${{ github.event.repository.name }}
-      sketch-name: test.ino
-      #FULLREPO: ${{ github.repository }} # tobiasfaust/test
+#      sketch-name: test.ino
+#      FULLREPO: ${{ github.repository }} # tobiasfaust/test
 
     strategy:
       matrix:
+<<<<<<< Updated upstream
         arduino-boards-fqbn:
           - esp8266:esp8266:d1_mini
           - esp32:esp32:esp32
+=======
+        variant:
+          - firmware_ESP32
+#          - firmware_ESP8266
+>>>>>>> Stashed changes
 
         include:
-#          - arduino-boards-fqbn: arduino:avr:uno
-#            #sketch-names: WhistleSwitch.ino,SimpleFrequencyDetector.ino # Comma separated list of sketch names (no path required) or patterns to use in build
+          - variant: firmware_ESP32
+            architecture: ESP32
+            save_libs: libraries.zip
 
+<<<<<<< Updated upstream
           - arduino-boards-fqbn: esp8266:esp8266:d1_mini
             platform-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json  
             architecture: ESP8266
@@ -90,25 +98,20 @@ jobs:
 #            extra-arduino-cli-args: "--build-property build.partitions=no_ota --build-property upload.maximum_size=2097152"
             architecture: ESP32
             save_libs: libraries_esp32.zip # name must be unique, it makes sense to define it only once
+=======
+>>>>>>> Stashed changes
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Checkout Wemos MotorDriver Library
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          repository: wemos/WEMOS_Motor_Shield_Arduino_Library
-          ref: master
-          path: WEMOS_Motor_Shield_Custom_Library
-
-      - name: Checkout I2CDetect Library
-        uses: actions/checkout@v2
+          ref: development
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          repository: tobiasfaust/i2cdetect
-          ref: master
-          path: i2cDetect_Custom_Library
+          python-version: '3.x'
 
+<<<<<<< Updated upstream
       - name: Checkout PCF8574_library 
         uses: actions/checkout@v2
         with:
@@ -139,6 +142,26 @@ jobs:
           sketch_names: ${{ env.sketch-name }}
           extra-arduino-cli-args: ${{ matrix.extra-arduino-cli-args }}
     
+=======
+      - name: Install dependencies
+        run: |
+          pip install wheel
+          pip install -U platformio
+
+      - name: Run PlatformIO
+        run: platformio run -e ${{ matrix.variant }}
+
+      - name: Display generated files
+        run: |
+          ls -R ./build_output/
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: firmware
+          path: ./build_output
+
+>>>>>>> Stashed changes
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
         run: echo "ENV_STAGE=PROD" >> $GITHUB_ENV
@@ -154,7 +177,7 @@ jobs:
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
-          ENV_BINARYPATH: "${{ format('/home/runner/{0}/build', env.REPOSITORY) }}"
+          ENV_BINARYPATH: "${{ format('/home/runner/{0}/build_output', env.REPOSITORY) }}"
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
           ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
@@ -185,7 +208,11 @@ jobs:
         id: set_asset_env
         if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         run: |
+<<<<<<< Updated upstream
           echo "BOARD=${{ matrix.arduino-boards-fqbn }}" >> $GITHUB_ENV
+=======
+          echo ::set-env name=BOARD::${{ matrix.architecture }}
+>>>>>>> Stashed changes
           echo ::set-output name=URL::$(cat release-url/url.txt)
           echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
           echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
