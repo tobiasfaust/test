@@ -119,6 +119,10 @@ jobs:
         name: Set Environment Variable "Development" 
         run: echo "ENV_STAGE=DEV" >> $GITHUB_ENV
 
+      - name: Display files
+        run: |
+          ls -R ./
+
       # Script um JSON Datei zu erstellen
       - name: Schreibe Json File
         env:
@@ -127,7 +131,8 @@ jobs:
           ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
+          #ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
+          ENV_RELEASEFILE: _Release.h
         run: |
           mkdir release 
           chmod +x .github/workflows/generateJSON.sh
