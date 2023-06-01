@@ -56,7 +56,8 @@ jobs:
         tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
         body: |
-            ${{ steps.set_env_var.outputs.RELEASEBODY }}
+            echo $(cat releasebody.txt)
+#            ${{ steps.set_env_var.outputs.RELEASEBODY }}
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
