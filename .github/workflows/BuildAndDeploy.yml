@@ -27,13 +27,13 @@ jobs:
          if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
          RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
          RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
          RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
          echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
          echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
          echo "RELEASEBODY=${RELEASEBODY}" >> "$GITHUB_OUTPUT"
-         
+
+#         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
 #         echo "::set-output name=version::${VERSION}"
 #         echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
 #         echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
