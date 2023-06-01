@@ -76,8 +76,9 @@ jobs:
         include:
           - variant: firmware_ESP32
             architecture: ESP32
-            save_libs: libraries.zip
-
+          - variant: firmware_ESP8266
+            architecture: ESP8266
+            
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
