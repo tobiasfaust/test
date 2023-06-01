@@ -29,10 +29,15 @@ jobs:
          RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
          RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
          RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
-         echo "::set-output name=version::${VERSION}"
-         echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
-         echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
-         echo "::set-output name=RELEASEBODY::${RELEASEBODY}"
+         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+         echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
+         echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
+         echo "RELEASEBODY=${RELEASEBODY}" >> "$GITHUB_OUTPUT"
+         
+#         echo "::set-output name=version::${VERSION}"
+#         echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
+#         echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
+#         echo "::set-output name=RELEASEBODY::${RELEASEBODY}"
 
       env:
         REPOSITORY: ${{ github.event.repository.name }}
@@ -159,10 +164,15 @@ jobs:
         id: set_asset_env
         if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         run: |
-          echo ::set-env name=BOARD::${{ matrix.architecture }}
-          echo ::set-output name=URL::$(cat release-url/url.txt)
-          echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
-          echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+          echo "URL=$(cat release-url/url.txt)" >> "$GITHUB_OUTPUT"
+          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
+          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
+          
+#          echo ::set-env name=BOARD::${{ matrix.architecture }}
+#          echo ::set-output name=URL::$(cat release-url/url.txt)
+#          echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+#          echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+           
           
       - name: Upload Release Asset
         id: upload-release-asset 
