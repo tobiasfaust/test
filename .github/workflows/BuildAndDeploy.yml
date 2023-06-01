@@ -151,7 +151,11 @@ jobs:
         uses: actions/download-artifact@main
         with:
          name: release-url
-      
+         
+      - name: Display generated files
+        run: |
+          ls -R ./
+        
       - name: Read release URL
         id: set_asset_env
         if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
