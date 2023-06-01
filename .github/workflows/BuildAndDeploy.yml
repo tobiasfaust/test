@@ -32,7 +32,11 @@ jobs:
          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
          echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
          echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-         echo "RELEASEBODY=${RELEASEBODY}" >> "$GITHUB_OUTPUT"
+         echo $(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h) > releasebody.txt
+         echo "#### Releasebody ####"
+         echo $(cat releasebody.txt)
+         echo "######################"
+         echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
 
 #         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
 #         echo "::set-output name=version::${VERSION}"
@@ -52,8 +56,7 @@ jobs:
         tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
         body: |
-            $(awk -v RS='Release ' '/'{{ env.VERSION }}':(.*)/ {print $0}' ChangeLog.h)
-#            ${{ steps.set_env_var.outputs.RELEASEBODY }}
+            ${{ steps.set_env_var.outputs.RELEASEBODY }}
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
