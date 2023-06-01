@@ -71,7 +71,7 @@ jobs:
       matrix:
         variant:
           - firmware_ESP32
-#          - firmware_ESP8266
+          - firmware_ESP8266
 
         include:
           - variant: firmware_ESP32
