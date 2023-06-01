@@ -160,7 +160,7 @@ jobs:
         id: set_asset_env
         if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
         run: |
-          echo "URL=$(cat release-url/url.txt)" >> "$GITHUB_OUTPUT"
+          echo "URL=$(cat url.txt)" >> "$GITHUB_OUTPUT"
           echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
           echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
           
