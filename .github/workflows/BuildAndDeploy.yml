@@ -32,13 +32,8 @@ jobs:
          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
          echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
          echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-         echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_ENV"
-
-#         echo "::set-output name=version::${VERSION}"
-#         echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
-#         echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
-#         echo "::set-output name=RELEASEBODY::${RELEASEBODY}"
-
+         echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
+         
       env:
         REPOSITORY: ${{ github.event.repository.name }}
     
@@ -51,7 +46,7 @@ jobs:
         tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
         release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
         body: |
-            ${{ env.RELEASEBODY }}
+            ${{ steps.set_env_var.outputs.RELEASEBODY }}
         draft: false
         prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
@@ -162,13 +157,7 @@ jobs:
         run: |
           echo "URL=$(cat release-url/url.txt)" >> "$GITHUB_OUTPUT"
           echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
-          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
-          
-#          echo ::set-env name=BOARD::${{ matrix.architecture }}
-#          echo ::set-output name=URL::$(cat release-url/url.txt)
-#          echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
-#          echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
-           
+          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
           
       - name: Upload Release Asset
         id: upload-release-asset 
@@ -181,21 +170,3 @@ jobs:
           asset_path: ${{ steps.set_asset_env.outputs.BinaryPath }}
           asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
           asset_content_type: application/x-binary      
-
-#      - name: collect and zip libraries
-#        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-#        run: |
-#          rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
-#          zip -r ${{ matrix.save_libs }} libraries/*
-        
-#      - name: Upload Libraries to Release
-#        id: upload-release-libs 
-#        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-#        uses: actions/upload-release-asset@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ steps.set_asset_env.outputs.URL }}
-#          asset_path: ./${{ matrix.save_libs }}
-#          asset_name: ${{ matrix.save_libs }}
-#          asset_content_type: application/zip     
