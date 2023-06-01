@@ -17,7 +17,7 @@ jobs:
     if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
 
     - name: set Environment Variables
       id: set_env_var
