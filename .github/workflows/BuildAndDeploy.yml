@@ -70,10 +70,7 @@ jobs:
     name: BuildAndDeploy-${{ matrix.variant }}
     runs-on: ubuntu-latest
     env:
-#      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library,OneWire
       REPOSITORY: ${{ github.event.repository.name }}
-#      sketch-name: test.ino
-#      FULLREPO: ${{ github.repository }} # tobiasfaust/test
 
     strategy:
       matrix:
@@ -131,7 +128,6 @@ jobs:
           ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          #ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
           ENV_RELEASEFILE: _Release.h
         run: |
           mkdir release 
@@ -186,20 +182,20 @@ jobs:
           asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
           asset_content_type: application/x-binary      
 
-      - name: collect and zip libraries
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-        run: |
-          rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
-          zip -r ${{ matrix.save_libs }} libraries/*
+#      - name: collect and zip libraries
+#        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
+#        run: |
+#          rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
+#          zip -r ${{ matrix.save_libs }} libraries/*
         
-      - name: Upload Libraries to Release
-        id: upload-release-libs 
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ./${{ matrix.save_libs }}
-          asset_name: ${{ matrix.save_libs }}
-          asset_content_type: application/zip     
+#      - name: Upload Libraries to Release
+#        id: upload-release-libs 
+#        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ steps.set_asset_env.outputs.URL }}
+#          asset_path: ./${{ matrix.save_libs }}
+#          asset_name: ${{ matrix.save_libs }}
+#          asset_content_type: application/zip     
