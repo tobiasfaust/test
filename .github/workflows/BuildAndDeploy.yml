@@ -168,24 +168,37 @@ jobs:
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
                  echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
             
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#        with:
+#          tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+#          release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
+#          body: |
+#              ${{ steps.set_env_var.outputs.RELEASEBODY }}
+#          draft: false
+#          prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
+#              
+#      - name: Upload Release Assets
+#        id: upload-release-assets
+#        uses: dwenegar/upload-release-assets@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          release_id: ${{ steps.create_release.outputs.id }}
+#          assets_path: ./release
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./release/*
           release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-          body: |
-              ${{ steps.set_env_var.outputs.RELEASEBODY }}
-          draft: false
+          tag: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+          overwrite: true
+          file_glob: true
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-              
-      - name: Upload Release Assets
-        id: upload-release-assets
-        uses: dwenegar/upload-release-assets@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.create_release.outputs.id }}
-          assets_path: ./release
+          body: |
+            ${{ steps.set_env_var.outputs.RELEASEBODY }}
