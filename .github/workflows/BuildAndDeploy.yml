@@ -12,81 +12,31 @@ on:
       - development
 
 jobs:
-  create_Release:
-    runs-on: ubuntu-latest
-    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: set Environment Variables
-      id: set_env_var
-      run: |
-         VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
-         if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
-         if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
-         RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
-         RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-         RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
-         RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
-         echo "::set-output name=version::${VERSION}"
-         echo "::set-output name=IS_PRERELEASE::${IS_PRE}"
-         echo "::set-output name=RELEASENAME_POSTFIX::${POSTFIX}"
-         echo "::set-output name=RELEASEBODY::${RELEASEBODY}"
-
-      env:
-        REPOSITORY: ${{ github.event.repository.name }}
-    
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
-        release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-        body: |
-            ${{ steps.set_env_var.outputs.RELEASEBODY }}
-        draft: false
-        prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-        
-    - name: Copy release URL into file
-      run: |
-        mkdir release
-        printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
-    
-    - name: Stash file containing the release URL as an artifact
-      uses: actions/upload-artifact@v1
-      with:
-        name: release-url
-        path: ./release  
     
   build:
     name: BuildAndDeploy-${{ matrix.variant }}
     runs-on: ubuntu-latest
     env:
-#      REQUIRED_LIBRARIES: WiFiManager,PubSubClient,ESP8266 and ESP32 OLED driver for SSD1306 displays,Uptime Library,OneWire
       REPOSITORY: ${{ github.event.repository.name }}
-#      sketch-name: test.ino
-#      FULLREPO: ${{ github.repository }} # tobiasfaust/test
 
     strategy:
       matrix:
         variant:
           - firmware_ESP32
-#          - firmware_ESP8266
+          - firmware_ESP8266
 
         include:
           - variant: firmware_ESP32
             architecture: ESP32
-            save_libs: libraries.zip
-
+          - variant: firmware_ESP8266
+            architecture: ESP8266
+            
     steps:
       - name: checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
       
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@main
         with:
           python-version: '3.x'
 
@@ -101,12 +51,6 @@ jobs:
       - name: Display generated files
         run: |
           ls -R .pio/build/${{ matrix.variant }}/
-
-#      - name: Upload firmware artifacts
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: firmware
-#          path: .pio/build/${{ matrix.variant }}
 
       - if: endsWith(github.ref, 'master')
         name: Set Environment Variable "PRODUCTION" 
@@ -126,7 +70,6 @@ jobs:
           ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
           ENV_DESTPATH: "release"
           ENV_SUBVERSION: ${{ github.run_number }}
-          #ENV_RELEASEFILE: "${{ format('/home/runner/{0}/_Release.h', env.REPOSITORY) }}"
           ENV_RELEASEFILE: _Release.h
         run: |
           mkdir release 
@@ -136,8 +79,17 @@ jobs:
       - name: Display files
         run: |
           ls -R ./release
+          
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ matrix.variant }}
+          path: |
+            .pio/build/${{ matrix.variant }}/*.bin
+            .pio/build/${{ matrix.variant }}/*.json
   
-      - uses: jakejarvis/s3-sync-action@master
+      - name: Upload to AWS S3
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: '--acl public-read --follow-symlinks'
         env:
@@ -149,47 +101,73 @@ jobs:
           DEST_DIR: ${{ env.REPOSITORY }}
       
       # Download the previously uploaded artifact which contains the release URL
-      - name: Retrieve stashed release URL
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-        uses: actions/download-artifact@v1
-        with:
-         name: release-url
-      
-      - name: Read release URL
-        id: set_asset_env
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-        run: |
-          echo ::set-env name=BOARD::${{ matrix.architecture }}
-          echo ::set-output name=URL::$(cat release-url/url.txt)
-          echo ::set-output name=BinaryName::$(cat release/*$BOARD*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
-          echo ::set-output name=BinaryPath::release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)
+#      - name: Retrieve stashed release URL
+#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+#        uses: actions/download-artifact@main
+#        with:
+#         name: release-url
           
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ${{ steps.set_asset_env.outputs.BinaryPath }}
-          asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
-          asset_content_type: application/x-binary      
+#      - name: Read release URL
+#        id: set_asset_env
+#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+#        run: |
+#          echo "URL=$(cat url.txt)" >> "$GITHUB_OUTPUT"
+#          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
+#          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
+          
+#      - name: Upload Release Asset
+#        id: upload-release-asset 
+#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+#        uses: actions/upload-release-asset@main
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ steps.set_asset_env.outputs.URL }}
+#          asset_path: ${{ steps.set_asset_env.outputs.BinaryPath }}
+#          asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
+#          asset_content_type: application/x-binary      
 
-      - name: collect and zip libraries
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-        run: |
-          rsync -arv --exclude='*git*' --exclude='*examples*' --exclude='*resources*' /home/runner/Arduino/libraries/ ./libraries
-          zip -r ${{ matrix.save_libs }} libraries/*
+  create_Release:
+    runs-on: ubuntu-latest
+    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@main
         
-      - name: Upload Libraries to Release
-        id: upload-release-libs 
-        if: (endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')) && endsWith(matrix.save_libs, 'zip')
-        uses: actions/upload-release-asset@v1
+      - name: set Environment Variables
+        id: set_env_var
+        run: |
+                 VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
+                 if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
+                 if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
+                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
+                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
+                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
+                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
+                 echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+                 echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
+                 echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
+                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
+                 
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.event.repository.name }}
+            
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          upload_url: ${{ steps.set_asset_env.outputs.URL }}
-          asset_path: ./${{ matrix.save_libs }}
-          asset_name: ${{ matrix.save_libs }}
-          asset_content_type: application/zip     
+          tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+          release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
+          body: |
+              ${{ steps.set_env_var.outputs.RELEASEBODY }}
+          draft: false
+          prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
+                
+      - name: Copy release URL into file
+        run: |
+            mkdir release
+            printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
+            
+      
