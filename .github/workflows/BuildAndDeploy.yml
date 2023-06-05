@@ -138,12 +138,21 @@ jobs:
 #    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
     
     env:
-      REPOSITORY: ${{ github.event.repository.name }}
+      GITHUB_REPOSITORY: ${{ github.event.repository.name }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@main
-        
+      
+      - name: Download all Artifacts 
+        uses: actions/download-artifact@main
+        with:
+          path: ./release
+
+      - name: Display files
+        run: |
+            ls -R ./release
+    
       - name: set Environment Variables
         id: set_env_var
         run: |
@@ -161,41 +170,15 @@ jobs:
             
       - name: Create Release
         id: create_release
-        uses: actions/create-release@main
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
-          release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
+          name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
           body: |
               ${{ steps.set_env_var.outputs.RELEASEBODY }}
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-                
-#      - name: Copy release URL into file
-#        run: |
-#            mkdir release
-#            printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
-            
-      - name: download all artifacts 
-        uses: actions/download-artifact@main
-        with:
-          path: ./release
-
-#      - name: unzip all files
-#        run: |
-#              unzip ./release/*.zip
-#              rm *.zip
-
-      - name: Display files
-        run: |
-            ls -R ./release
-
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release 
+          files: ./release/*     
+          
