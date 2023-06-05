@@ -132,8 +132,11 @@ jobs:
 #          asset_content_type: application/x-binary      
 
   create_Release:
+    needs: [build]
+
     runs-on: ubuntu-latest
 #    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    
     env:
       REPOSITORY: ${{ github.event.repository.name }}
 
