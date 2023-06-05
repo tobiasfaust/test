@@ -33,7 +33,7 @@ jobs:
             
     steps:
       - name: checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
       
       - name: Set up Python
         uses: actions/setup-python@main
@@ -142,7 +142,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
       
       - name: Download all Artifacts 
         uses: actions/download-artifact@main
@@ -180,5 +180,12 @@ jobs:
               ${{ steps.set_env_var.outputs.RELEASEBODY }}
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-          files: ./release/*     
           
+      - name: Upload Release Assets
+        id: upload-release-assets
+        uses: dwenegar/upload-release-assets@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          assets_path: ./release
