@@ -76,16 +76,6 @@ jobs:
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
 
-      - name: Display files
-        run: |
-          ls -R ./release
-
-#      - name: Read release URL
-#        id: set_asset_env
-#        run: |
-#          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
-#          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
-
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@main
         with:
@@ -102,34 +92,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'release'      # optional: defaults to entire repository
-          DEST_DIR: ${{ env.REPOSITORY }}
-      
-      # Download the previously uploaded artifact which contains the release URL
-#      - name: Retrieve stashed release URL
-#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-#        uses: actions/download-artifact@main
-#        with:
-#         name: release-url
-          
-#      - name: Read release URL
-#        id: set_asset_env
-#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-#        run: |
-#          echo "URL=$(cat url.txt)" >> "$GITHUB_OUTPUT"
-#          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
-#          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
-          
-#      - name: Upload Release Asset
-#        id: upload-release-asset 
-#        if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
-#        uses: actions/upload-release-asset@main
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ steps.set_asset_env.outputs.URL }}
-#          asset_path: ${{ steps.set_asset_env.outputs.BinaryPath }}
-#          asset_name: ${{ steps.set_asset_env.outputs.BinaryName }}
-#          asset_content_type: application/x-binary      
+          DEST_DIR: ${{ env.REPOSITORY }}     
 
   create_Release:
     needs: [build]
@@ -159,12 +122,17 @@ jobs:
                  VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
-                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
-                 echo "${RELEASEBODY}" > CHANGELOG.md    
+                 echo $(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h) > CHANGELOG.md
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
+
+#                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
+#                 echo "${RELEASEBODY}" > CHANGELOG.md
+#                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
+#                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
+#                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
+#                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
             
       - name: Create Release
         id: create_release
