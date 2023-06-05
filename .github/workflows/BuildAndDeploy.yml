@@ -160,6 +160,7 @@ jobs:
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
+                 echo "${RELEASEBODY}" > CHANGELOG.md
                  RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
                  RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
                  RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
@@ -176,8 +177,9 @@ jobs:
         with:
           tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
           release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-          body: |
-              ${{ steps.set_env_var.outputs.RELEASEBODY }}
+#          body: |
+#              ${{ steps.set_env_var.outputs.RELEASEBODY }}
+          body_path: CHANGELOG.md
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
               
