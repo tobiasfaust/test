@@ -160,10 +160,7 @@ jobs:
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
-                 echo "${RELEASEBODY}" > CHANGELOG.md
-                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
-                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
+                 echo "${RELEASEBODY}" > CHANGELOG.md    
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
@@ -177,8 +174,6 @@ jobs:
         with:
           tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
           release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-#          body: |
-#              ${{ steps.set_env_var.outputs.RELEASEBODY }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
@@ -192,15 +187,3 @@ jobs:
           release_id: ${{ steps.create_release.outputs.id }}
           assets_path: ./release
 
-#      - name: Upload binaries to release
-#        uses: svenstaro/upload-release-action@v2
-#        with:
-#          repo_token: ${{ secrets.GITHUB_TOKEN }}
-#          file: ./release/*
-#          release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
-#          tag: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
-#          overwrite: true
-#          file_glob: true
-#          prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-#          body: |
-#            ${{ steps.set_env_var.outputs.RELEASEBODY }}
