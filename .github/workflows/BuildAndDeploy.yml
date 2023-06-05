@@ -122,17 +122,15 @@ jobs:
                  VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
-                 echo $(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h) > CHANGELOG.md
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-
-#                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
-#                 echo "${RELEASEBODY}" > CHANGELOG.md
-#                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-#                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
-#                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
-#                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
+                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
+                 echo "${RELEASEBODY}" > CHANGELOG.md
+                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
+                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
+                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
+                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
             
       - name: Create Release
         id: create_release
