@@ -79,14 +79,18 @@ jobs:
       - name: Display files
         run: |
           ls -R ./release
-          
+
+      - name: Read release URL
+        id: set_asset_env
+        run: |
+          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
+          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
+
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.variant }}
-          path: |
-            .pio/build/${{ matrix.variant }}/*.bin
-            .pio/build/${{ matrix.variant }}/*.json
+          path: release/*
   
       - name: Upload to AWS S3
         uses: jakejarvis/s3-sync-action@master
