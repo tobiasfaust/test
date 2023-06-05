@@ -127,10 +127,10 @@ jobs:
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
                  RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
                  echo "${RELEASEBODY}" > CHANGELOG.md
-                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
-                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
-                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
-                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
+#                 RELEASEBODY="${RELEASEBODY//'%'/'%25'}"
+#                 RELEASEBODY="${RELEASEBODY//$'\n'/'%0A'}"
+#                 RELEASEBODY="${RELEASEBODY//$'\r'/'%0D'}"       
+#                 echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
             
       - name: Create Release
         id: create_release
@@ -153,3 +153,7 @@ jobs:
           release_id: ${{ steps.create_release.outputs.id }}
           assets_path: ./release
 
+      - name: Upload Changelog artifact
+        uses: actions/upload-artifact@main
+        with:
+          path: CHANGELOG.md
