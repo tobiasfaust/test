@@ -170,26 +170,22 @@ jobs:
             
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
-          name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
+          release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
           body: |
               ${{ steps.set_env_var.outputs.RELEASEBODY }}
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-          files: |
-            firmware_ESP32.zip
-            firmware_ESP8266.zip
-
-          
-#      - name: Upload Release Assets
-#        id: upload-release-assets
-#        uses: dwenegar/upload-release-assets@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          release_id: ${{ steps.create_release.outputs.id }}
-#          assets_path: ./release
+              
+      - name: Upload Release Assets
+        id: upload-release-assets
+        uses: dwenegar/upload-release-assets@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          assets_path: ./release
