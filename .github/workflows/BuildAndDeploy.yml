@@ -180,12 +180,16 @@ jobs:
               ${{ steps.set_env_var.outputs.RELEASEBODY }}
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
+          files: |
+            firmware_ESP32.zip
+            firmware_ESP8266.zip
+
           
-      - name: Upload Release Assets
-        id: upload-release-assets
-        uses: dwenegar/upload-release-assets@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.create_release.outputs.id }}
-          assets_path: ./release
+#      - name: Upload Release Assets
+#        id: upload-release-assets
+#        uses: dwenegar/upload-release-assets@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          release_id: ${{ steps.create_release.outputs.id }}
+#          assets_path: ./release
