@@ -80,17 +80,17 @@ jobs:
         run: |
           ls -R ./release
 
-      - name: Read release URL
-        id: set_asset_env
-        run: |
-          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
-          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
+#      - name: Read release URL
+#        id: set_asset_env
+#        run: |
+#          echo "BinaryName=$(cat release/*${{ matrix.architecture }}*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"
+#          echo "BinaryPath=release/$(cat release/*.json |  cut -d"\"" -f24 | cut -d "/" -f5)" >> "$GITHUB_OUTPUT"       
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@main
         with:
-          name: ${{ matrix.variant }}
-          path: release/*
+          name: "${{ matrix.variant }}.zip"
+          path: release/*.bin
   
       - name: Upload to AWS S3
         uses: jakejarvis/s3-sync-action@master
@@ -133,7 +133,10 @@ jobs:
 
   create_Release:
     runs-on: ubuntu-latest
-    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+#    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    env:
+      REPOSITORY: ${{ github.event.repository.name }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@main
@@ -152,9 +155,6 @@ jobs:
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
                  echo "RELEASEBODY=$RELEASEBODY" >> "$GITHUB_OUTPUT"
-                 
-        env:
-          REPOSITORY: ${{ github.event.repository.name }}
             
       - name: Create Release
         id: create_release
@@ -169,9 +169,16 @@ jobs:
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
                 
-      - name: Copy release URL into file
-        run: |
-            mkdir release
-            printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
+#      - name: Copy release URL into file
+#        run: |
+#            mkdir release
+#            printf "%s" "${{ steps.create_release.outputs.upload_url }}" > release/url.txt
             
-      
+      - name: download all artifacts 
+        uses: actions/download-artifact@main
+        with:
+          path: ./release
+
+      - name: Display files
+        run: |
+            ls -R ./release
