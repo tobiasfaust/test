@@ -10,6 +10,10 @@ on:
       - master
       - prelive
       - development
+    paths-ignore:
+      - .github/**
+    paths:
+      - '!**.md'    
 
 jobs:
   create_Release:
