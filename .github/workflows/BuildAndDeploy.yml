@@ -3,7 +3,7 @@
 # https://github.com/actions/upload-release-asset/issues/17
 # https://github.com/dh1tw/remoteAudio/blob/master/.github/workflows/build.yml 
 
-name: Build&Deploy
+name: BuildAndDeploy
 on:
   push:
     branches:
