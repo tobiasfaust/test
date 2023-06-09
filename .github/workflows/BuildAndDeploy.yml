@@ -10,7 +10,10 @@ on:
       - master
       - prelive
       - development
-
+    paths:
+      - '**.cpp'
+      - '**.h'
+      
 jobs:
     
   build:
