@@ -10,10 +10,9 @@ on:
       - master
       - prelive
       - development
-    paths-ignore:
-      - .github/**
     paths:
-      - '!**.md'    
+      - '**.cpp'
+      - '**.h'
 
 jobs:
   create_Release:
