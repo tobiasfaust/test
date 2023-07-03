@@ -2,16 +2,14 @@
 		"name": "Mein Name",
 		"realname": "mein realer Name",
 		"value": "22 kwh",
-		"active": "checked",
-		"mqtttopic": "Topic",
-		"openwbtopic": "openWBTopic"
+		"active": 1,
+		"mqtttopic": "Topic"
 	},
 	{
 		"name": "Mein 2. Name",
 		"realname": "mein 2. realer Name",
 		"value": "34.4 W",
-		"active": "",
-		"mqtttopic": "Topic",
-		"openwbtopic": ""
+		"active": 0,
+		"mqtttopic": "Topic"
 	}
 ]
