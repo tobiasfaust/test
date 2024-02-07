@@ -1,0 +1,351 @@
+{
+	"data": [{
+		"name": "GridVoltage_R",
+		"realname": "Grid Voltage L1",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridVoltage_R"
+	}, {
+		"name": "GridCurrent_R",
+		"realname": "Grid Current L1",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridCurrent_R"
+	}, {
+		"name": "GridPower_R",
+		"realname": "Grid Power L1",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridPower_R"
+	}, {
+		"name": "GridFrequency_R",
+		"realname": "Grid Frequency L1",
+		"value": "0.00 Hz",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridFrequency_R"
+	}, {
+		"name": "GridVoltage_S",
+		"realname": "Grid Voltage L2",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridVoltage_S"
+	}, {
+		"name": "GridCurrent_S",
+		"realname": "Grid Current L2",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridCurrent_S"
+	}, {
+		"name": "GridPower_S",
+		"realname": "Grid Power L2",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridPower_S"
+	}, {
+		"name": "GridFrequency_S",
+		"realname": "Grid Frequency L2",
+		"value": "0.00 Hz",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridFrequency_S"
+	}, {
+		"name": "GridVoltage_T",
+		"realname": "Grid Voltage L3",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridVoltage_T"
+	}, {
+		"name": "GridCurrent_T",
+		"realname": "Grid Current L3",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridCurrent_T"
+	}, {
+		"name": "GridPower_T",
+		"realname": "Grid Power L3",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridPower_T"
+	}, {
+		"name": "GridFrequency_T",
+		"realname": "Grid Frequency L3",
+		"value": "0.00 Hz",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/GridFrequency_T"
+	}, {
+		"name": "PvVoltage1",
+		"realname": "Pv Voltage 1",
+		"value": "259.80 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PvVoltage1"
+	}, {
+		"name": "PvVoltage2",
+		"realname": "Pv Voltage 2",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PvVoltage2"
+	}, {
+		"name": "PvCurrent1",
+		"realname": "Pv Current 1",
+		"value": "1.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PvCurrent1"
+	}, {
+		"name": "PvCurrent2",
+		"realname": "Pv Current 2",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PvCurrent2"
+	}, {
+		"name": "Temperature",
+		"realname": "Temperature",
+		"value": "28 &deg;C",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/Temperature"
+	}, {
+		"name": "InverterStatus",
+		"realname": "Inverter Status",
+		"value": "NormalMode ",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/InverterStatus"
+	}, {
+		"name": "PowerPv1",
+		"realname": "Power PV 1",
+		"value": "283 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PowerPv1"
+	}, {
+		"name": "PowerPv2",
+		"realname": "Power PV 2",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/PowerPv2"
+	}, {
+		"name": "BatVoltage",
+		"realname": "Battery Voltage",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/BatVoltage"
+	}, {
+		"name": "BatCurrent",
+		"realname": "Battery Current",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/BatCurrent"
+	}, {
+		"name": "BatPower",
+		"realname": "Battery Power",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/BatPower"
+	}, {
+		"name": "BatTemp",
+		"realname": "Battery Temperature",
+		"value": "0 &deg;C",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/BatTemp"
+	}, {
+		"name": "BatCapacity",
+		"realname": "Battery Capacity",
+		"value": "0 %",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/BatCapacity"
+	}, {
+		"name": "OutputEnergyChargeWh",
+		"realname": "Output Energy Charge (Wh)",
+		"value": "0 Wh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OutputEnergyChargeWh"
+	}, {
+		"name": "OutputEnergyChargeKWh",
+		"realname": "Output Energy Charge (KWh)",
+		"value": "0.00 KWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OutputEnergyChargeKWh"
+	}, {
+		"name": "OutputEnergyChargeToday",
+		"realname": "Output Energy Charge Today",
+		"value": "0.00 KWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OutputEnergyChargeToday"
+	}, {
+		"name": "InputEnergyChargeWh",
+		"realname": "Input Energy Charge (Wh)",
+		"value": "0 Wh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/InputEnergyChargeWh"
+	}, {
+		"name": "InputEnergyChargeKWh",
+		"realname": "Input Energy Charge (KWh)",
+		"value": "0.00 KWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/InputEnergyChargeKWh"
+	}, {
+		"name": "InputEnergyChargeToday",
+		"realname": "Input Energy Charge Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/InputEnergyChargeToday"
+	}, {
+		"name": "feedinPower",
+		"realname": "FeedIn Energy Power to Grid",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/feedinPower"
+	}, {
+		"name": "feedinEnergyTotal",
+		"realname": "FeedIn Energy Total",
+		"value": "2.30 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/feedinEnergyTotal"
+	}, {
+		"name": "consumedEnergyTotal",
+		"realname": "Consumed Energy Total",
+		"value": "0.70 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/consumedEnergyTotal"
+	}, {
+		"name": "EnergyTodayToGrid",
+		"realname": "Today Energy to Grid",
+		"value": "0.30 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EnergyTodayToGrid"
+	}, {
+		"name": "EnergyTotalToGridKwh",
+		"realname": "Total Energy to Grid in KWh",
+		"value": "7274729.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EnergyTotalToGridKwh"
+	}, {
+		"name": "EnergyTotalToGridWh",
+		"realname": "Total Energy to Grid in Wh",
+		"value": "2147483647 Wh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EnergyTotalToGridWh"
+	}, {
+		"name": "OnGridRunTime",
+		"realname": "OnGrid RunTime",
+		"value": "0.00 h",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OnGridRunTime"
+	}, {
+		"name": "OffGridRunTime",
+		"realname": "OffGrid RunTime",
+		"value": "0.00 h",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridRunTime"
+	}, {
+		"name": "OffGridVoltage_R",
+		"realname": "Off Grid Voltage L1",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridVoltage_R"
+	}, {
+		"name": "OffGridCurrent_R",
+		"realname": "Off Grid Current L1",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridCurrent_R"
+	}, {
+		"name": "OffGridPowerActive_R",
+		"realname": "Off Grid Power L1",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridPowerActive_R"
+	}, {
+		"name": "OffGridVoltage_S",
+		"realname": "Off Grid Voltage L2",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridVoltage_S"
+	}, {
+		"name": "OffGridCurrent_S",
+		"realname": "Off Grid Current L2",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridCurrent_S"
+	}, {
+		"name": "OffGridPowerActive_S",
+		"realname": "Off Grid Power L2",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridPowerActive_S"
+	}, {
+		"name": "OffGridVoltage_T",
+		"realname": "Off Grid Voltage L3",
+		"value": "0.00 V",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridVoltage_T"
+	}, {
+		"name": "OffGridCurrent_T",
+		"realname": "Off Grid Current L3",
+		"value": "0.00 A",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridCurrent_T"
+	}, {
+		"name": "OffGridPowerActive_T",
+		"realname": "Off Grid Power L3",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridPowerActive_T"
+	}, {
+		"name": "FeedInPowerPhase_R",
+		"realname": "FeedIn Power Phase L1",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/FeedInPowerPhase_R"
+	}, {
+		"name": "FeedInPowerPhase_S",
+		"realname": "FeedIn Power Phase L2",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/FeedInPowerPhase_S"
+	}, {
+		"name": "FeedInPowerPhase_T",
+		"realname": "FeedIn Power Phase L3",
+		"value": "0 W",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/FeedInPowerPhase_T"
+	}, {
+		"name": "OffGridYieldToday",
+		"realname": "OffGrid Yield Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/OffGridYieldToday"
+	}, {
+		"name": "EChargeToday",
+		"realname": "ECharge Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EChargeToday"
+	}, {
+		"name": "EChargeTotal",
+		"realname": "ECharge Total",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EChargeTotal"
+	}, {
+		"name": "SolarEnergyTotal",
+		"realname": "SolarEnergy Total",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/SolarEnergyTotal"
+	}, {
+		"name": "SolarEnergyToday",
+		"realname": "SolarEnergy Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/SolarEnergyToday"
+	}, {
+		"name": "EnergyFeedin",
+		"realname": "EnergyFeedin Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EnergyFeedin"
+	}, {
+		"name": "EnergyConsum",
+		"realname": "EnergyConsum Today",
+		"value": "0.00 kWh",
+		"active": 0,
+		"mqtttopic": "home/SolaxTest/EnergyConsum"
+	}]
+}

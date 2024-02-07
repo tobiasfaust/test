@@ -3,14 +3,17 @@
 # https://github.com/actions/upload-release-asset/issues/17
 # https://github.com/dh1tw/remoteAudio/blob/master/.github/workflows/build.yml 
 
-name: Build&Deploy
+name: BuildAndDeploy
 on:
   push:
     branches:
       - master
       - prelive
       - development
-
+    paths:
+      - '**.cpp'
+      - '**.h'
+      
 jobs:
     
   build:
@@ -98,7 +101,7 @@ jobs:
     needs: [build]
 
     runs-on: ubuntu-latest
-#    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
     
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
