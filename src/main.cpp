@@ -4,12 +4,15 @@
   #include "WProgram.h"
 #endif
 
-void setup() { 
-  // put your setup code here, to run once:
+#include "ethernet.h"
 
+ethernet* LAN;
+
+void setup() {
+  Serial.begin(115200);
+  LAN = new ethernet();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
 }
