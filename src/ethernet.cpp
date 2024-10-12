@@ -1,3 +1,4 @@
+//#include "arduino.h"
 #include "ethernet.h"
 
 ethernet::ethernet(): eth_connected(false) {

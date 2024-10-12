@@ -57,7 +57,7 @@ class ethernet {
     eth_clock_mode_t CLK_MODE;
   } eth_shield_t;
 
-  std::vector<eth_shield_t> lan_shields1 = {{"WT32_ETH01", 1, 16, 23, 18, ETH_PHY_LAN8720, ETH_CLOCK_GPIO0_IN}, 
+  std::vector<eth_shield_t> lan_shields = {{"WT32_ETH01", 1, 16, 23, 18, ETH_PHY_LAN8720, ETH_CLOCK_GPIO0_IN}, 
                                             {"test", 1, 16, 23, 18, ETH_PHY_LAN8720, ETH_CLOCK_GPIO0_IN}};
 
   public:
