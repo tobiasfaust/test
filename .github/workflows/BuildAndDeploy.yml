@@ -60,7 +60,6 @@ jobs:
 
       - name: Install esptool and check if the installed versions can run
         run: |
-          python setup.py build
           pip install --extra-index-url https://dl.espressif.com/pypi -e .[dev,hsm]
           esptool.py --help
           espefuse.py --help
