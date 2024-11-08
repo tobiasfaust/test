@@ -69,8 +69,8 @@ jobs:
         run: |
           esptool.py --chip ${{ matrix.architecture }} merge_bin \
             --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \
-            --flash_mode dio \
-            --flash_freq 40m \
+            --flash_mode dout \
+            --flash_freq 80m \
             --flash_size 4MB \
             0x1000 .pio/build/${{ matrix.variant }}/bootloader.bin \
             0x8000 .pio/build/${{ matrix.variant }}/partitions.bin \
