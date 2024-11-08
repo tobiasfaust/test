@@ -59,7 +59,7 @@ jobs:
           pip install -U platformio
           pip install -U esptool
 
-      - name: Run PlatformIO
+      - name: Run PlatformIO 
         run: |
           platformio run -e ${{ matrix.variant }}
           platformio run --target buildfs -e ${{ matrix.variant }}
