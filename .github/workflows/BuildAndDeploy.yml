@@ -66,8 +66,8 @@ jobs:
 
       - name: Build merged Firmware
         run: |
-          esptool.py --chip esp32 merge_bin \
-            --output merged-firmware.bin \
+          esptool.py --chip ${{ matrix.architecture }} merge_bin \
+            --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \
             --flash_mode dio \
             --flash_freq 40m \
             --flash_size 4MB \
