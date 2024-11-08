@@ -3,7 +3,7 @@
 # https://github.com/actions/upload-release-asset/issues/17
 # https://github.com/dh1tw/remoteAudio/blob/master/.github/workflows/build.yml 
 
-name: BuildAndDeploy
+name: Build&Deploy
 on:
   push:
     branches:
@@ -13,7 +13,8 @@ on:
     paths:
       - '**.cpp'
       - '**.h'
-      
+      - '**.yml'
+
 jobs:
     
   build:
@@ -26,13 +27,22 @@ jobs:
       matrix:
         variant:
           - firmware_ESP32
-          - firmware_ESP8266
+          - firmware_ESP32-S2
+          - firmware_ESP32-S3
+          - firmware_ESP32-C3
+          - firmware_ESP32_WebSerial
 
         include:
           - variant: firmware_ESP32
             architecture: ESP32
-          - variant: firmware_ESP8266
-            architecture: ESP8266
+          - variant: firmware_ESP32-S2
+            architecture: ESP32-S2
+          - variant: firmware_ESP32-S3
+            architecture: ESP32-S3
+          - variant: firmware_ESP32-C3
+            architecture: ESP32-C3
+          - variant: firmware_ESP32_WebSerial
+            architecture: ESP32_dbg
             
     steps:
       - name: checkout repository
@@ -48,8 +58,30 @@ jobs:
           pip install -U platformio
           pip install --upgrade pip
 
+      - name: Install esptool and check if the installed versions can run
+        run: |
+          python setup.py build
+          pip install --extra-index-url https://dl.espressif.com/pypi -e .[dev,hsm]
+          esptool.py --help
+          espefuse.py --help
+          espsecure.py --help
+
       - name: Run PlatformIO
-        run: platformio run -e ${{ matrix.variant }}
+        run: |
+          platformio run -e ${{ matrix.variant }}
+          platformio run --target buildfs -e ${{ matrix.variant }}
+
+      - name: Build merged Firmware
+        run: |
+          esptool --chip esp32 merge_bin \
+            -o merged-firmware.bin \
+            --flash_mode dio \
+            --flash_freq 40m \
+            --flash_size 4MB \
+            0x1000 bootloader.bin \
+            0x8000 partitions.bin \
+            0x10000 firmware.bin \
+            0x350000 littlefs.bin
 
       - name: Display generated files
         run: |
@@ -71,11 +103,12 @@ jobs:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
           ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
-          ENV_DESTPATH: "release"
+          ENV_RELEASEPATH: "release"
+          ENV_ARTIFACTPATH: "artifacts"
           ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: _Release.h
+          ENV_RELEASEFILE: include/_Release.h
         run: |
-          mkdir release 
+          mkdir -p release artifacts
           chmod +x .github/workflows/generateJSON.sh
           .github/workflows/generateJSON.sh
 
@@ -83,7 +116,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: "${{ matrix.variant }}.zip"
-          path: release/*.bin
+          path: artifacts/*.bin
   
       - name: Upload to AWS S3
         uses: jakejarvis/s3-sync-action@master
@@ -122,13 +155,13 @@ jobs:
       - name: set Environment Variables
         id: set_env_var
         run: |
-                 VERSION=$(sed 's/[^0-9|.]//g' _Release.h)  # zb. 2.4.2
+                 VERSION=$(sed 's/[^0-9|.]//g' include/_Release.h)  # zb. 2.4.2
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.h)
+                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.md)
                  echo "${RELEASEBODY}" > CHANGELOG.md
 
             
