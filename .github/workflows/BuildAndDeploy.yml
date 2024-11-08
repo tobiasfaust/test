@@ -41,8 +41,8 @@ jobs:
             architecture: ESP32-S3
           - variant: firmware_ESP32-C3
             architecture: ESP32-C3
-          - variant: firmware_ESP32_WebSerial
-            architecture: ESP32_dbg
+#          - variant: firmware_ESP32_WebSerial
+#            architecture: ESP32_dbg
             
     steps:
       - name: checkout repository
@@ -59,7 +59,7 @@ jobs:
           pip install -U platformio
           pip install -U esptool
 
-      - name: Run PlatformIO 
+      - name: Run PlatformIO
         run: |
           platformio run -e ${{ matrix.variant }}
           platformio run --target buildfs -e ${{ matrix.variant }}
