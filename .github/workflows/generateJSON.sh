@@ -111,31 +111,32 @@ do
 
 ################ Create Manifest ##################
 
-  $JSON = '
+  echo '
     {
             "chipFamily": "' $ARCH '",
             "version": "v' $VERSION '-' $SUBVERSION '",
             "parts": [
-  '
+  ' > $JSON
   if [[ -f $( "$BINARYPATH/bootloader.bin") ]]; then
-    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
   fi
   if [[ -f $("$BINARYPATH/partitions.bin") ]]; then
-    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
   fi
   if [[ -f $("$BINARYPATH/littlefs.bin") ]]; then
-    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
   fi              
   
-  $JSON+= '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
+  echo '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
             ]
         }
-  '
+  ' >> $JSON
 
   echo -e "\n\n"$GREEN"Echo Manifest string"$NC
   echo $JSON 
 
   echo $JSON > $RELEASEPATH/"manifest.json"
+  echo $JSON > $ARTIFACTPATH/"manifest.json"
 
 done
 
