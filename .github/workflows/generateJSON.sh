@@ -76,16 +76,17 @@ do
   FILEEXT=${FILE/*./}
 
   BINARYFILENAME=$(basename $FILENAME"."$ARCH".v"$VERSION"-"$SUBVERSION"."$STAGE)
-  DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
+  DOWNLOADURL="https://tobiasfaust.github.io/"$REPOSITORYNAME"/firmware/"$BINARYFILENAME"."$FILEEXT
+ # DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
 
-  if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
-    FULLFILENAME="merged-"$BINARYFILENAME
-    FULLFILE_URL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$FULLFILENAME"."$FILEEXT
-  else
-    echo "merged file not found at "$BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT
-    FULLFILENAME=""
-    FULLFILE_URL=""
-  fi
+ # if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
+ #   FULLFILENAME="merged-"$BINARYFILENAME
+ #   FULLFILE_URL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$FULLFILENAME"."$FILEEXT
+ # else
+ #   echo "merged file not found at "$BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT
+ #   FULLFILENAME=""
+ #   FULLFILE_URL=""
+ # fi
 
   JSON='      {
   "name":"Release '$VERSION'-'$STAGE'",
@@ -94,9 +95,9 @@ do
   "number":'$NUMBER',
   "stage":"'$STAGE'",
   "arch":"'$ARCH'",
-  "download-url":"'$DOWNLOADURL'",
-  "url_fullfile":"'$FULLFILE_URL'"
+  "download-url":"'$DOWNLOADURL'"
       }'
+# "url_fullfile":"'$FULLFILE_URL'"
 
   echo -e "\n\n"$GREEN"Echo json string"$NC
   echo $JSON 
@@ -104,9 +105,37 @@ do
   echo $JSON > $RELEASEPATH/$BINARYFILENAME".json"
   cp $FILE $RELEASEPATH/$BINARYFILENAME"."$FILEEXT
   
-  if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
-    cp $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT $RELEASEPATH/$FULLFILENAME"."$FILEEXT
+#  if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
+#    cp $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT $RELEASEPATH/$FULLFILENAME"."$FILEEXT
+#  fi
+
+################ Create Manifest ##################
+
+  JSON = '
+    {
+            "chipFamily": "' $ARCH '",
+            "version": "v' $VERSION '-' $SUBVERSION '",
+            "parts": [
+  '
+  if [[ -f $($BINARYPATH "/bootloader.bin") ]]; then
+    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
   fi
+  if [[ -f $($BINARYPATH "/partitions.bin") ]]; then
+    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+  fi
+  if [[ -f $($BINARYPATH "/littlefs.bin") ]]; then
+    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+  fi              
+  
+  JSON+= '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
+            ]
+        }
+  '
+
+  echo -e "\n\n"$GREEN"Echo Manifest string"$NC
+  echo $JSON 
+
+  echo $JSON > $RELEASEPATH/"manifest.json"
 
 done
 
