@@ -1,13 +1,13 @@
 {
     "name": "test",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "builds": [
         {
             "chipFamily": "ESP32",
             "version": "2.5.0-DEV (195)",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32.v2.5.0-195.DEV.bin"
+                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32.v2.5.0-195.DEV.bin", "offset": 0 
                 }
             ]
         }
