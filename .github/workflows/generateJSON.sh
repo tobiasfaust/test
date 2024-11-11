@@ -111,26 +111,26 @@ do
 
 ################ Create Manifest ##################
 
-  echo '
-    {
-            "chipFamily": "' $ARCH '",
-            "version": "v' $VERSION '-' $SUBVERSION '",
+  JSON=' {
+            "name":"Release '$VERSION'-'$STAGE'",
+            "chipFamily": "'$ARCH'",
+            "version": "v'$VERSION'-'$SUBVERSION'",
             "parts": [
-  ' > $JSON
-  if [[ -f $( "$BINARYPATH/bootloader.bin") ]]; then
-    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
+  '
+  if [[ -f "${BINARYPATH}/bootloader.bin" ]]; then
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/bootloader.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },'
   fi
-  if [[ -f $("$BINARYPATH/partitions.bin") ]]; then
-    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
+  if [[ -f "${BINARYPATH}/partitions.bin" ]]; then
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/partitions.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
   fi
-  if [[ -f $("$BINARYPATH/littlefs.bin") ]]; then
-    echo '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },' >> $JSON
-  fi              
+  if [[ -f "${BINARYPATH}/littlefs.bin" ]]; then
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
+  fi
   
-  echo '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
+  JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": 65536  }
             ]
         }
-  ' >> $JSON
+  '
 
   echo -e "\n\n"$GREEN"Echo Manifest string"$NC
   echo $JSON 
