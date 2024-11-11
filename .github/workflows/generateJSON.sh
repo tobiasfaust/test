@@ -111,23 +111,23 @@ do
 
 ################ Create Manifest ##################
 
-  JSON = '
+  $JSON = '
     {
             "chipFamily": "' $ARCH '",
             "version": "v' $VERSION '-' $SUBVERSION '",
             "parts": [
   '
-  if [[ -f $($BINARYPATH "/bootloader.bin") ]]; then
-    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+  if [[ -f $( "$BINARYPATH/bootloader.bin") ]]; then
+    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/bootloader."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
   fi
-  if [[ -f $($BINARYPATH "/partitions.bin") ]]; then
-    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+  if [[ -f $("$BINARYPATH/partitions.bin") ]]; then
+    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/partitions."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
   fi
-  if [[ -f $($BINARYPATH "/littlefs.bin") ]]; then
-    JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
+  if [[ -f $("$BINARYPATH/littlefs.bin") ]]; then
+    $JSON+= '{ "path": "https://tobiasfaust.github.io/test/firmware/littlefs."' $ARCH '".v" '$VERSION '"-" '$SUBVERSION '"." '$STAGE '.bin", "offset": 4096  },'
   fi              
   
-  JSON+= '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
+  $JSON+= '{ "path": "https://tobiasfaust.github.io/"' $REPOSITORYNAME '"/firmware/" '$BINARYFILENAME '"." '$FILEEXT '",  "offset": 65536  },
             ]
         }
   '
