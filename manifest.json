@@ -21,6 +21,15 @@
             ]
         },
         {
+            "chipFamily": "ESP32-C3",
+            "version": "2.5.0-DEV (195)",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32-C3.v2.5.0-195.DEV.bin"
+                }
+            ]
+        },
+        {
             "chipFamily": "ESP32-S2",
             "version": "2.5.0-DEV (192)",
             "parts": [
@@ -35,6 +44,15 @@
             "parts": [
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32-S2.v2.5.0-193.DEV.bin"
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "version": "2.5.0-DEV (195)",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32-S2.v2.5.0-195.DEV.bin"
                 }
             ]
         },
@@ -57,6 +75,15 @@
             ]
         },
         {
+            "chipFamily": "ESP32-S3",
+            "version": "2.5.0-DEV (195)",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32-S3.v2.5.0-195.DEV.bin"
+                }
+            ]
+        },
+        {
             "chipFamily": "ESP32",
             "version": "2.5.0-DEV (192)",
             "parts": [
@@ -71,6 +98,15 @@
             "parts": [
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32.v2.5.0-193.DEV.bin"
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32",
+            "version": "2.5.0-DEV (195)",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/merged-firmware.ESP32.v2.5.0-195.DEV.bin"
                 }
             ]
         }
