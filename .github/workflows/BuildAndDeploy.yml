@@ -156,7 +156,8 @@ jobs:
           mkdir -p ${{ env.fw_path }}
           cp -r temp/* ${{ env.fw_path }}
           for dir in ${{ env.fw_path }}/; do
-            if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
+            echo "-> ${{ env.fw_path }}/$dir"
+            if [[ -d ${{ env.fw_path }}/"$dir" && "$dir" == *.zip/ ]]; then
               new_name="${dir%.zip/}"
               mv ${{ env.fw_path }}/"$dir" ${{ env.fw_path }}/"$new_name"
               echo "Umbenannt: $dir -> $new_name"
