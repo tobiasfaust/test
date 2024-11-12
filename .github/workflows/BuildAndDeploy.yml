@@ -136,6 +136,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
+      fw_path: "firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
     
     steps:
       - name: Checkout Repository
@@ -143,23 +144,21 @@ jobs:
         with:
           ref: 'web-installer'
 
-      - name: prepare path
-        run: |
-          mkdir -p firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}
-      
       - name: Download all Artifacts 
         uses: actions/download-artifact@v4
         with:
-          path: firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}
+          path: temp
 
 
       - name: benenne Verzeichnisse um
         run: |
           #! /bin/bash
-          for dir in */; do
+          mkdir -p ${{ env.fw_path }}
+          cp -r temp/* ${{ env.fw_path }}
+          for dir in ${{ env.fw_path }}/; do
             if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
               new_name="${dir%.zip/}"
-              mv "$dir" "$new_name"
+              mv ${{ env.fw_path }}/"$dir" ${{ env.fw_path }}/"$new_name"
               echo "Umbenannt: $dir -> $new_name"
             fi
           done
