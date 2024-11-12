@@ -133,10 +133,10 @@ do
     JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/bootloader.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },'
   fi
   if [[ -f "${BINARYPATH}/partitions.bin" ]]; then
-    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/partitions.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/partitions.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 32768  },' >> JSON
   fi
   if [[ -f "${BINARYPATH}/littlefs.bin" ]]; then
-    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 3473408  },' >> JSON
   fi
 
   JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": 65536  }

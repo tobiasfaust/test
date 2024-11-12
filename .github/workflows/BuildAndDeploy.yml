@@ -156,7 +156,6 @@ jobs:
           mv temp/* ${{ env.fw_path }}
           rm -r temp
           for dir in ${{ env.fw_path }}/*/; do
-            echo "checke: -> $dir"
             if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
               new_name="${dir%.zip/}"
               mv "$dir" "$new_name"
@@ -175,7 +174,6 @@ jobs:
       - name: Display generated files
         run: |
           ls -R ./
-          git status
 
       - name: Commit and push changes
         run: |
