@@ -149,14 +149,13 @@ jobs:
         with:
           path: temp
 
-
       - name: benenne Verzeichnisse um
         run: |
           #! /bin/bash
           mkdir -p ${{ env.fw_path }}
           cp -r temp/* ${{ env.fw_path }}
-          for dir in ${{ env.fw_path }}/*; do
-            echo "-> $dir"
+          for dir in ${{ env.fw_path }}/*/; do
+            echo "checke: -> $dir"
             if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
               new_name="${dir%.zip/}"
               mv "$dir" "$new_name"
