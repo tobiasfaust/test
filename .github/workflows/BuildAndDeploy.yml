@@ -152,6 +152,19 @@ jobs:
         with:
           path: firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}
 
+
+      - name: benenne Verzeichnisse um
+        run: |
+          #! /bin/bash
+          for dir in */; do
+            if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
+              new_name="${dir%.zip/}"
+              mv "$dir" "$new_name"
+              echo "Umbenannt: $dir -> $new_name"
+            fi
+          done
+
+
 # merged-firmware.ESP32.v2.5.0-192.DEV.bin
 
 #      - name: set Environment Variables
