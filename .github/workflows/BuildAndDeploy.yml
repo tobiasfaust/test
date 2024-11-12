@@ -153,7 +153,8 @@ jobs:
         run: |
           #! /bin/bash
           mkdir -p ${{ env.fw_path }}
-          cp -r temp/* ${{ env.fw_path }}
+          mv temp/* ${{ env.fw_path }}
+          rm -r temp
           for dir in ${{ env.fw_path }}/*/; do
             echo "checke: -> $dir"
             if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
@@ -174,6 +175,7 @@ jobs:
       - name: Display generated files
         run: |
           ls -R ./
+          git status
 
 
 
