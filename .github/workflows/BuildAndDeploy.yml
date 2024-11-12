@@ -155,7 +155,7 @@ jobs:
           #! /bin/bash
           mkdir -p ${{ env.fw_path }}
           cp -r temp/* ${{ env.fw_path }}
-          for dir in ${{ env.fw_path }}/; do
+          for dir in ${{ env.fw_path }}/*; do
             echo "-> $dir"
             if [[ -d "$dir" && "$dir" == *.zip/ ]]; then
               new_name="${dir%.zip/}"
