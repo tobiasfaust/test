@@ -10,6 +10,7 @@ RELEASEPATH="$5"        # Path of Destination, BIN and JSON Files
 RELEASEFILE="$6"        # Path of ReleaseFile, contains versionnumber
 ARCH="$7"               # Archtitcture, ESP8266|ESP32
 ARTIFACTPATH="$8"       # Path of all Artifacts
+#DEBUG="$9"             # Debug messages, true or false, not possible if GITHUB_OUTPUT is needed
 
 readonly NC='\033[0m' # No Color
 readonly RED='\033[0;31m'
@@ -28,19 +29,26 @@ if [[ -n $ENV_RELEASEFILE ]]; then RELEASEFILE=$ENV_RELEASEFILE; fi
 if [[ -n $ENV_ARCH ]]; then ARCH=$ENV_ARCH; fi
 if [[ -n $ENV_RELEASEPATH ]]; then RELEASEPATH=$ENV_RELEASEPATH; fi
 if [[ -n $ENV_ARTIFACTPATH ]]; then ARTIFACTPATH=$ENV_ARTIFACTPATH; fi
+if [[ -z "$9" ]]; then DEBUG=false 
+else 
+  DEBUG="$9" 
+fi
 
 #
 # Echo input parameter
 #
-echo -e "\n\n"$YELLOW"Echo input parameter"$NC
-echo REPOSITORYNAME=$REPOSITORYNAME
-echo SUBVERSION=$SUBVERSION
-echo STAGE=$STAGE
-echo BINARYPATH=$BINARYPATH
-echo RELEASEPATH=$RELEASEPATH
-echo ARCHITECTURE=$ARCH
-echo RELEASEFILE=$RELEASEFILE
-echo ARTIFACTPATH=$ARTIFACTPATH
+if [ "$DEBUG" = true ]; then
+  echo -e "\n\n"$YELLOW"Echo input parameter"$NC
+  echo REPOSITORYNAME=$REPOSITORYNAME
+  echo SUBVERSION=$SUBVERSION
+  echo STAGE=$STAGE
+  echo BINARYPATH=$BINARYPATH
+  echo RELEASEPATH=$RELEASEPATH
+  echo ARCHITECTURE=$ARCH
+  echo RELEASEFILE=$RELEASEFILE
+  echo ARTIFACTPATH=$ARTIFACTPATH
+  echo DEBUG=$DEBUG
+fi
 
 if [[ ! -d $BINARYPATH ]]; then
   echo -e "\n\n"$RED"Binarypath $BINARYPATH not found\n"$NC
@@ -74,9 +82,11 @@ do
 
   FILENAME=${FILE%.*}
   FILEEXT=${FILE/*./}
+  FIRMWARENAME=$(basename $BINARYPATH)
 
   BINARYFILENAME=$(basename $FILENAME"."$ARCH".v"$VERSION"-"$SUBVERSION"."$STAGE)
   DOWNLOADURL="https://tobiasfaust.github.io/"$REPOSITORYNAME"/firmware/"$BINARYFILENAME"."$FILEEXT
+
  # DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
 
  # if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
@@ -99,12 +109,14 @@ do
       }'
 # "url_fullfile":"'$FULLFILE_URL'"
 
-  echo -e "\n\n"$GREEN"Echo json string"$NC
-  echo $JSON 
+  if [ "$DEBUG" = true ]; then
+    echo -e "\n\n"$GREEN"Echo json string"$NC
+    echo $JSON 
+  fi
 
   echo $JSON > $RELEASEPATH/$BINARYFILENAME".json"
   cp $FILE $RELEASEPATH/$BINARYFILENAME"."$FILEEXT
-  
+
 #  if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
 #    cp $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT $RELEASEPATH/$FULLFILENAME"."$FILEEXT
 #  fi
@@ -118,22 +130,24 @@ do
             "parts": [
   '
   if [[ -f "${BINARYPATH}/bootloader.bin" ]]; then
-    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/bootloader.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },'
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/bootloader.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },'
   fi
   if [[ -f "${BINARYPATH}/partitions.bin" ]]; then
-    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/partitions.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/partitions.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
   fi
   if [[ -f "${BINARYPATH}/littlefs.bin" ]]; then
-    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
+    JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 4096  },' >> JSON
   fi
-  
-  JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$ARCH'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": 65536  }
+
+  JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": 65536  }
             ]
         }
   '
 
-  echo -e "\n\n"$GREEN"Echo Manifest string"$NC
-  echo $JSON 
+  if [ "$DEBUG" = true ]; then
+    echo -e "\n\n"$GREEN"Echo Manifest string"$NC
+    echo $JSON 
+  fi
 
   echo $JSON > $RELEASEPATH/"manifest.json"
   echo $JSON > $ARTIFACTPATH/"manifest.json"
@@ -150,3 +164,10 @@ do
   cp $FILE $ARTIFACTPATH/$BINARYFILENAME"."$FILEEXT
 
 done
+
+
+################## handle Github_Outputs
+echo "version=$VERSION"
+echo "subversion=$SUBVERSION"
+echo "stage=$STAGE"
+

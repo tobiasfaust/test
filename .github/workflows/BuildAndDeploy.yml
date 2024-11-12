@@ -24,6 +24,11 @@ jobs:
     env:
       REPOSITORY: ${{ github.event.repository.name }}
 
+    outputs:
+      fw_version: ${{ steps.json_params.outputs.version }}
+      fw_subversion: ${{ steps.json_params.outputs.subversion }}
+      fw_stage: ${{ steps.json_params.outputs.stage }}
+
     strategy:
       matrix:
         variant:
@@ -93,6 +98,7 @@ jobs:
 
       # Script um JSON Datei zu erstellen
       - name: Schreibe Json File
+        id: json_params 
         env:
           ENV_ARCH: ${{ matrix.architecture }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
@@ -104,7 +110,7 @@ jobs:
         run: |
           mkdir -p release artifacts
           chmod +x .github/workflows/generateJSON.sh
-          .github/workflows/generateJSON.sh
+          .github/workflows/generateJSON.sh >> "$GITHUB_OUTPUT"
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
@@ -136,11 +142,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: 'web-installer'
+
+      - name: prepare path
+        run: |
+          mkdir -p firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}
       
       - name: Download all Artifacts 
         uses: actions/download-artifact@v4
         with:
-          path: firmware
+          path: firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}
 
 # merged-firmware.ESP32.v2.5.0-192.DEV.bin
 
