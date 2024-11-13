@@ -36,7 +36,7 @@ jobs:
           - firmware_ESP32-S2
           - firmware_ESP32-S3
           - firmware_ESP32-C3
-#          - firmware_ESP32_WebSerial 
+#          - firmware_ESP32.WebSerial 
 
         include:
           - variant: firmware_ESP32
@@ -47,7 +47,7 @@ jobs:
             architecture: ESP32-S3
           - variant: firmware_ESP32-C3
             architecture: ESP32-C3
-#          - variant: firmware_ESP32_WebSerial
+#          - variant: firmware_ESP32.WebSerial
 #            architecture: ESP32_dbg
             
     steps:
@@ -136,8 +136,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
-      fw_path: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
-      root_path: "web-installer/firmware"
+      VersDir: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
+      FwDir: "web-installer/firmware"
 
     steps:
       - name: Checkout web-installer Repository
@@ -161,7 +161,7 @@ jobs:
       - name: Download all Artifacts 
         uses: actions/download-artifact@v4
         with:
-          path: ${{ env.fw_path }}
+          path: ${{ env.VersDir }}
 
       - name: Display generated files
         run: |
@@ -170,7 +170,7 @@ jobs:
       - name: Handle Manifest JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/workflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir ${{ env.root_path }}
+          python app/.github/workflows/createManifest.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
 
       - name: Commit and push changes
         run: |
