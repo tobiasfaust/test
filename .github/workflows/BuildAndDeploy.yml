@@ -137,7 +137,7 @@ jobs:
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
       fw_path: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
-      root_path: "app/firmware"
+      root_path: "web-installer/firmware"
 
     steps:
       - name: Checkout web-installer Repository
@@ -171,18 +171,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python app/.github/workflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir ${{ env.root_path }}
-
-
-# merged-firmware.ESP32.v2.5.0-192.DEV.bin
-
-#      - name: set Environment Variables
-#        id: set_env_var
-#        run: |
-#          IFS='.' read -r -a array <<< "merged-firmware.ESP32.v2.5.0-192.DEV.bin"
-
-      - name: Display generated files
-        run: |
-          ls -R ./
 
       - name: Commit and push changes
         run: |
