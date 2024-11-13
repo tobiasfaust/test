@@ -165,7 +165,7 @@ jobs:
 
       - name: Display generated files
         run: |
-          ls -la ./
+          ls -laR ./
 
       - name: Handle Manifest JSON
         run: |
