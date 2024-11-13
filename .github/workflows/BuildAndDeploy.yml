@@ -137,7 +137,8 @@ jobs:
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
       fw_path: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
-    
+      root_path: "app/firmware"
+
     steps:
       - name: Checkout web-installer Repository
         uses: actions/checkout@v4
@@ -145,10 +146,12 @@ jobs:
           ref: 'web-installer'
           path: 'web-installer'
 
-      - name: Checkout web-installer Repository
+      - name: Checkout Application Repository
         uses: actions/checkout@v4
         with:
           path: 'app'
+          sparse-checkout: |
+            .github
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -167,7 +170,7 @@ jobs:
       - name: Handle Manifest JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/worflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir app/firmware
+          python app/.github/worflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir ${{ env.root_path }}
 
 
 # merged-firmware.ESP32.v2.5.0-192.DEV.bin
