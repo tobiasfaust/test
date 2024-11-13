@@ -141,17 +141,17 @@ jobs:
 
     steps:
       - name: Checkout web-installer Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           ref: 'web-installer'
           path: 'web-installer'
 
       - name: Checkout Application Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           path: 'app'
-          sparse-checkout: |
-            .github
+#          sparse-checkout: |
+#            .github
 
       - name: Set up Python
         uses: actions/setup-python@v2
