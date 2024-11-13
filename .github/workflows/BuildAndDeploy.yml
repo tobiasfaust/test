@@ -141,13 +141,13 @@ jobs:
 
     steps:
       - name: Checkout web-installer Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           ref: 'web-installer'
           path: 'web-installer'
 
       - name: Checkout Application Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           path: 'app'
           sparse-checkout: |
@@ -165,7 +165,7 @@ jobs:
 
       - name: Display generated files
         run: |
-          ls -R ./
+          ls -la ./
 
       - name: Handle Manifest JSON
         run: |
