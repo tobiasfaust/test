@@ -1,0 +1,12 @@
+[
+    {
+        "path": "firmware\\v2.5.0-208-DEV\\manifest_all.json",
+        "version": "v2.5.0-208",
+        "stage": "development"
+    },
+    {
+        "path": "firmware\\v2.5.0-209-DEV\\manifest_all.json",
+        "version": "v2.5.0-209",
+        "stage": "development"
+    }
+]
