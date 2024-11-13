@@ -121,9 +121,10 @@ def search_manifests_and_extract_version(root: str) -> list :
                     stage = manifest_data.get('stage', None)
                     
                     # Falls sowohl 'version' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
+                    # entferne den root-folder "web-installer" aus dem Pfad
                     if version is not None and stage is not None:
                         results.append({
-                            'path': manifest_path,
+                            'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
                             'version': version,
                             'stage': stage
                         })
