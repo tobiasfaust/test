@@ -140,7 +140,13 @@ do
     JSON=$JSON'   { "path": "https://tobiasfaust.github.io/test/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/littlefs.'$ARCH'.v'$VERSION'-'$SUBVERSION'.'$STAGE'.bin", "offset": 3473408  },' >> JSON
   fi
 
-  JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": 65536  }
+  if echo "$string" | grep -qi "ESP8266"; then
+    OFFSET=0
+  else
+    OFFSET=65536
+  fi
+
+  JSON=$JSON'   { "path": "https://tobiasfaust.github.io/'$REPOSITORYNAME'/firmware/v'$VERSION'-'$SUBVERSION'-'$STAGE'/'$FIRMWARENAME'/'$BINARYFILENAME'.'$FILEEXT'",  "offset": '$OFFSET'  }
             ]
         }
   '
@@ -167,7 +173,7 @@ do
 done
 
 
-################## handle Github_Outputs
+################## handle Github_Outputs ####################
 echo "version=$VERSION"
 echo "subversion=$SUBVERSION"
 echo "stage=$STAGE"
