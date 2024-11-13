@@ -18,5 +18,10 @@
         "path": "web-installer/firmware/v2.5.0-208-DEV/manifest_all.json",
         "version": "v2.5.0-208",
         "stage": "development"
+    },
+    {
+        "path": "web-installer/firmware/v2.5.0-221-DEV/manifest_all.json",
+        "version": "v2.5.0-221",
+        "stage": "DEV"
     }
 ]
