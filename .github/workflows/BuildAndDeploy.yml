@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REPOSITORY: ${{ github.event.repository.name }}
+      BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
 
     outputs:
       fw_version: ${{ steps.json_params.outputs.version }}
@@ -101,6 +102,7 @@ jobs:
         id: json_params 
         env:
           ENV_ARCH: ${{ matrix.architecture }}
+          ENV_STAGE: ${{ env.BRANCH_NAME }}
           ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
           ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
           ENV_RELEASEPATH: "release"
@@ -190,6 +192,7 @@ jobs:
     
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
+      BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
 
     steps:
       - name: Checkout Repository

@@ -4,7 +4,7 @@
 
 REPOSITORYNAME="$1"     # PumpControl
 SUBVERSION="$2"         # Unique ID -> GITHUB_RUN_NUMBER
-STAGE="$3"              # PROD|PRE|DEV
+STAGE="$3"              # Branch name
 BINARYPATH="$4"         # Path of binaryFiles
 RELEASEPATH="$5"        # Path of Destination, BIN and JSON Files
 RELEASEFILE="$6"        # Path of ReleaseFile, contains versionnumber
@@ -87,17 +87,6 @@ do
   BINARYFILENAME=$(basename $FILENAME"."$ARCH".v"$VERSION"-"$SUBVERSION"."$STAGE)
   DOWNLOADURL="https://tobiasfaust.github.io/"$REPOSITORYNAME"/firmware/"$BINARYFILENAME"."$FILEEXT
 
- # DOWNLOADURL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$BINARYFILENAME"."$FILEEXT
-
- # if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
- #   FULLFILENAME="merged-"$BINARYFILENAME
- #   FULLFILE_URL="http://tfa-releases.s3-website.eu-central-1.amazonaws.com/"$REPOSITORYNAME"/"$FULLFILENAME"."$FILEEXT
- # else
- #   echo "merged file not found at "$BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT
- #   FULLFILENAME=""
- #   FULLFILE_URL=""
- # fi
-
   JSON='      {
   "name":"Release '$VERSION'-'$STAGE'",
   "version":"'$VERSION'",
@@ -107,7 +96,6 @@ do
   "arch":"'$ARCH'",
   "download-url":"'$DOWNLOADURL'"
       }'
-# "url_fullfile":"'$FULLFILE_URL'"
 
   if [ "$DEBUG" = true ]; then
     echo -e "\n\n"$GREEN"Echo json string"$NC
@@ -117,9 +105,6 @@ do
   echo $JSON > $RELEASEPATH/$BINARYFILENAME".json"
   cp $FILE $RELEASEPATH/$BINARYFILENAME"."$FILEEXT
 
-#  if [[ -f $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT ]]; then
-#    cp $BINARYPATH"merged-"$(basename $FILENAME)"."$FILEEXT $RELEASEPATH/$FULLFILENAME"."$FILEEXT
-#  fi
 
 ################ Create Manifest ##################
 
