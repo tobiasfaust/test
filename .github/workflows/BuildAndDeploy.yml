@@ -147,11 +147,11 @@ jobs:
           path: 'web-installer'
 
       - name: Checkout Application Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: 'app'
-#          sparse-checkout: |
-#            .github
+          sparse-checkout: |
+            .github
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -186,6 +186,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          cd web-installer
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add *
