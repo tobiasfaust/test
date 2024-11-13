@@ -126,6 +126,7 @@ do
   JSON=' {
             "name":"Release '$VERSION'-'$STAGE'",
             "chipFamily": "'$ARCH'",
+            "stage": "'$STAGE'",
             "version": "v'$VERSION'-'$SUBVERSION'",
             "parts": [
   '
