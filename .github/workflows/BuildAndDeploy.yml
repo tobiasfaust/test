@@ -141,7 +141,7 @@ jobs:
 
     steps:
       - name: Checkout web-installer Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: 'web-installer'
           path: 'web-installer'
@@ -170,7 +170,7 @@ jobs:
       - name: Handle Manifest JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/worflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir ${{ env.root_path }}
+          python app/.github/workflows/createManifest.py --FwDir ${{ env.fw_path }} --RootDir ${{ env.root_path }}
 
 
 # merged-firmware.ESP32.v2.5.0-192.DEV.bin
