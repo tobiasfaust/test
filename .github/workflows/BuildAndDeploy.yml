@@ -99,7 +99,8 @@ jobs:
                 --releasepath release 
                 --artifactpath artifacts 
                 --subversion ${{ github.run_number }} 
-                --releasefile include/_Release.h         
+                --releasefile include/_Release.h   
+                --debug true      
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4

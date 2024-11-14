@@ -14,7 +14,7 @@ parser.add_argument('--releasepath', type=str, help='Path of destination, BIN an
 parser.add_argument('--releasefile', type=str, help='Path of release file, contains version number')
 parser.add_argument('--arch', type=str, help='Architecture (ESP8266|ESP32)')
 parser.add_argument('--artifactpath', type=str, help='Path of all artifacts')
-parser.add_argument('--debug', action='store_true', help='Enable debug messages')
+parser.add_argument('--debug', type=bool, action='true', help='Enable debug messages')
 
 args = parser.parse_args()
 
@@ -31,11 +31,11 @@ if args.debug:
     print(f"ARTIFACTPATH={args.artifactpath}")
     print(f"DEBUG={args.debug}")
 
-if not os.path.isdir(args.binarypath):
+if args.binarypath is not None and not os.path.isdir(args.binarypath):
     print(f"\n\nBinarypath {args.binarypath} not found\n")
     sys.exit()
 
-if not os.path.isfile(args.releasefile):
+if args.releasefile is not None and not os.path.isfile(args.releasefile):
     print(f"\n\nReleasefile {args.releasefile} not found\n")
     sys.exit()
 
