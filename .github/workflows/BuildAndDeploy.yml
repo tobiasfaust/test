@@ -91,7 +91,7 @@ jobs:
         id: json_params 
         run: |
           mkdir -p release artifacts
-          python .github\workflows\generateJSON.py 
+          python .github/workflows/generateJSON.py 
                 --arch ${{ matrix.architecture }} 
                 --stage ${{ env.BRANCH_NAME }} 
                 --repositoryname ${{ env.REPOSITORY }} 
