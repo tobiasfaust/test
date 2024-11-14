@@ -91,15 +91,15 @@ jobs:
         id: json_params 
         run: |
           mkdir -p release artifacts
-          python .github/workflows/generateJSON.py 
-                --arch ${{ matrix.architecture }} 
-                --stage ${{ env.BRANCH_NAME }} 
-                --repositoryname ${{ env.REPOSITORY }} 
-                --binarypath .pio/build/${{ matrix.variant }}/
-                --releasepath release 
-                --artifactpath artifacts 
-                --subversion ${{ github.run_number }} 
-                --releasefile include/_Release.h   
+          python .github/workflows/generateJSON.py \
+                --arch ${{ matrix.architecture }} \
+                --stage ${{ env.BRANCH_NAME }} \
+                --repositoryname ${{ env.REPOSITORY }} \
+                --binarypath .pio/build/${{ matrix.variant }}/ \
+                --releasepath release \
+                --artifactpath artifacts \
+                --subversion ${{ github.run_number }} \
+                --releasefile include/_Release.h   \
                 --debug true      
 
       - name: Upload firmware artifacts
