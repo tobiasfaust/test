@@ -1,0 +1,92 @@
+{
+    "name": "Release 2.5.0-development",
+    "version": "v2.5.0-231",
+    "stage": "development",
+    "build": "231",
+    "builds": [
+        {
+            "chipFamily": "ESP32-S2",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//bootloader.ESP32-S2.v2.5.0-231.development.bin",
+                    "offset": 4096
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//partitions.ESP32-S2.v2.5.0-231.development.bin",
+                    "offset": 32768
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//littlefs.ESP32-S2.v2.5.0-231.development.bin",
+                    "offset": 3473408
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//firmware.ESP32-S2.v2.5.0-231.development.bin",
+                    "offset": 65536
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//bootloader.ESP32-S3.v2.5.0-231.development.bin",
+                    "offset": 4096
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//partitions.ESP32-S3.v2.5.0-231.development.bin",
+                    "offset": 32768
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//littlefs.ESP32-S3.v2.5.0-231.development.bin",
+                    "offset": 3473408
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//firmware.ESP32-S3.v2.5.0-231.development.bin",
+                    "offset": 65536
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//bootloader.ESP32-C3.v2.5.0-231.development.bin",
+                    "offset": 4096
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//partitions.ESP32-C3.v2.5.0-231.development.bin",
+                    "offset": 32768
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//littlefs.ESP32-C3.v2.5.0-231.development.bin",
+                    "offset": 3473408
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//firmware.ESP32-C3.v2.5.0-231.development.bin",
+                    "offset": 65536
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32",
+            "parts": [
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//bootloader.ESP32.v2.5.0-231.development.bin",
+                    "offset": 4096
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//partitions.ESP32.v2.5.0-231.development.bin",
+                    "offset": 32768
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//littlefs.ESP32.v2.5.0-231.development.bin",
+                    "offset": 3473408
+                },
+                {
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-231-development//firmware.ESP32.v2.5.0-231.development.bin",
+                    "offset": 65536
+                }
+            ]
+        }
+    ]
+}
