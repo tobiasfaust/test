@@ -1,0 +1,25 @@
+{
+  "name": "Release 2.5.0-development",
+  "chipFamily": "ESP32-C3",
+  "stage": "development",
+  "build": "228",
+  "version": "v2.5.0-228",
+  "parts": [
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-228-development//bootloader.ESP32-C3.v2.5.0-228.development.bin",
+      "offset": 4096
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-228-development//partitions.ESP32-C3.v2.5.0-228.development.bin",
+      "offset": 32768
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-228-development//littlefs.ESP32-C3.v2.5.0-228.development.bin",
+      "offset": 3473408
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-228-development//firmware.ESP32-C3.v2.5.0-228.development.bin",
+      "offset": 65536
+    }
+  ]
+}
