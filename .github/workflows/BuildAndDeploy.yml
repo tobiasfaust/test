@@ -100,7 +100,7 @@ jobs:
                 --artifactpath artifacts \
                 --subversion ${{ github.run_number }} \
                 --releasefile include/_Release.h   \
-                --debug false >> "$GITHUB_OUTPUT"   
+                >> "$GITHUB_OUTPUT"   
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
