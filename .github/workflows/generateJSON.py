@@ -14,7 +14,7 @@ parser.add_argument('--releasepath', type=str, help='Path of destination, BIN an
 parser.add_argument('--releasefile', type=str, help='Path of release file, contains version number')
 parser.add_argument('--arch', type=str, help='Architecture (ESP8266|ESP32)')
 parser.add_argument('--artifactpath', type=str, help='Path of all artifacts')
-parser.add_argument('--debug', type=bool, action='true', help='Enable debug messages')
+parser.add_argument('--debug', type=bool, default=False, help='Enable debug messages')
 
 args = parser.parse_args()
 
