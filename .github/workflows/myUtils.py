@@ -54,6 +54,7 @@ def process_manifests(root: str) -> None:
                         name = manifest_data.get('name')
                         version = manifest_data.get('version')
                         stage = manifest_data.get('stage')
+                        build = manifest_data.get('build')
                         
                         # Wenn die erforderlichen Felder vorhanden sind, erstelle die neue 'manifest_all.json' Datei
                         if name and version and stage:
@@ -63,6 +64,7 @@ def process_manifests(root: str) -> None:
                                 "name": name,
                                 "version": version,
                                 "stage": stage,
+                                "build": build, 
                                 "builds": []  # Wir werden die "builds" später mit chipFamily und parts füllen
                             }
 
@@ -136,6 +138,7 @@ def search_manifests_and_extract_version(root: str) -> list :
     
     return results
 
+
 # Funktion zum Speichern der extrahierten Daten in einer neuen JSON-Datei
 def save_results_to_json(results, output_file):
     try:
@@ -145,3 +148,11 @@ def save_results_to_json(results, output_file):
     except Exception as e:
         print(f"Fehler beim Speichern der Ergebnisse: {e}")
 
+
+# funktion zum kopieren von dateien, je nach OS
+def copyFile(src, dst):
+    '''Copy file from src to dst'''
+    if os.name == 'nt':
+        os.system(f"copy {src} {dst} > nul 2>&1")
+    else:
+        os.system(f"cp {src} {dst} > nul 2>&1")

@@ -29,7 +29,6 @@ jobs:
     outputs:
       fw_version: ${{ steps.json_params.outputs.version }}
       fw_subversion: ${{ steps.json_params.outputs.subversion }}
-      fw_stage: ${{ steps.json_params.outputs.stage }}
 
     strategy:
       matrix:
@@ -88,32 +87,19 @@ jobs:
         run: |
           ls -R .pio/build/${{ matrix.variant }}/
 
-      - if: endsWith(github.ref, 'master')
-        name: Set Environment Variable "PRODUCTION" 
-        run: echo "ENV_STAGE=PROD" >> $GITHUB_ENV
-      - if: endsWith(github.ref, 'prelive')
-        name: Set Environment Variable "PreLive" 
-        run: echo "ENV_STAGE=PRE" >> $GITHUB_ENV
-      - if: endsWith(github.ref, 'development')
-        name: Set Environment Variable "Development" 
-        run: echo "ENV_STAGE=DEV" >> $GITHUB_ENV
-
-      # Script um JSON Datei zu erstellen
-      - name: Schreibe Json File
+      - name: Schreibe Json/Manifest File
         id: json_params 
-        env:
-          ENV_ARCH: ${{ matrix.architecture }}
-          ENV_STAGE: ${{ env.BRANCH_NAME }}
-          ENV_REPOSITORYNAME: ${{ env.REPOSITORY }}
-          ENV_BINARYPATH: .pio/build/${{ matrix.variant }}/
-          ENV_RELEASEPATH: "release"
-          ENV_ARTIFACTPATH: "artifacts"
-          ENV_SUBVERSION: ${{ github.run_number }}
-          ENV_RELEASEFILE: include/_Release.h
         run: |
           mkdir -p release artifacts
-          chmod +x .github/workflows/generateJSON.sh
-          .github/workflows/generateJSON.sh >> "$GITHUB_OUTPUT"
+          python .github\workflows\generateJSON.py 
+                --arch ${{ matrix.architecture }} 
+                --stage ${{ env.BRANCH_NAME }} 
+                --repositoryname ${{ env.REPOSITORY }} 
+                --binarypath .pio/build/${{ matrix.variant }}/
+                --releasepath release 
+                --artifactpath artifacts 
+                --subversion ${{ github.run_number }} 
+                --releasefile include/_Release.h         
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
@@ -138,8 +124,9 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     env:
-      GITHUB_REPOSITORY: ${{ github.event.repository.name }}
-      VersDir: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
+      REPOSITORY: ${{ github.event.repository.name }}
+      BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
+      VersDir: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ github.base_ref || github.ref_name }}"
       FwDir: "web-installer/firmware"
 
     steps:
@@ -181,7 +168,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add *
-          git commit -m "neue Firmware v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ needs.build.outputs.fw_stage }}"
+          git commit -m "neue Firmware v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ env.BRANCH_NAME }}"
           git push origin web-installer  
 
 
@@ -212,8 +199,8 @@ jobs:
         id: set_env_var
         run: |
                  VERSION=$(sed 's/[^0-9|.]//g' include/_Release.h)  # zb. 2.4.2 
-                 if [ ${{ github.ref }} == 'refs/heads/master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
-                 if [ ${{ github.ref }} == 'refs/heads/master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
+                 if [ ${{ env.BRANCH_NAME }} == 'master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
+                 if [ ${{ env.BRANCH_NAME }} == 'master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
