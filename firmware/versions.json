@@ -1,74 +1,38 @@
 [
     {
-        "path": "firmware/v2.5.0-219-DEV/manifest_all.json",
-        "version": "v2.5.0-219",
-        "stage": "DEV",
-        "build": null
-    },
-    {
         "path": "firmware/v2.5.0-231-development/manifest_all.json",
         "version": "v2.5.0-231",
         "stage": "development",
-        "build": "231"
-    },
-    {
-        "path": "firmware/v2.5.0-220-DEV/manifest_all.json",
-        "version": "v2.5.0-220",
-        "stage": "DEV",
-        "build": null
-    },
-    {
-        "path": "firmware/v2.5.0-209-DEV/manifest_all.json",
-        "version": "v2.5.0-209",
-        "stage": "development",
-        "build": null
-    },
-    {
-        "path": "firmware/v2.5.0-208-DEV/manifest_all.json",
-        "version": "v2.5.0-208",
-        "stage": "development",
-        "build": null
+        "build": 231
     },
     {
         "path": "firmware/v2.5.0-233-development/manifest_all.json",
         "version": "v2.5.0-233",
         "stage": "development",
-        "build": "233"
-    },
-    {
-        "path": "firmware/v2.5.0-222-development/manifest_all.json",
-        "version": "v2.5.0-222",
-        "stage": "development",
-        "build": null
+        "build": 233
     },
     {
         "path": "firmware/v2.5.0-235-development/manifest_all.json",
         "version": "v2.5.0-235",
         "stage": "development",
-        "build": "235"
+        "build": 235
     },
     {
         "path": "firmware/v--development/manifest_all.json",
         "version": "v2.5.0-228",
         "stage": "development",
-        "build": "228"
+        "build": 228
     },
     {
         "path": "firmware/v2.5.0-234-development/manifest_all.json",
         "version": "v2.5.0-234",
         "stage": "development",
-        "build": "234"
+        "build": 234
     },
     {
-        "path": "firmware/v2.5.0-223-development/manifest_all.json",
-        "version": "v2.5.0-223",
+        "path": "firmware/v2.5.0-236-development/manifest_all.json",
+        "version": "v2.5.0-236",
         "stage": "development",
-        "build": null
-    },
-    {
-        "path": "firmware/v2.5.0-221-DEV/manifest_all.json",
-        "version": "v2.5.0-221",
-        "stage": "DEV",
-        "build": null
+        "build": 236
     }
 ]
