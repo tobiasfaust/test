@@ -5,6 +5,7 @@
 #endif
 
 #include "ethernet.h"
+#include <improv.h>
 
 ethernet* LAN;
 
