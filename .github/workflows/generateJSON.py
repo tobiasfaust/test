@@ -58,7 +58,7 @@ for root, _, files in os.walk(args.binarypath):
             json_data = {
                 "name": f"Release {VERSION}-{args.stage}",
                 "version": VERSION,
-                "build": args.build,
+                "build": (int(args.build)),
                 "number": int(f'{VersionNumber}{args.build}'),
                 "stage": args.stage,
                 "arch": args.arch,
@@ -78,7 +78,7 @@ for root, _, files in os.walk(args.binarypath):
                 "name": f"Release {VERSION}-{args.stage}",
                 "chipFamily": args.arch,
                 "stage": args.stage,
-                "build": args.build,
+                "build": int(args.build),
                 "version": f"v{VERSION}-{args.build}",
                 "parts": []
             }
@@ -126,5 +126,5 @@ for root, _, files in os.walk(args.binarypath):
             
 ################## handle Github_Outputs ####################
 print(f"version={VERSION}")
-print(f"build={args.build}")
+print(f"build={int(args.build)}")
 print(f"stage={args.stage}")

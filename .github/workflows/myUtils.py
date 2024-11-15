@@ -134,7 +134,7 @@ def search_manifests_and_extract_version(root: str) -> list :
                             'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
                             'version': version,
                             'stage': stage,
-                            'build': build
+                            'build': int(build) if build else 0
                         })
             
             except json.JSONDecodeError:
@@ -165,110 +165,62 @@ def save_results_to_json(results, output_file):
         logging.error(f"Fehler beim Speichern der Ergebnisse: {e}")
 
 
-def deleteVersions(root: str, archs: list, keepVersions: int):
+def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
     """
-    Ermittelt aus allen manifest.json dateien die Werte für "build", 'chipFamily' und 'stage' sowie dessen Pfad.
-    Pro 'chipFamily' und 'stage' werden die 'build' nummern zusammen mit der Pfadangabe in einem Array aufstigend sortiert.
-    Die ersten 'keepversions' der'build's werden behalten, alle anderen dazugehörigen Folder werden gelöscht.
+    lädt das json 'versions.json' in 'root' und durchsucht das array darin. Lädt die Attribute 'build' und 'path'. 
+    Sortiert alle aufsteigend nach 'build' und entfernt daraus die ersten 'keepVersions' einträge.
+    Die 'path' variable zeigt auf die manifest_all.json datei. Dessen gesamter Ordner wird nun für alle übrigen Einträge gelöscht.
 
     <b>Parameter:</b>
-        archs (list): LIste von Architekturen, für die die Build´s gelöscht werden sollen
-        keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
         root (string): das Root verzeichnis über welches iteriert werden soll
-
+        keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
+        
     <b>Rückgabewert:</b>
         keiner
     """
-    logging.info(f"Lösche alle Versionen für {archs}, behalte die letzten {keepVersions} Versionen")
+    logging.info(f"Lösche alle Versionen, behalte die letzten {keepVersions} Versionen")
+    
+    if versions is None:
+        # Lade die 'versions.json' Datei
+        versions_file = os.path.join(root, 'versions.json')
+        if os.path.isfile(versions_file):
+            try:
+                with open(versions_file, 'r', encoding='utf-8') as file:
+                    versions_data = json.load(file)
+            except json.JSONDecodeError:
+                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {versions_file}")
+                return
+            except Exception as e:
+                logging.error(f"Fehler beim Verarbeiten von {versions_file}: {e}")
+                return
+        else:
+            logging.warning(f"Warnung: Datei {versions_file} nicht gefunden.")
+            return
+    else:
+        versions_data = versions
     
     # Dictionary zum Speichern der 'build' Nummern und der Pfadangabe
     versions = {}
     
-    # Durchlaufe alle Unterverzeichnisse im angegebenen Verzeichnis
-    for dirpath, dirnames, filenames in os.walk(root):
-        # Prüfe, ob eine 'manifest.json' Datei im aktuellen Verzeichnis existiert
-        if 'manifest.json' in filenames:
-            manifest_path = os.path.join(dirpath, 'manifest.json')
-            logging.info(f"Verarbeite {manifest_path}")
-            try:
-                # Öffne und lade die JSON-Daten aus der Datei
-                with open(manifest_path, 'r', encoding='utf-8') as file:
-                    manifest_data = json.load(file)
-                    
-                    # Extrahiere 'build', 'chipFamily' und 'stage' falls vorhanden
-                    build = manifest_data.get('build', None)
-                    chipFamily = manifest_data.get('chipFamily', None)
-                    stage = manifest_data.get('stage', None)
-                    
-                    # Wenn 'build', 'chipFamily' und 'stage' vorhanden sind, füge sie zum Dictionary hinzu
-                    if build is not None and chipFamily in archs and stage is not None:
-                        if chipFamily not in versions:
-                            versions[chipFamily] = {}
-                        if stage not in versions[chipFamily]:
-                            versions[chipFamily][stage] = []
-                        versions[chipFamily][stage].append({
-                            'build': build,
-                            'path': dirpath
-                        })
-            
-            except json.JSONDecodeError:
-                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
-            except Exception as e:
-                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
+    # Durchlaufe alle Einträge in der 'versions.json' Datei
+    for entry in versions_data:
+        # Extrahiere 'build' und 'path' falls vorhanden
+        build = entry.get('build', None)
+        path = entry.get('path', None)
+        
+        # Wenn 'build' und 'path' vorhanden sind, füge sie zum Dictionary hinzu
+        if build is not None and path is not None:
+            path = os.path.dirname(path)
+            if build not in versions:
+                versions[build] = []
+            versions[build].append(path)
     
-    # Durchlaufe alle 'chipFamily' und 'stage' im Dictionary
-    for chipFamily, stages in versions.items():
-        for stage, builds in stages.items():
-            # Sortiere die 'build' Nummern aufsteigend
-            builds.sort(key=lambda x: x['build'])
-            # Lösche alle 'build' Nummern, die nicht in den ersten 'keepVersions' enthalten sind
-            for build in builds[:-keepVersions]:
-                logging.info(f"Lösche {build['path']}")
-                # Lösche den Ordner
-                #shutil.rmtree(build['path'])    
-                logging.info(f"{build['path']} gelöscht")
-
-
-def deleteVersions2(root: str, keepVersions: int): 
-    """
-    Ermittelt aus allen manifest.json Dateien die Werte für 'chipFamily' in ein Array.
-    Pro 'chipFamily' wird die Funktion 'deleteVersions' aufgerufen.
-
-    <b>Parameter:</b>
-        keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
-        root (string): das Root verzeichnis über welches iteriert werden soll
-    
-    <b>Rückgabewert:</b>
-        keiner
-    """
-
-    archs = []
-    # Durchlaufe alle Unterverzeichnisse im angegebenen Verzeichnis
-    for dirpath, dirnames, filenames in os.walk(root):
-        # Prüfe, ob eine 'manifest.json' Datei im aktuellen Verzeichnis existiert
-        if 'manifest.json' in filenames:
-            manifest_path = os.path.join(dirpath, 'manifest.json')
-            
-            try:
-                # Öffne und lade die JSON-Daten aus der Datei
-                with open(manifest_path, 'r', encoding='utf-8') as file:
-                    manifest_data = json.load(file)
-                    
-                    # Extrahiere 'chipFamily' falls vorhanden
-                    chipFamily = manifest_data.get('chipFamily', None)
-                    
-                    # Wenn 'chipFamily' vorhanden ist, füge sie zum Array hinzu
-                    if chipFamily is not None:
-                        archs.append(chipFamily)
-            
-            except json.JSONDecodeError:
-                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
-            except Exception as e:
-                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
-    
-    # Entferne doppelte Einträge
-    archs = list(set(archs))
-    
-    # Durchlaufe alle 'chipFamily' im Array
-    for arch in archs:
-        deleteVersions(root, [arch], keepVersions)
+    # Sortiere die 'build' Nummern aufsteigend
+    sorted_builds = sorted(versions.keys())
+    logging.info(f"Folgende Build Nummern wurden gefunden: {sorted_builds}")
+    # Lösche alle 'build' Nummern, die nicht in den ersten 'keepVersions' enthalten sind
+    for build in sorted_builds[:-keepVersions]:
+        for path in versions[build]:
+            # Lösche den Ordner
+            shutil.rmtree(f'web-installer/{path}')
+            logging.info(f"{path} gelöscht")
