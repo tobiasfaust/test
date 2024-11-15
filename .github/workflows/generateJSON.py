@@ -50,8 +50,8 @@ for root, _, files in os.walk(args.binarypath):
         if file == 'firmware.bin':
             FILENAME = os.path.splitext(file)[0]
             FILEEXT = os.path.splitext(file)[1][1:]
-            FIRMWARENAME = os.path.basename(args.binarypath)
-
+            FIRMWARENAME = args.binarypath.split(os.sep)[-2]  # get the name of the firmware folder
+            
             BINARYFILENAME = f"{FILENAME}.{args.arch}.v{VERSION}-{args.build}.{args.stage}"
             DOWNLOADURL = f"https://tobiasfaust.github.io/{args.repository}/firmware/{BINARYFILENAME}.{FILEEXT}"
 
