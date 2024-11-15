@@ -15,19 +15,19 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
     # Benennen die Verzeichnisse um, die noch ein zip (-> Artifacts) als Endung haben
     renameDirs(args.VersDir)
 
-    # erstelle das Manifest.json aller ESP Architekturen im Hauptverzeichnis der Version
+    # erstelle das 'manifest.json' aller ESP Architekturen im Hauptverzeichnis der Version
     process_manifests(args.VersDir)
 
-    # Suche nach manifest.json-Dateien und extrahiere die relevanten Informationen
+    # Suche nach 'manifest.json'-Dateien und extrahiere daraus die Daten für die 'versions.json'
     extracted_data = search_manifests_and_extract_version(args.FwDir)
 
     # Lösche die ältesten Versionen
-    deleteVersions(args.FwDir, 2, extracted_data)
+    deleteVersions(args.FwDir, 6, extracted_data)
 
     # lade die Versionen erneut
     extracted_data = search_manifests_and_extract_version(args.FwDir)
 
-    # Wenn Daten extrahiert wurden, speichere sie in einer neuen JSON-Datei
+    # Wenn Daten extrahiert wurden, speichere sie in der JSON-Datei 'versions.json'
     if extracted_data:
         save_results_to_json(extracted_data, os.path.join(args.FwDir, 'versions.json'))
     else:
