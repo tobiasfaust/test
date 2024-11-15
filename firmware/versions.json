@@ -1,33 +1,9 @@
 [
     {
-        "path": "firmware/v2.5.0-231-development/manifest_all.json",
-        "version": "v2.5.0-231",
+        "path": "firmware/v2.5.0-237-development/manifest_all.json",
+        "version": "v2.5.0-237",
         "stage": "development",
-        "build": 231
-    },
-    {
-        "path": "firmware/v2.5.0-233-development/manifest_all.json",
-        "version": "v2.5.0-233",
-        "stage": "development",
-        "build": 233
-    },
-    {
-        "path": "firmware/v2.5.0-235-development/manifest_all.json",
-        "version": "v2.5.0-235",
-        "stage": "development",
-        "build": 235
-    },
-    {
-        "path": "firmware/v--development/manifest_all.json",
-        "version": "v2.5.0-228",
-        "stage": "development",
-        "build": 228
-    },
-    {
-        "path": "firmware/v2.5.0-234-development/manifest_all.json",
-        "version": "v2.5.0-234",
-        "stage": "development",
-        "build": 234
+        "build": 237
     },
     {
         "path": "firmware/v2.5.0-236-development/manifest_all.json",
