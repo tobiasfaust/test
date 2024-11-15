@@ -25,6 +25,11 @@
         "stage": "development"
     },
     {
+        "path": "firmware/v2.5.0-233-development/manifest_all.json",
+        "version": "v2.5.0-233",
+        "stage": "development"
+    },
+    {
         "path": "firmware/v2.5.0-222-development/manifest_all.json",
         "version": "v2.5.0-222",
         "stage": "development"
