@@ -16,10 +16,6 @@
                     "offset": 32768
                 },
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-243.development.bin",
-                    "offset": 3473408
-                },
-                {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-243.development.bin",
                     "offset": 65536
                 }
@@ -35,10 +31,6 @@
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-243.development.bin",
                     "offset": 32768
-                },
-                {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-243.development.bin",
-                    "offset": 3473408
                 },
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-243.development.bin",
@@ -58,10 +50,6 @@
                     "offset": 32768
                 },
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-243.development.bin",
-                    "offset": 3473408
-                },
-                {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-243.development.bin",
                     "offset": 65536
                 }
@@ -77,10 +65,6 @@
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32/partitions.ESP32.v2.5.1-243.development.bin",
                     "offset": 32768
-                },
-                {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32/littlefs.ESP32.v2.5.1-243.development.bin",
-                    "offset": 3473408
                 },
                 {
                     "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-243-development/firmware_ESP32/firmware.ESP32.v2.5.1-243.development.bin",
