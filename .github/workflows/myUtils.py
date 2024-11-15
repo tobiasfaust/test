@@ -177,6 +177,8 @@ def deleteVersions(root: str, archs: list, keepVersions: int):
     <b>Rückgabewert:</b>
         keiner
     """
+    logging.info(f"Lösche alle Versionen außer den letzten {keepVersions} Versionen für {archs}")
+    
     # Dictionary zum Speichern der 'build' Nummern und der Pfadangabe
     versions = {}
     
