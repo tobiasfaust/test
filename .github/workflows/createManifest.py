@@ -28,9 +28,10 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
         print("Keine relevanten 'manifest_all.json' Dateien gefunden.")
 
     # Lösche die ältesten Versionen, wenn mehr als 5 Versionen vorhanden sind
-    deleteVersions(args.FwDir, ['ESP8266'], 3) # nur 3 Versionen für ESP8266
-    deleteVersions2(args.FwDir, 6) # alle anderen Versionen auf 6 Versionen beschränken
+    #deleteVersions(args.FwDir, ['ESP8266'], 3) # nur 3 Versionen für ESP8266
+    #deleteVersions2(args.FwDir, 6) # alle anderen Versionen auf 6 Versionen beschränken
     
+    deleteVersions(args.FwDir, ['ESP32'], 6)
     
 else:
     print(f"Der Pfad {args.VersDir} oder {args.FwDir} ist nicht verfügbar")

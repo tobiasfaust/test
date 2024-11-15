@@ -125,14 +125,16 @@ def search_manifests_and_extract_version(root: str) -> list :
                     # Extrahiere 'version' und 'stage' falls vorhanden
                     version = manifest_data.get('version', None)
                     stage = manifest_data.get('stage', None)
-                    
-                    # Falls sowohl 'version' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
+                    build = manifest_data.get('build', None)
+
+                    # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
                     # entferne den root-folder "web-installer" aus dem Pfad
                     if version is not None and stage is not None:
                         results.append({
                             'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
                             'version': version,
-                            'stage': stage
+                            'stage': stage,
+                            'build': build
                         })
             
             except json.JSONDecodeError:
@@ -177,7 +179,7 @@ def deleteVersions(root: str, archs: list, keepVersions: int):
     <b>Rückgabewert:</b>
         keiner
     """
-    logging.info(f"Lösche alle Versionen außer den letzten {keepVersions} Versionen für {archs}")
+    logging.info(f"Lösche alle Versionen für {archs}, behalte die letzten {keepVersions} Versionen")
     
     # Dictionary zum Speichern der 'build' Nummern und der Pfadangabe
     versions = {}
@@ -187,7 +189,7 @@ def deleteVersions(root: str, archs: list, keepVersions: int):
         # Prüfe, ob eine 'manifest.json' Datei im aktuellen Verzeichnis existiert
         if 'manifest.json' in filenames:
             manifest_path = os.path.join(dirpath, 'manifest.json')
-            
+            logging.info(f"Verarbeite {manifest_path}")
             try:
                 # Öffne und lade die JSON-Daten aus der Datei
                 with open(manifest_path, 'r', encoding='utf-8') as file:
