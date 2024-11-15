@@ -1,0 +1,9 @@
+{
+  "name": "Release 2.5.0-development",
+  "version": "2.5.0",
+  "subversion": "201",
+  "number": 250201,
+  "stage": "development",
+  "arch": "ESP32",
+  "download-url": "https://tobiasfaust.github.io/test/firmware/firmware.ESP32.v2.5.0-201.development.bin"
+}
