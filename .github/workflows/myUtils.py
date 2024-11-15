@@ -1,5 +1,9 @@
-import os
+import os, shutil
 import json
+import logging
+
+# Konfigurieren des Loggings
+logging.basicConfig(level=logging.INFO)
 
 def renameDirs(root: str) -> None:
     """
@@ -22,7 +26,7 @@ def renameDirs(root: str) -> None:
                 new_dirpath = os.path.join(dirpath, new_dirname)
                 # Benenne das Verzeichnis um
                 os.rename(old_dirpath, new_dirpath)
-                print(f"Verzeichnis umbenannt: {old_dirpath} -> {new_dirpath}")
+                logging.info(f"Verzeichnis umbenannt: {old_dirpath} -> {new_dirpath}")
 
 
 def process_manifests(root: str) -> None:
@@ -79,9 +83,9 @@ def process_manifests(root: str) -> None:
                         })
                         
             except json.JSONDecodeError:
-                print(f"Warnung: Fehler beim Parsen der JSON-Datei {manifest_path}.")
+                logging.warning(f"Warnung: Fehler beim Parsen der JSON-Datei {manifest_path}.")
             except Exception as e:
-                print(f"Fehler beim Verarbeiten der Datei {manifest_path}: {e}")
+                logging.error(f"Fehler beim Verarbeiten der Datei {manifest_path}: {e}")
     
     if manifest_path :
         # Der Pfad für die neue 'manifest_all.json' Datei
@@ -92,7 +96,7 @@ def process_manifests(root: str) -> None:
         with open(new_manifest_path, 'w', encoding='utf-8') as new_file:
             json.dump(new_manifest_data, new_file, indent=4, ensure_ascii=False)
                             
-        print(f"Manifest-Daten erfolgreich in {new_manifest_path} gespeichert.")
+        logging.info(f"Manifest-Daten erfolgreich in {new_manifest_path} gespeichert.")
             
 
 def search_manifests_and_extract_version(root: str) -> list :
@@ -132,27 +136,135 @@ def search_manifests_and_extract_version(root: str) -> list :
                         })
             
             except json.JSONDecodeError:
-                print(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
+                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
             except Exception as e:
-                print(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
+                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
     
     return results
 
 
 # Funktion zum Speichern der extrahierten Daten in einer neuen JSON-Datei
 def save_results_to_json(results, output_file):
+    """
+    Speichert die extrahierten Daten in einer neuen JSON-Datei.
+
+    <b>Parameter:</b>
+        results (dict): Die zu speichernden Ergebnisse.
+        output_file (str): Der Pfad zur Ausgabedatei.
+
+    <b>Rückgabewert:</b>
+        keiner
+    """
     try:
         with open(output_file, 'w', encoding='utf-8') as outfile:
             json.dump(results, outfile, indent=4, ensure_ascii=False)
-        print(f"Ergebnisse wurden in {output_file} gespeichert.")
+        logging.info(f"Ergebnisse wurden in {output_file} gespeichert.")
     except Exception as e:
-        print(f"Fehler beim Speichern der Ergebnisse: {e}")
+        logging.error(f"Fehler beim Speichern der Ergebnisse: {e}")
 
 
-# funktion zum kopieren von dateien, je nach OS
-def copyFile(src, dst):
-    '''Copy file from src to dst'''
-    if os.name == 'nt':
-        os.system(f"copy {src} {dst} > nul 2>&1")
-    else:
-        os.system(f"cp {src} {dst} > nul 2>&1")
+def deleteVersions(root: str, archs: list, keepVersions: int):
+    """
+    Ermittelt aus allen manifest.json dateien die Werte für "build", 'chipFamily' und 'stage' sowie dessen Pfad.
+    Pro 'chipFamily' und 'stage' werden die 'build' nummern zusammen mit der Pfadangabe in einem Array aufstigend sortiert.
+    Die ersten 'keepversions' der'build's werden behalten, alle anderen dazugehörigen Folder werden gelöscht.
+
+    <b>Parameter:</b>
+        archs (list): LIste von Architekturen, für die die Build´s gelöscht werden sollen
+        keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
+        root (string): das Root verzeichnis über welches iteriert werden soll
+
+    <b>Rückgabewert:</b>
+        keiner
+    """
+    # Dictionary zum Speichern der 'build' Nummern und der Pfadangabe
+    versions = {}
+    
+    # Durchlaufe alle Unterverzeichnisse im angegebenen Verzeichnis
+    for dirpath, dirnames, filenames in os.walk(root):
+        # Prüfe, ob eine 'manifest.json' Datei im aktuellen Verzeichnis existiert
+        if 'manifest.json' in filenames:
+            manifest_path = os.path.join(dirpath, 'manifest.json')
+            
+            try:
+                # Öffne und lade die JSON-Daten aus der Datei
+                with open(manifest_path, 'r', encoding='utf-8') as file:
+                    manifest_data = json.load(file)
+                    
+                    # Extrahiere 'build', 'chipFamily' und 'stage' falls vorhanden
+                    build = manifest_data.get('build', None)
+                    chipFamily = manifest_data.get('chipFamily', None)
+                    stage = manifest_data.get('stage', None)
+                    
+                    # Wenn 'build', 'chipFamily' und 'stage' vorhanden sind, füge sie zum Dictionary hinzu
+                    if build is not None and chipFamily in archs and stage is not None:
+                        if chipFamily not in versions:
+                            versions[chipFamily] = {}
+                        if stage not in versions[chipFamily]:
+                            versions[chipFamily][stage] = []
+                        versions[chipFamily][stage].append({
+                            'build': build,
+                            'path': dirpath
+                        })
+            
+            except json.JSONDecodeError:
+                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
+            except Exception as e:
+                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
+    
+    # Durchlaufe alle 'chipFamily' und 'stage' im Dictionary
+    for chipFamily, stages in versions.items():
+        for stage, builds in stages.items():
+            # Sortiere die 'build' Nummern aufsteigend
+            builds.sort(key=lambda x: x['build'])
+            # Lösche alle 'build' Nummern, die nicht in den ersten 'keepVersions' enthalten sind
+            for build in builds[:-keepVersions]:
+                logging.info(f"Lösche {build['path']}")
+                # Lösche den Ordner
+                #shutil.rmtree(build['path'])    
+                logging.info(f"{build['path']} gelöscht")
+
+
+def deleteVersions(root: str, keepVersions: int): 
+    """
+    Ermittelt aus allen manifest.json Dateien die Werte für 'chipFamily' in ein Array.
+    Pro 'chipFamily' wird die Funktion 'deleteVersions' aufgerufen.
+
+    <b>Parameter:</b>
+        keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
+        root (string): das Root verzeichnis über welches iteriert werden soll
+    
+    <b>Rückgabewert:</b>
+        keiner
+    """
+
+    archs = []
+    # Durchlaufe alle Unterverzeichnisse im angegebenen Verzeichnis
+    for dirpath, dirnames, filenames in os.walk(root):
+        # Prüfe, ob eine 'manifest.json' Datei im aktuellen Verzeichnis existiert
+        if 'manifest.json' in filenames:
+            manifest_path = os.path.join(dirpath, 'manifest.json')
+            
+            try:
+                # Öffne und lade die JSON-Daten aus der Datei
+                with open(manifest_path, 'r', encoding='utf-8') as file:
+                    manifest_data = json.load(file)
+                    
+                    # Extrahiere 'chipFamily' falls vorhanden
+                    chipFamily = manifest_data.get('chipFamily', None)
+                    
+                    # Wenn 'chipFamily' vorhanden ist, füge sie zum Array hinzu
+                    if chipFamily is not None:
+                        archs.append(chipFamily)
+            
+            except json.JSONDecodeError:
+                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
+            except Exception as e:
+                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
+    
+    # Entferne doppelte Einträge
+    archs = list(set(archs))
+    
+    # Durchlaufe alle 'chipFamily' im Array
+    for arch in archs:
+        deleteVersions(root, [arch], keepVersions)

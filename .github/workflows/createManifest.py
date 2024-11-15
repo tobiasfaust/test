@@ -26,5 +26,11 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
         save_results_to_json(extracted_data, os.path.join(args.FwDir, 'versions.json'))
     else:
         print("Keine relevanten 'manifest_all.json' Dateien gefunden.")
+
+    # Lösche die ältesten Versionen, wenn mehr als 5 Versionen vorhanden sind
+    deleteVersions(args.FwDir, ['ESP8266'], 3) # nur 3 Versionen für ESP8266
+    deleteVersions(args.FwDir, 6) # alle anderen Versionen auf 6 Versionen beschränken
+    
+    
 else:
     print(f"Der Pfad {args.VersDir} oder {args.FwDir} ist nicht verfügbar")

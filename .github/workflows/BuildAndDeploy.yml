@@ -28,7 +28,7 @@ jobs:
 
     outputs:
       fw_version: ${{ steps.json_params.outputs.version }}
-      fw_subversion: ${{ steps.json_params.outputs.subversion }}
+      fw_build: ${{ steps.json_params.outputs.build }}
 
     strategy:
       matrix:
@@ -42,14 +42,19 @@ jobs:
         include:
           - variant: firmware_ESP32
             architecture: ESP32
+            subvariant: standard
           - variant: firmware_ESP32-S2
             architecture: ESP32-S2
+            subvariant: standard
           - variant: firmware_ESP32-S3
             architecture: ESP32-S3
+            subvariant: standard
           - variant: firmware_ESP32-C3
             architecture: ESP32-C3
+            subvariant: standard
 #          - variant: firmware_ESP32.WebSerial
-#            architecture: ESP32_dbg
+#            architecture: ESP32
+#            subvariant: webSerial
             
     steps:
       - name: checkout repository
@@ -71,17 +76,17 @@ jobs:
           platformio run -e ${{ matrix.variant }}
           platformio run --target buildfs -e ${{ matrix.variant }}
 
-      - name: Build merged Firmware
-        run: |
-          esptool.py --chip ${{ matrix.architecture }} merge_bin \
-            --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \
-            --flash_mode dio \
-            --flash_freq 40m \
-            --flash_size 4MB \
-            0x1000 .pio/build/${{ matrix.variant }}/bootloader.bin \
-            0x8000 .pio/build/${{ matrix.variant }}/partitions.bin \
-            0x10000 .pio/build/${{ matrix.variant }}/firmware.bin \
-            0x350000 .pio/build/${{ matrix.variant }}/littlefs.bin
+#      - name: Build merged Firmware
+#        run: |
+#          esptool.py --chip ${{ matrix.architecture }} merge_bin \
+#            --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \
+#            --flash_mode dio \
+#            --flash_freq 40m \
+#            --flash_size 4MB \
+#            0x1000 .pio/build/${{ matrix.variant }}/bootloader.bin \
+#            0x8000 .pio/build/${{ matrix.variant }}/partitions.bin \
+#            0x10000 .pio/build/${{ matrix.variant }}/firmware.bin \
+#            0x350000 .pio/build/${{ matrix.variant }}/littlefs.bin
 
       - name: Display generated files
         run: |
@@ -93,12 +98,13 @@ jobs:
           mkdir -p release artifacts
           python .github/workflows/generateJSON.py \
                 --arch ${{ matrix.architecture }} \
+                --variant ${{ matrix.subvariant }} \
                 --stage ${{ env.BRANCH_NAME }} \
-                --repositoryname ${{ env.REPOSITORY }} \
+                --repository ${{ env.REPOSITORY }} \
                 --binarypath .pio/build/${{ matrix.variant }}/ \
                 --releasepath release \
                 --artifactpath artifacts \
-                --subversion ${{ github.run_number }} \
+                --build ${{ github.run_number }} \
                 --releasefile include/_Release.h   \
                 >> "$GITHUB_OUTPUT"   
 
@@ -127,7 +133,7 @@ jobs:
     env:
       REPOSITORY: ${{ github.event.repository.name }}
       BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
-      VersDir: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ github.base_ref || github.ref_name }}"
+      VersDir: "web-installer/firmware/v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_build }}-${{ github.base_ref || github.ref_name }}"
       FwDir: "web-installer/firmware"
 
     steps:
@@ -156,7 +162,7 @@ jobs:
 
       - name: Display generated files
         run: |
-          ls -laR ./
+          ls -R ./
 
       - name: Handle Manifest JSON
         run: |
@@ -169,13 +175,13 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add *
-          git commit -m "neue Firmware v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_subversion }}-${{ env.BRANCH_NAME }}"
+          git commit -m "neue Firmware v${{ needs.build.outputs.fw_version }}-${{ needs.build.outputs.fw_build }}-${{ env.BRANCH_NAME }}"
           git push origin web-installer  
 
 
   create_Release:
     needs: [build]
-
+    
     runs-on: ubuntu-latest
     if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
     
