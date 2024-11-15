@@ -6,6 +6,12 @@
         "build": 237
     },
     {
+        "path": "firmware/v2.5.0-238-development/manifest_all.json",
+        "version": "v2.5.0-238",
+        "stage": "development",
+        "build": 238
+    },
+    {
         "path": "firmware/v2.5.0-236-development/manifest_all.json",
         "version": "v2.5.0-236",
         "stage": "development",
