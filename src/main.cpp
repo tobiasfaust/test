@@ -9,6 +9,7 @@
 
 //ethernet* LAN;
 
+// https://github.com/jnthas/improv-wifi-demo/blob/main/src/esp32-wifiimprov/esp32-wifiimprov.ino
 //*** Improv
 #define MAX_ATTEMPTS_WIFI_CONNECTION 20
 uint8_t x_buffer[16];
