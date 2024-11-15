@@ -1,8 +1,8 @@
 import os, shutil
 import json
 import logging
-
-# Konfigurieren des Loggings
+ 
+# Konfigurieren des Loggings 
 logging.basicConfig(level=logging.INFO)
 
 def read_json_file(file) -> dict:
