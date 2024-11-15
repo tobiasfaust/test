@@ -1,3 +1,6 @@
+Release 2.5.1:
+  - test Improve-Wifi
+
 Release 2.5.0:  
   - change 11
   - feature 12
