@@ -22,7 +22,7 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
     extracted_data = search_manifests_and_extract_version(args.FwDir)
 
     # Lösche die ältesten Versionen
-    deleteVersions(args.FwDir, 6, extracted_data)
+    deleteVersions(args.FwDir, 2, extracted_data)
 
     # lade die Versionen erneut
     extracted_data = search_manifests_and_extract_version(args.FwDir)

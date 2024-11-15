@@ -69,8 +69,7 @@ for root, _, files in os.walk(args.binarypath):
                 print(f"\n\nEcho json string")
                 print(json.dumps(json_data, indent=2))
 
-            with open(os.path.join(args.releasepath, f"{BINARYFILENAME}.json"), 'w') as json_file:
-                json.dump(json_data, json_file, indent=2)
+            save_results_to_json(json_data, os.path.join(args.releasepath, f"{BINARYFILENAME}.json"))   
             shutil.copyfile(os.path.join(root, file), os.path.join(args.releasepath, f'{BINARYFILENAME}.{FILEEXT}'))
             
             ################ Create Manifest ##################
@@ -109,10 +108,8 @@ for root, _, files in os.walk(args.binarypath):
                 print(f"\n\nEcho Manifest string")
                 print(json.dumps(manifest_data, indent=2))
 
-            with open(os.path.join(args.releasepath, "manifest.json"), 'w') as manifest_file:
-                json.dump(manifest_data, manifest_file, indent=2)
-            with open(os.path.join(args.artifactpath, "manifest.json"), 'w') as manifest_file:
-                json.dump(manifest_data, manifest_file, indent=2)
+            save_results_to_json(manifest_data, os.path.join(args.releasepath, "manifest.json"))
+            save_results_to_json(manifest_data, os.path.join(args.artifactpath, "manifest.json"))
 
 # process the rest of binaries into ARTIFACTPATH
 for root, _, files in os.walk(args.binarypath):

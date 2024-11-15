@@ -5,6 +5,31 @@ import logging
 # Konfigurieren des Loggings
 logging.basicConfig(level=logging.INFO)
 
+def read_json_file(file) -> dict:
+    """
+    Liest eine JSON-Datei und gibt die Daten zurück.
+
+    <b>Parameter:</b>
+        file_path (str): Der Pfad zur JSON-Datei.
+
+    <b>Rückgabewert:</b>
+        dict: Die gelesenen JSON-Daten.
+    """
+    if os.path.isfile(file):
+        try:
+            with open(file, 'r', encoding='utf-8') as file:
+                return json.load(file)
+        except json.JSONDecodeError:
+            logging.error(f"Warnung: Kann die JSON-Datei nicht lesen: {file}")
+        except Exception as e:
+            logging.error(f"Fehler beim Verarbeiten von {file}: {e}")
+        return None
+    else:
+        logging.error(f"Warnung: Datei {file} nicht gefunden.")
+        return None
+
+
+
 def renameDirs(root: str) -> None:
     """
     Iteriert über alle Verzeichnisse im angegebenen Zielverzeichnis
@@ -51,8 +76,8 @@ def process_manifests(root: str) -> None:
 
             try:
                 # Öffne und lade die JSON-Daten aus der 'manifest.json' Datei
-                with open(manifest_path, 'r', encoding='utf-8') as file:
-                    manifest_data = json.load(file)
+                manifest_data = read_json_file(manifest_path)
+                if manifest_data is not None:
                     if headerIsWritten is False:
                         # Extrahiere die relevanten Informationen: 'name', 'chipFamily', 'version', 'stage' und 'parts'
                         name = manifest_data.get('name')
@@ -93,8 +118,7 @@ def process_manifests(root: str) -> None:
         new_manifest_path = os.path.join(parent_dir, 'manifest_all.json')
                             
         # Schreibe die neue JSON-Datei
-        with open(new_manifest_path, 'w', encoding='utf-8') as new_file:
-            json.dump(new_manifest_data, new_file, indent=4, ensure_ascii=False)
+        save_results_to_json(new_manifest_data, new_manifest_path)
                             
         logging.info(f"Manifest-Daten erfolgreich in {new_manifest_path} gespeichert.")
             
@@ -119,8 +143,8 @@ def search_manifests_and_extract_version(root: str) -> list :
             
             try:
                 # Öffne und lade die JSON-Daten aus der Datei
-                with open(manifest_path, 'r', encoding='utf-8') as file:
-                    manifest_data = json.load(file)
+                manifest_data = read_json_file(manifest_path)
+                if manifest_data is not None:
                     
                     # Extrahiere 'version' und 'stage' falls vorhanden
                     version = manifest_data.get('version', None)
@@ -183,18 +207,9 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
     if versions is None:
         # Lade die 'versions.json' Datei
         versions_file = os.path.join(root, 'versions.json')
-        if os.path.isfile(versions_file):
-            try:
-                with open(versions_file, 'r', encoding='utf-8') as file:
-                    versions_data = json.load(file)
-            except json.JSONDecodeError:
-                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {versions_file}")
-                return
-            except Exception as e:
-                logging.error(f"Fehler beim Verarbeiten von {versions_file}: {e}")
-                return
-        else:
-            logging.warning(f"Warnung: Datei {versions_file} nicht gefunden.")
+        versions_data = read_json_file(versions_file)
+        if versions_data is None:
+            logging.error(f"Fehler beim Veraarbeiten der Datei {versions_file}")
             return
     else:
         versions_data = versions
