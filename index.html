@@ -13,8 +13,8 @@
     <script  type = "text/javascript"  src="javascript.js"></script>
   </head>
   <body>
-    <div class="content">
-      <h2>Welcome to the SolaxModbusGateway web installer!</h2>
+    <h2>Welcome to the SolaxModbusGateway web installer!</h2>
+    <div class="flasher">
       <ol>
         <li>Plug in your ESP to a USB port. We will install the SolaxModbusGateway to it.</li>
         <li id="coms">Hit "Install" and select the correct COM port. <a onclick="showSerialHelp()">No device found?</a></li>
@@ -22,18 +22,35 @@
       </ol>
       <br><br>
       
-      <p align="center">
-        <esp-web-install-button
-          manifest="https://tobiasfaust.github.io/test/manifest.json">
-        </esp-web-install-button>
-      </p>
+      <select id="versions" class="btn" onchange="resetCheckboxes();setManifest();">
 
-      <div class="footer">
-        <a href="https://github.com/tobiasfaust/SolaxModbusGateway" target="_blank">GitHub</a>
-        &mdash;
-        <a href="https://github.com/tobiasfaust/SolaxModbusGateway/wiki" target="_blank">WiKi</a>
-        <p></p>
-        Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
+      </select>
+      <br>
+      <div class="radio" onchange="setManifest()">
+        <input class="radio__input" type="radio" value="Standard" name="version" id="standard" checked>
+        <label class="radio__label" for="standard" id="standard_label">Standard</label>
+        <input class="radio__input" type="radio" value="Webserial" name="version" id="webserial">
+        <label class="radio__label" for="webserial" id="webserial_label">Webserial</label>
+      </div>
+
+      <br>
+      <div class="container inst-button">
+        <esp-web-install-button
+          id="web-install-button"
+          manifest=""
+        >
+          <button class="btn" slot="activate">Install</button>
+        </esp-web-install-button>
+      <br>
+
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/tobiasfaust/SolaxModbusGateway" target="_blank">GitHub</a>
+      &mdash;
+      <a href="https://github.com/tobiasfaust/SolaxModbusGateway/wiki" target="_blank">WiKi</a>
+      <p></p>
+      Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
     </div>
     
   </body>
