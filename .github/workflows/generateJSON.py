@@ -1,5 +1,8 @@
-import os, shutil, sys, json, argparse
+import os, shutil, sys, json, argparse, logging
 from myUtils import *
+
+# Konfigurieren des Loggings
+logging.basicConfig(level=logging.INFO)
 
 # Argument parser
 parser = argparse.ArgumentParser(description='Generate JSON and handle binaries.')
@@ -18,23 +21,23 @@ args = parser.parse_args()
 
 # Echo input parameter
 if args.debug:
-    print(f"\n\nEcho input parameter")
-    print(f"REPOSITORYNAME={args.repository}")
-    print(f"BUILDNUMMER={args.build}")
-    print(f"STAGE={args.stage}")
-    print(f"BINARYPATH={args.binarypath}")
-    print(f"RELEASEPATH={args.releasepath}")
-    print(f"ARCHITECTURE={args.arch}")
-    print(f"RELEASEFILE={args.releasefile}")
-    print(f"ARTIFACTPATH={args.artifactpath}")
-    print(f"DEBUG={args.debug}")
+    logging.info(f"\n\nEcho input parameter")
+    logging.info(f"REPOSITORYNAME={args.repository}")
+    logging.info(f"BUILDNUMMER={args.build}")
+    logging.info(f"STAGE={args.stage}")
+    logging.info(f"BINARYPATH={args.binarypath}")
+    logging.info(f"RELEASEPATH={args.releasepath}")
+    logging.info(f"ARCHITECTURE={args.arch}")
+    logging.info(f"RELEASEFILE={args.releasefile}")
+    logging.info(f"ARTIFACTPATH={args.artifactpath}")
+    logging.info(f"DEBUG={args.debug}")
 
 if args.binarypath is not None and not os.path.isdir(args.binarypath):
-    print(f"\n\nBinarypath {args.binarypath} not found\n")
+    logging.error(f"\n\nBinarypath {args.binarypath} not found\n")
     sys.exit()
 
 if args.releasefile is not None and not os.path.isfile(args.releasefile):
-    print(f"\n\nReleasefile {args.releasefile} not found\n")
+    logging.error(f"\n\nReleasefile {args.releasefile} not found\n")
     sys.exit()
 
 os.makedirs(args.releasepath, exist_ok=True)
@@ -66,8 +69,8 @@ for root, _, files in os.walk(args.binarypath):
             }
 
             if args.debug:
-                print(f"\n\nEcho json string")
-                print(json.dumps(json_data, indent=2))
+                logging.info(f"\n\nEcho json string")
+                logging.info(json.dumps(json_data, indent=2))
 
             save_results_to_json(json_data, os.path.join(args.releasepath, f"{BINARYFILENAME}.json"))   
             shutil.copyfile(os.path.join(root, file), os.path.join(args.releasepath, f'{BINARYFILENAME}.{FILEEXT}'))
@@ -85,7 +88,7 @@ for root, _, files in os.walk(args.binarypath):
             if os.path.isfile(os.path.join(args.binarypath, "bootloader.bin")):
                 manifest_data["parts"].append({
                     "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/bootloader.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
-                    "offset": 4096
+                    "offset": 0
                 })
             if os.path.isfile(os.path.join(args.binarypath, "partitions.bin")):
                 manifest_data["parts"].append({
@@ -105,8 +108,8 @@ for root, _, files in os.walk(args.binarypath):
             })
 
             if args.debug:
-                print(f"\n\nEcho Manifest string")
-                print(json.dumps(manifest_data, indent=2))
+                logging.info(f"\n\nEcho Manifest string")
+                logging.info(json.dumps(manifest_data, indent=2))
 
             save_results_to_json(manifest_data, os.path.join(args.releasepath, "manifest.json"))
             save_results_to_json(manifest_data, os.path.join(args.artifactpath, "manifest.json"))
