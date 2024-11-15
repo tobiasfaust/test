@@ -225,7 +225,7 @@ def deleteVersions(root: str, archs: list, keepVersions: int):
                 logging.info(f"{build['path']} gelöscht")
 
 
-def deleteVersions(root: str, keepVersions: int): 
+def deleteVersions2(root: str, keepVersions: int): 
     """
     Ermittelt aus allen manifest.json Dateien die Werte für 'chipFamily' in ein Array.
     Pro 'chipFamily' wird die Funktion 'deleteVersions' aufgerufen.

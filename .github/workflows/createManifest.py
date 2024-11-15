@@ -29,7 +29,7 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
 
     # Lösche die ältesten Versionen, wenn mehr als 5 Versionen vorhanden sind
     deleteVersions(args.FwDir, ['ESP8266'], 3) # nur 3 Versionen für ESP8266
-    deleteVersions(args.FwDir, 6) # alle anderen Versionen auf 6 Versionen beschränken
+    deleteVersions2(args.FwDir, 6) # alle anderen Versionen auf 6 Versionen beschränken
     
     
 else:

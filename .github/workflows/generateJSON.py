@@ -1,8 +1,4 @@
-import os
-import sys
-import json
-import argparse
-import shutil
+import os, shutil, sys, json, argparse
 from myUtils import *
 
 # Argument parser
