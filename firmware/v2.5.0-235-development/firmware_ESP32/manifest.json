@@ -1,0 +1,25 @@
+{
+  "name": "Release 2.5.0-development",
+  "chipFamily": "ESP32",
+  "stage": "development",
+  "build": "235",
+  "version": "v2.5.0-235",
+  "parts": [
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-235-development//bootloader.ESP32.v2.5.0-235.development.bin",
+      "offset": 4096
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-235-development//partitions.ESP32.v2.5.0-235.development.bin",
+      "offset": 32768
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-235-development//littlefs.ESP32.v2.5.0-235.development.bin",
+      "offset": 3473408
+    },
+    {
+      "path": "https://tobiasfaust.github.io/test/firmware/v2.5.0-235-development//firmware.ESP32.v2.5.0-235.development.bin",
+      "offset": 65536
+    }
+  ]
+}
