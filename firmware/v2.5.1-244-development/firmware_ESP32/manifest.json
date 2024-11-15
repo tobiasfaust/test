@@ -1,0 +1,25 @@
+{
+    "name": "Release 2.5.1-development",
+    "chipFamily": "ESP32",
+    "stage": "development",
+    "build": 244,
+    "version": "v2.5.1-244",
+    "parts": [
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-244-development/firmware_ESP32/bootloader.ESP32.v2.5.1-244.development.bin",
+            "offset": 0
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-244-development/firmware_ESP32/partitions.ESP32.v2.5.1-244.development.bin",
+            "offset": 32768
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-244-development/firmware_ESP32/littlefs.ESP32.v2.5.1-244.development.bin",
+            "offset": 3473408
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-244-development/firmware_ESP32/firmware.ESP32.v2.5.1-244.development.bin",
+            "offset": 65536
+        }
+    ]
+}
