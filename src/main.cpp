@@ -163,6 +163,8 @@ bool onCommandCallback(improv::ImprovCommand cmd) {
      
       set_state(improv::STATE_PROVISIONING);
       
+      Serial.printf("Try to connect to: %s (%s)\n", cmd.ssid.c_str(), cmd.password.c_str());
+
       if (connectWifi(cmd.ssid, cmd.password)) {
 
         blink_led(100, 3);
