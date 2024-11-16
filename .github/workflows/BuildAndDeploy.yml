@@ -20,7 +20,7 @@ on:
 jobs:
     
   build:
-    name: BuildAndDeploy-${{ matrix.variant }}
+    name: BuildAndDeploy-${{ matrix.variant.firmware }}
     runs-on: ubuntu-latest
     env:
       REPOSITORY: ${{ github.event.repository.name }}
@@ -33,15 +33,7 @@ jobs:
     strategy:
       matrix:
         variant:
-          - firmware_ESP32
-          - firmware_ESP32-S2
-          - firmware_ESP32-S3
-          - firmware_ESP32-C3
-#          - firmware_ESP32.WebSerial 
-          - firmware_ESP8266
-
-        include:
-          - variant: firmware_ESP32
+          - firmware: firmware_ESP32
             architecture: ESP32
             subvariant: standard
           - variant: firmware_ESP32-S2
@@ -50,13 +42,13 @@ jobs:
           - variant: firmware_ESP32-S3
             architecture: ESP32-S3
             subvariant: standard
-          - variant: firmware_ESP32-C3
+          - firmware: firmware_ESP32-C3
             architecture: ESP32-C3
             subvariant: standard
-#          - variant: firmware_ESP32.WebSerial
+#          - firmware: firmware_ESP32.WebSerial
 #            architecture: ESP32
 #            subvariant: webSerial
-          - variant: firmware_ESP8266
+          - firmware: firmware_ESP8266
             architecture: ESP8266
             subvariant: standard  
             
@@ -77,38 +69,38 @@ jobs:
 
       - name: Run PlatformIO
         run: |
-          platformio run -e ${{ matrix.variant }}
+          platformio run -e ${{ matrix.variant.firmware }}
           if [ -d "data" ]; then
-            platformio run --target buildfs -e ${{ matrix.variant }}
+            platformio run --target buildfs -e ${{ matrix.variant.firmware }}
           fi
 
       - name: Build merged Firmware for ESP32
-        if: contains(matrix.variant, 'ESP32')
+        if: contains(matrix.variant.architecture, 'ESP32')
         run: |
-          esptool.py --chip ${{ matrix.architecture }} merge_bin \
-            --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \
+          esptool.py --chip ${{ matrix.variant.architecture }} merge_bin \
+            --output .pio/build/${{ matrix.variant.firmware }}/merged-firmware.bin \
             --flash_mode dout \
             --flash_freq 80m \
             --flash_size 4MB \
-            0x1000 .pio/build/${{ matrix.variant }}/bootloader.bin \
-            0x8000 .pio/build/${{ matrix.variant }}/partitions.bin \
-            0x10000 .pio/build/${{ matrix.variant }}/firmware.bin 
-#            0x350000 .pio/build/${{ matrix.variant }}/littlefs.bin
+            0x1000 .pio/build/${{ matrix.variant.firmware }}/bootloader.bin \
+            0x8000 .pio/build/${{ matrix.variant.firmware }}/partitions.bin \
+            0x10000 .pio/build/${{ matrix.variant.firmware }}/firmware.bin 
+#            0x350000 .pio/build/${{ matrix.variant.firmware }}/littlefs.bin
 
       - name: Display generated files
         run: |
-          ls -R .pio/build/${{ matrix.variant }}/
+          ls -R .pio/build/${{ matrix.variant.firmware }}/
 
       - name: Schreibe Json/Manifest File
         id: json_params 
         run: |
           mkdir -p release artifacts
           python .github/workflows/generateJSON.py \
-                --arch ${{ matrix.architecture }} \
-                --variant ${{ matrix.subvariant }} \
+                --arch ${{ matrix.variant.architecture }} \
+                --variant ${{ matrix.variant.subvariant }} \
                 --stage ${{ env.BRANCH_NAME }} \
                 --repository ${{ env.REPOSITORY }} \
-                --binarypath .pio/build/${{ matrix.variant }}/ \
+                --binarypath .pio/build/${{ matrix.variant.firmware }}/ \
                 --releasepath release \
                 --artifactpath artifacts \
                 --build ${{ github.run_number }} \
@@ -118,7 +110,7 @@ jobs:
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ matrix.variant }}.zip"
+          name: "${{ matrix.variant.firmware }}.zip"
           path: artifacts/*
   
       - name: Upload to AWS S3
