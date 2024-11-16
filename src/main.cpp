@@ -6,7 +6,7 @@
 
 #ifdef ESP32
   #include <WiFi.h>
-  WIFI_OPEN WIFI_AUTH_OPEN
+  #define WIFI_OPEN WIFI_AUTH_OPEN
 #else
   #include <ESP8266WiFi.h>
   #define WIFI_OPEN ENC_TYPE_NONE
