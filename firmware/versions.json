@@ -1,9 +1,9 @@
 [
     {
-        "path": "firmware/v2.5.1-240-development/manifest_all.json",
-        "version": "v2.5.1-240",
+        "path": "firmware/v2.5.1-247-development/manifest_all.json",
+        "version": "v2.5.1",
         "stage": "development",
-        "build": 240
+        "build": 247
     },
     {
         "path": "firmware/v2.5.1-242-development/manifest_all.json",
