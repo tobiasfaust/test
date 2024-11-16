@@ -74,9 +74,12 @@ jobs:
       - name: Run PlatformIO
         run: |
           platformio run -e ${{ matrix.variant }}
-          platformio run --target buildfs -e ${{ matrix.variant }}
+          if [ -d "data" ]; then
+            platformio run --target buildfs -e ${{ matrix.variant }}
+          fi
 
-      - name: Build merged Firmware
+      - name: Build merged Firmware for ESP32
+        if: contains(matrix.variant, 'ESP32')
         run: |
           esptool.py --chip ${{ matrix.architecture }} merge_bin \
             --output .pio/build/${{ matrix.variant }}/merged-firmware.bin \

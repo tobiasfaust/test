@@ -4,7 +4,15 @@
   #include "WProgram.h"
 #endif
 
-#include "ethernet.h"
+#ifdef ESP32
+  #include <WiFi.h>
+  WIFI_OPEN WIFI_AUTH_OPEN
+#else
+  #include <ESP8266WiFi.h>
+  #define WIFI_OPEN ENC_TYPE_NONE
+#endif
+
+#include <Esp.h>
 #include <improv.h>
 
 //ethernet* LAN;
@@ -119,7 +127,7 @@ void getAvailableWifiNetworks() {
 
   for (int id = 0; id < networkNum; ++id) { 
     std::vector<uint8_t> data = improv::build_rpc_response(
-            improv::GET_WIFI_NETWORKS, {WiFi.SSID(id), String(WiFi.RSSI(id)), (WiFi.encryptionType(id) == WIFI_AUTH_OPEN ? "NO" : "YES")}, false);
+            improv::GET_WIFI_NETWORKS, {WiFi.SSID(id), String(WiFi.RSSI(id)), (WiFi.encryptionType(id) == WIFI_OPEN ? "NO" : "YES")}, false);
     send_response(data);
     delay(1);
   }

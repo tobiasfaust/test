@@ -27,8 +27,9 @@ if args.debug:
     logging.info(f"STAGE={args.stage}")
     logging.info(f"BINARYPATH={args.binarypath}")
     logging.info(f"RELEASEPATH={args.releasepath}")
-    logging.info(f"ARCHITECTURE={args.arch}")
     logging.info(f"RELEASEFILE={args.releasefile}")
+    logging.info(f"ARCHITECTURE={args.arch}")
+    logging.info(f"VARIANT={args.variant}")
     logging.info(f"ARTIFACTPATH={args.artifactpath}")
     logging.info(f"DEBUG={args.debug}")
 
@@ -58,8 +59,9 @@ for root, _, files in os.walk(args.binarypath):
             BINARYFILENAME = f"{FILENAME}.{args.arch}.v{VERSION}-{args.build}.{args.stage}"
             DOWNLOADURL = f"https://tobiasfaust.github.io/{args.repository}/firmware/{BINARYFILENAME}.{FILEEXT}"
 
+            ################ Create custom json ##################
             json_data = {
-                "name": f"Release {VERSION}-{args.stage}",
+                "name": f"{args.repository} (v{VERSION}-{args.stage})",
                 "version": VERSION,
                 "build": (int(args.build)),
                 "number": int(f'{VersionNumber}{args.build}'),
@@ -77,35 +79,47 @@ for root, _, files in os.walk(args.binarypath):
             
             ################ Create Manifest ##################
             manifest_data = {
-                "name": f"Release {VERSION}-{args.stage}",
+                "name": f"{args.repository} (v{VERSION}-{args.stage})",
                 "chipFamily": args.arch,
                 "stage": args.stage,
                 "build": int(args.build),
-                "version": f"v{VERSION}-{args.build}",
+                "version": f"v{VERSION}",
                 "parts": []
             }
 
-            if os.path.isfile(os.path.join(args.binarypath, "bootloader.bin")):
+            if os.path.isfile(os.path.join(args.binarypath, "merged-firmware.bin")):
                 manifest_data["parts"].append({
-                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/bootloader.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
+                    "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/merged-firmware.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
                     "offset": 0
                 })
-            if os.path.isfile(os.path.join(args.binarypath, "partitions.bin")):
+            else:
+                # fuer ESP8266
                 manifest_data["parts"].append({
-                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/partitions.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
-                    "offset": 32768
-                })
-            if os.path.isfile(os.path.join(args.binarypath, "littlefs.bin")):
-                manifest_data["parts"].append({
-                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/littlefs.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
-                    "offset": 3473408
+                    "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/{BINARYFILENAME}.{FILEEXT}",
+                    "offset": 0
                 })
 
-            OFFSET = 0 if "ESP8266" in args.arch else 65536
-            manifest_data["parts"].append({
-                "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/{BINARYFILENAME}.{FILEEXT}",
-                "offset": OFFSET
-            })
+#            if os.path.isfile(os.path.join(args.binarypath, "bootloader.bin")):
+#                manifest_data["parts"].append({
+#                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/bootloader.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
+#                    "offset": 0
+#                })
+#            if os.path.isfile(os.path.join(args.binarypath, "partitions.bin")):
+#                manifest_data["parts"].append({
+#                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/partitions.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
+#                    "offset": 32768
+#                })
+#            if os.path.isfile(os.path.join(args.binarypath, "littlefs.bin")):
+#                manifest_data["parts"].append({
+#                    "path": f"https://tobiasfaust.github.io/test/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/littlefs.{args.arch}.v{VERSION}-{args.build}.{args.stage}.bin",
+#                    "offset": 3473408
+#                })
+#
+#            OFFSET = 0 if "ESP8266" in args.arch else 65536
+#            manifest_data["parts"].append({
+#                "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/v{VERSION}-{args.build}-{args.stage}/{FIRMWARENAME}/{BINARYFILENAME}.{FILEEXT}",
+#                "offset": OFFSET
+#            })
 
             if args.debug:
                 logging.info(f"\n\nEcho Manifest string")
