@@ -12,6 +12,12 @@
         "build": 242
     },
     {
+        "path": "firmware/v2.5.1-248-development/manifest_all.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "build": 248
+    },
+    {
         "path": "firmware/v2.5.1-243-development/manifest_all.json",
         "version": "v2.5.1-243",
         "stage": "development",
@@ -22,12 +28,6 @@
         "version": "v2.5.1-244",
         "stage": "development",
         "build": 244
-    },
-    {
-        "path": "firmware/v2.5.1-241-development/manifest_all.json",
-        "version": "v2.5.1-241",
-        "stage": "development",
-        "build": 241
     },
     {
         "path": "firmware/v2.5.1-245-development/manifest_all.json",
