@@ -70,7 +70,7 @@ function GenerateSelectList(json) {
         stages[stage].forEach(obj => {
             const option = document.createElement('option');
             option.value = obj.path;
-            option.text = obj.version + "(Build " + obj.build + ")";
+            option.text = obj.version + " (Build " + obj.build + ")";
             optgroup.appendChild(option);
         });
         select.appendChild(optgroup);
