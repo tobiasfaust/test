@@ -6,10 +6,15 @@
 
 #ifdef ESP32
   #include <WiFi.h>
+  #include <Preferences.h>
   #define WIFI_OPEN WIFI_AUTH_OPEN
+  
+  Preferences preferences;
 #else
   #include <ESP8266WiFi.h>
+  #include <EEPROM.h>
   #define WIFI_OPEN ENC_TYPE_NONE
+  #define EEPROM_SIZE 96
 #endif
 
 #include <Esp.h>
@@ -26,6 +31,9 @@ uint8_t x_position = 0;
   #define LED_BUILTIN 2
 #endif
 //*** Improv
+
+String Myssid;
+String Mypassword;
 
 void blink_led(int d, int times) {
   for (int j=0; j<times; j++){
@@ -163,7 +171,8 @@ bool onCommandCallback(improv::ImprovCommand cmd) {
      
       set_state(improv::STATE_PROVISIONING);
       
-      Serial.printf("Try to connect to: %s (%s)\n", cmd.ssid.c_str(), cmd.password.c_str());
+      Myssid = String(cmd.ssid.c_str());
+      Mypassword = String(cmd.password.c_str());
 
       if (connectWifi(cmd.ssid, cmd.password)) {
 
@@ -217,6 +226,51 @@ bool onCommandCallback(improv::ImprovCommand cmd) {
   return true;
 }
 
+#ifdef ESP32
+void saveWiFiCredentials(const char* ssid, const char* password) {
+  preferences.begin("wifi", false);
+  preferences.putString("ssid", ssid);
+  preferences.putString("password", password);
+  preferences.end();
+  Serial.println("WiFi credentials saved to NVS");
+}
+
+void loadWiFiCredentials(String &ssid, String &password) {
+  preferences.begin("wifi", true);
+  ssid = preferences.getString("ssid", "");
+  password = preferences.getString("password", "");
+  preferences.end();
+  Serial.println("WiFi credentials loaded from NVS");
+}
+#else
+void saveWiFiCredentials(const char* ssid, const char* password) {
+  EEPROM.begin(EEPROM_SIZE);
+  for (int i = 0; i < 32; ++i) {
+    EEPROM.write(i, ssid[i]);
+  }
+  for (int i = 0; i < 64; ++i) {
+    EEPROM.write(32 + i, password[i]);
+  }
+  EEPROM.commit();
+  Serial.println("WiFi credentials saved to EEPROM");
+}
+
+void loadWiFiCredentials(String &ssid, String &password) {
+  char ssidArr[32];
+  char passwordArr[64];
+  EEPROM.begin(EEPROM_SIZE);
+  for (int i = 0; i < 32; ++i) {
+    ssidArr[i] = EEPROM.read(i);
+  }
+  for (int i = 0; i < 64; ++i) {
+    passwordArr[i] = EEPROM.read(32 + i);
+  }
+  ssid = String(ssidArr);
+  password = String(passwordArr);
+  Serial.println("WiFi credentials loaded from EEPROM");
+}
+#endif
+
 void setup() {
   //Serial.begin(115200);
   //LAN = new ethernet();
@@ -224,10 +278,22 @@ void setup() {
   Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
 
+  loadWiFiCredentials(Myssid, Mypassword);
+
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   
   //TODO: Try to connect here if credentials are available
+  if (Myssid.length() > 0 && Mypassword.length() > 0) {
+    WiFi.begin(Myssid.c_str(), Mypassword.c_str());
+    if (WiFi.waitForConnectResult() != WL_CONNECTED) {
+      Serial.println("WiFi Failed!");
+    } else {
+      Serial.println("WiFi Connected!");
+    }
+  }
+
+
 
   blink_led(100, 5); 
 }
@@ -236,6 +302,8 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     //wifi_handle_request();
   }
+
+  Serial.printf("Wifi Credentials: %s (%s)\n", Myssid.c_str(), Mypassword.c_str());
 
   if (Serial.available() > 0) {
     uint8_t b = Serial.read();
@@ -247,3 +315,4 @@ void loop() {
     }
   }
 }
+
