@@ -38,6 +38,7 @@ jobs:
           - firmware_ESP32-S3
           - firmware_ESP32-C3
 #          - firmware_ESP32.WebSerial 
+          - firmware_ESP8266
 
         include:
           - variant: firmware_ESP32
@@ -55,6 +56,9 @@ jobs:
 #          - variant: firmware_ESP32.WebSerial
 #            architecture: ESP32
 #            subvariant: webSerial
+          - variant: firmware_ESP8266
+            architecture: ESP8266
+            subvariant: standard  
             
     steps:
       - name: checkout repository
