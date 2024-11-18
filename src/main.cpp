@@ -25,7 +25,7 @@
 // https://github.com/jnthas/improv-wifi-demo/blob/main/src/esp32-wifiimprov/esp32-wifiimprov.ino
 //*** Improv
 #define MAX_ATTEMPTS_WIFI_CONNECTION 20
-uint8_t x_buffer[16];
+uint8_t x_buffer[255];
 uint8_t x_position = 0;
 #ifndef LED_BUILTIN
   #define LED_BUILTIN 2
@@ -302,8 +302,6 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     //wifi_handle_request();
   }
-
-  Serial.printf("Wifi Credentials: %s (%s)\n", Myssid.c_str(), Mypassword.c_str());
 
   if (Serial.available() > 0) {
     uint8_t b = Serial.read();
