@@ -50,7 +50,7 @@ void saveWiFiCredentials(const char* ssid, const char* password) {
   preferences.putString("ssid", ssid);
   preferences.putString("password", password);
   preferences.end();
-  Serial2.println("WiFi credentials saved to NVS");
+  Serial.println("WiFi credentials saved to NVS");
 }
 
 void loadWiFiCredentials(String &ssid, String &password) {
@@ -58,7 +58,7 @@ void loadWiFiCredentials(String &ssid, String &password) {
   ssid = preferences.getString("ssid", "");
   password = preferences.getString("password", "");
   preferences.end();
-  Serial2.println("WiFi credentials loaded from NVS");
+  Serial.println("WiFi credentials loaded from NVS");
 }
 #else
 void saveWiFiCredentials(const char* ssid, const char* password) {
@@ -70,7 +70,7 @@ void saveWiFiCredentials(const char* ssid, const char* password) {
     EEPROM.write(32 + i, password[i]);
   }
   EEPROM.commit();
-  Serial2.println("WiFi credentials saved to EEPROM");
+  Serial.println("WiFi credentials saved to EEPROM");
 }
 
 void loadWiFiCredentials(String &ssid, String &password) {
@@ -85,7 +85,7 @@ void loadWiFiCredentials(String &ssid, String &password) {
   }
   ssid = String(ssidArr);
   password = String(passwordArr);
-  Serial2.println("WiFi credentials loaded from EEPROM");
+  Serial.println("WiFi credentials loaded from EEPROM");
 }
 #endif
 
@@ -271,7 +271,7 @@ void setup() {
   //LAN = new ethernet();
 
   Serial.begin(115200);
-  Serial2.begin(115200, SERIAL_8N1, 16, 17); // RX=16, TX=17
+  //Serial2.begin(115200, SERIAL_8N1, 16, 17); // RX=16, TX=17
 
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -280,17 +280,15 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   
-  //TODO: Try to connect here if credentials are available
+  //Try to connect here if credentials are available
   if (Myssid.length() > 0 && Mypassword.length() > 0) {
     WiFi.begin(Myssid.c_str(), Mypassword.c_str());
     if (WiFi.waitForConnectResult() != WL_CONNECTED) {
-      Serial2.println("WiFi Failed!");
+      Serial.println("WiFi Failed!");
     } else {
-      Serial2.println("WiFi Connected!");
+      Serial.println("WiFi Connected!");
     }
   }
-
-
 
   blink_led(100, 5); 
 }
@@ -300,7 +298,7 @@ void loop() {
     //wifi_handle_request();
   }
 
-  if (Serial.available() > 0) {
+  while (Serial.available() > 0) {
     uint8_t b = Serial.read();
 
     if (parse_improv_serial_byte(x_position, b, x_buffer, onCommandCallback, onErrorCallback)) {
