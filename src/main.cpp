@@ -42,8 +42,52 @@ void blink_led(int d, int times) {
     digitalWrite(LED_BUILTIN, LOW);
     delay(d);
   }
-  
 }
+
+#ifdef ESP32
+void saveWiFiCredentials(const char* ssid, const char* password) {
+  preferences.begin("wifi", false);
+  preferences.putString("ssid", ssid);
+  preferences.putString("password", password);
+  preferences.end();
+  Serial2.println("WiFi credentials saved to NVS");
+}
+
+void loadWiFiCredentials(String &ssid, String &password) {
+  preferences.begin("wifi", true);
+  ssid = preferences.getString("ssid", "");
+  password = preferences.getString("password", "");
+  preferences.end();
+  Serial2.println("WiFi credentials loaded from NVS");
+}
+#else
+void saveWiFiCredentials(const char* ssid, const char* password) {
+  EEPROM.begin(EEPROM_SIZE);
+  for (int i = 0; i < 32; ++i) {
+    EEPROM.write(i, ssid[i]);
+  }
+  for (int i = 0; i < 64; ++i) {
+    EEPROM.write(32 + i, password[i]);
+  }
+  EEPROM.commit();
+  Serial2.println("WiFi credentials saved to EEPROM");
+}
+
+void loadWiFiCredentials(String &ssid, String &password) {
+  char ssidArr[32];
+  char passwordArr[64];
+  EEPROM.begin(EEPROM_SIZE);
+  for (int i = 0; i < 32; ++i) {
+    ssidArr[i] = EEPROM.read(i);
+  }
+  for (int i = 0; i < 64; ++i) {
+    passwordArr[i] = EEPROM.read(32 + i);
+  }
+  ssid = String(ssidArr);
+  password = String(passwordArr);
+  Serial2.println("WiFi credentials loaded from EEPROM");
+}
+#endif
 
 bool connectWifi(std::string ssid, std::string password) {
   uint8_t count = 0;
@@ -171,14 +215,10 @@ bool onCommandCallback(improv::ImprovCommand cmd) {
      
       set_state(improv::STATE_PROVISIONING);
       
-      Myssid = String(cmd.ssid.c_str());
-      Mypassword = String(cmd.password.c_str());
-
       if (connectWifi(cmd.ssid, cmd.password)) {
 
         blink_led(100, 3);
-        
-        //TODO: Persist credentials here
+        saveWiFiCredentials(cmd.ssid.c_str(), cmd.password.c_str());
 
         set_state(improv::STATE_PROVISIONED);        
         std::vector<uint8_t> data = improv::build_rpc_response(improv::WIFI_SETTINGS, getLocalUrl(), false);
@@ -226,56 +266,13 @@ bool onCommandCallback(improv::ImprovCommand cmd) {
   return true;
 }
 
-#ifdef ESP32
-void saveWiFiCredentials(const char* ssid, const char* password) {
-  preferences.begin("wifi", false);
-  preferences.putString("ssid", ssid);
-  preferences.putString("password", password);
-  preferences.end();
-  Serial.println("WiFi credentials saved to NVS");
-}
-
-void loadWiFiCredentials(String &ssid, String &password) {
-  preferences.begin("wifi", true);
-  ssid = preferences.getString("ssid", "");
-  password = preferences.getString("password", "");
-  preferences.end();
-  Serial.println("WiFi credentials loaded from NVS");
-}
-#else
-void saveWiFiCredentials(const char* ssid, const char* password) {
-  EEPROM.begin(EEPROM_SIZE);
-  for (int i = 0; i < 32; ++i) {
-    EEPROM.write(i, ssid[i]);
-  }
-  for (int i = 0; i < 64; ++i) {
-    EEPROM.write(32 + i, password[i]);
-  }
-  EEPROM.commit();
-  Serial.println("WiFi credentials saved to EEPROM");
-}
-
-void loadWiFiCredentials(String &ssid, String &password) {
-  char ssidArr[32];
-  char passwordArr[64];
-  EEPROM.begin(EEPROM_SIZE);
-  for (int i = 0; i < 32; ++i) {
-    ssidArr[i] = EEPROM.read(i);
-  }
-  for (int i = 0; i < 64; ++i) {
-    passwordArr[i] = EEPROM.read(32 + i);
-  }
-  ssid = String(ssidArr);
-  password = String(passwordArr);
-  Serial.println("WiFi credentials loaded from EEPROM");
-}
-#endif
-
 void setup() {
   //Serial.begin(115200);
   //LAN = new ethernet();
 
   Serial.begin(115200);
+  Serial2.begin(115200, SERIAL_8N1, 16, 17); // RX=16, TX=17
+
   pinMode(LED_BUILTIN, OUTPUT);
 
   loadWiFiCredentials(Myssid, Mypassword);
@@ -287,9 +284,9 @@ void setup() {
   if (Myssid.length() > 0 && Mypassword.length() > 0) {
     WiFi.begin(Myssid.c_str(), Mypassword.c_str());
     if (WiFi.waitForConnectResult() != WL_CONNECTED) {
-      Serial.println("WiFi Failed!");
+      Serial2.println("WiFi Failed!");
     } else {
-      Serial.println("WiFi Connected!");
+      Serial2.println("WiFi Connected!");
     }
   }
 
