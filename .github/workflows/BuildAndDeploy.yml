@@ -216,6 +216,7 @@ jobs:
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
                  RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' app/ChangeLog.md)
                  echo "${RELEASEBODY}" > CHANGELOG.md
+                 echo "tagname=v.${VERSION}-${POSTFIX}-${{ github.run_id }}" >> "$GITHUB_OUTPUT"
 
             
       - name: Create Release
@@ -224,7 +225,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+          tag_name: ${{ steps.set_env_var.outputs.tagname }}
           release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
           body_path: CHANGELOG.md
           draft: false
@@ -234,7 +235,7 @@ jobs:
         run: |
           python app/.github/workflows/createReleaseAssetManifest.py \
             --ReleaseDir release \
-            --ReleaseURL "https://github.com/tobiasfaust/${{ env.GITHUB_REPOSITORY }}/releases/download/v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}"
+            --ReleaseURL "https://github.com/tobiasfaust/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
            
       
       # suche alle Dateien aus dem Ordner release, incl aller unterordner und lade diese einzeln als release-asset hoch
@@ -247,7 +248,7 @@ jobs:
             for file in "$dir"/*; do
               if [ -f "$file" ]; then
                 echo "Uploading $file"
-                gh release upload -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} ${{ steps.create_release.outputs.upload_url }} "$file" --clobber
+                gh release upload -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} ${{ steps.set_env_var.outputs.tagname }} "$file" --clobber
               fi
             done
           done
