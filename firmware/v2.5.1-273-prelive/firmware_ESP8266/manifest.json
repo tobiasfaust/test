@@ -2,11 +2,11 @@
     "name": "test (v2.5.1-prelive)",
     "chipFamily": "ESP8266",
     "stage": "prelive",
-    "build": 267,
+    "build": 273,
     "version": "v2.5.1",
     "parts": [
         {
-            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-267-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-267.prelive.bin",
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-273-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-273.prelive.bin",
             "offset": 0
         }
     ]
