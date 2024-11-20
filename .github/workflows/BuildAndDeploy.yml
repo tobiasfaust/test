@@ -260,7 +260,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p manifests
-          tagNames=$(gh release ls --json tagName)
+          tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
           for tagName in $tagNames; do
             gh release download "$tagName" \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
