@@ -155,10 +155,14 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list :
                         stage = manifest_data.get('stage', None)
                         build = manifest_data.get('build', None)
 
-                        # Extrahiere den ersten 'path' aus 'parts' falls vorhanden
-                        parts = manifest_data.get('parts', [])
-                        path = parts[0].get('path') if parts else None
-
+                        # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
+                        # extrahiere daraus den Pfad
+                        try:
+                            path = manifest_data.get('builds', [])[0].get('parts', [])[0].get('path')
+                            path = os.path.join(os.path.dirname(path), 'manifest_all.json')
+                        except:
+                            path = None
+                        
                         if keepPath is False or path is None:
                            # entferne den root-folder "web-installer" aus dem Pfad
                            path =  os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:])
