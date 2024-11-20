@@ -265,7 +265,6 @@ jobs:
             gh release download "$tagName" \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
               --pattern "manifest_all.json" \
-              --dir .manifests \
               --output "manifests/${tagName}_manifest_all.json" || true
           done 
           python app/.github/workflows/createReleaseVersions.py \
