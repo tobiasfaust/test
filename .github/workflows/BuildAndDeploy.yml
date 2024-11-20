@@ -240,6 +240,8 @@ jobs:
       # suche alle Dateien aus dem Ordner release, incl aller unterordner und lade diese einzeln als release-asset hoch
       # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
       - name: Upload Release Assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for dir in $(find ./release -type d); do
             for file in "$dir"/*; do
