@@ -2,11 +2,11 @@
     "name": "test (v2.5.1-prelive)",
     "chipFamily": "ESP32-C3",
     "stage": "prelive",
-    "build": 276,
+    "build": 283,
     "version": "v2.5.1",
     "parts": [
         {
-            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-276-prelive/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-276.prelive.bin",
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-283-prelive/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-283.prelive.bin",
             "offset": 0
         }
     ]
