@@ -32,7 +32,8 @@ def read_json_file(file) -> dict:
 
 def renameDirs(root: str) -> None:
     """
-    Iteriert über alle Verzeichnisse im angegebenen Zielverzeichnis
+    Iteriert über alle Verzeichnisse im angegebenen Zielverzeichnis 
+    und benennt alle Verzeichnisse um, die mit '.zip' enden.
          
     <b>Parameter:</b>
         root (string): das Root verzeichnis über welches iteriert werden soll
@@ -125,7 +126,7 @@ def process_manifests(root: str) -> None:
 
 def search_manifests_and_extract_version(root: str) -> list :
     """
-    Funktion zum Suchen und Extrahieren der relevanten Informationen aus manifest.json-Dateien
+    Funktion zum Suchen und Extrahieren der relevanten Informationen aus manifest_all.json-Dateien
          
     <b>Parameter:</b>
         root (string): das Root verzeichnis über welches iteriert werden soll
@@ -137,34 +138,36 @@ def search_manifests_and_extract_version(root: str) -> list :
     
     # Durchlaufe alle Unterverzeichnisse im angegebenen Verzeichnis
     for dirpath, dirnames, filenames in os.walk(root):
-        # Prüfe, ob eine 'manifest_all.json' Datei im aktuellen Verzeichnis existiert
-        if 'manifest_all.json' in filenames:
-            manifest_path = os.path.join(dirpath, 'manifest_all.json')
-            
-            try:
-                # Öffne und lade die JSON-Daten aus der Datei
-                manifest_data = read_json_file(manifest_path)
-                if manifest_data is not None:
-                    
-                    # Extrahiere 'version' und 'stage' falls vorhanden
-                    version = manifest_data.get('version', None)
-                    stage = manifest_data.get('stage', None)
-                    build = manifest_data.get('build', None)
+        # Prüfe, ob eine Datei existiert die mit 'manifest_all.json' aufhört
+        for filename in filenames:
 
-                    # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
-                    # entferne den root-folder "web-installer" aus dem Pfad
-                    if version is not None and stage is not None:
-                        results.append({
-                            'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
-                            'version': version,
-                            'stage': stage,
-                            'build': int(build) if build else 0
-                        })
-            
-            except json.JSONDecodeError:
-                logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
-            except Exception as e:
-                logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
+            manifest_path = os.path.join(dirpath, filename)
+            if filename.endswith('manifest_all.json'):
+
+                try:
+                    # Öffne und lade die JSON-Daten aus der Datei
+                    manifest_data = read_json_file(manifest_path)
+                    if manifest_data is not None:
+                        
+                        # Extrahiere 'version' und 'stage' falls vorhanden
+                        version = manifest_data.get('version', None)
+                        stage = manifest_data.get('stage', None)
+                        build = manifest_data.get('build', None)
+
+                        # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
+                        # entferne den root-folder "web-installer" aus dem Pfad
+                        if version is not None and stage is not None:
+                            results.append({
+                                'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
+                                'version': version,
+                                'stage': stage,
+                                'build': int(build) if build else 0
+                            })
+                
+                except json.JSONDecodeError:
+                    logging.warning(f"Warnung: Kann die JSON-Datei nicht lesen: {manifest_path}")
+                except Exception as e:
+                    logging.error(f"Fehler beim Verarbeiten von {manifest_path}: {e}")
     
     return results
 
@@ -239,3 +242,49 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
             # Lösche den Ordner
             shutil.rmtree(f'web-installer/{path}')
             logging.info(f"{path} gelöscht")
+
+# das manifest.json sieht folgendermassen aus:
+#{
+#    "name": "test (v2.5.1-development)",
+#    "chipFamily": "ESP32-C3",
+#    "stage": "development",
+#    "build": 254,
+#    "version": "v2.5.1",
+#    "parts": [
+#        {
+#            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-254-development/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-254.development.bin",
+#            "offset": 0
+#        }
+#    ]
+#}
+
+def changeURL(root: str, url: str) -> None:
+    """
+    Ändert den URL-Pfad in allen 'manifest.json'-Dateien unterhalb des angegebenen Verzeichnisses 
+    in allen 'path' Variablen im Array 'parts' zur angegebenen URL. Speichert die Änderungen in den Dateien.
+         
+    <b>Parameter:</b>
+        root (string): das Root verzeichnis über welches iteriert werden soll
+        url (string): die URL, die in den 'path' Variablen geändert werden soll
+         
+    <b>Rückgabewert:</b>
+        keiner
+    """
+    for dirpath, dirnames, filenames in os.walk(root):
+        if 'manifest.json' in filenames:
+            manifest_path = os.path.join(dirpath, 'manifest.json')
+            try:
+                manifest_data = read_json_file(manifest_path)
+                if manifest_data is not None:
+                    parts = manifest_data.get('parts', [])
+                    for part in parts:
+                        if 'path' in part:
+                            old_url = part['path']
+                            new_url = os.path.join(url, os.path.basename(old_url))
+                            part['path'] = new_url
+                    save_results_to_json(manifest_data, manifest_path)
+                    logging.info(f"URLs in {manifest_path} geändert.")
+            except json.JSONDecodeError:
+                logging.warning(f"Warnung: Fehler beim Parsen der JSON-Datei {manifest_path}.")
+            except Exception as e:
+                logging.error(f"Fehler beim Verarbeiten der Datei {manifest_path}: {e}")

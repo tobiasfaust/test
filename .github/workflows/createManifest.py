@@ -15,7 +15,8 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
     # Benennen die Verzeichnisse um, die noch ein zip (-> Artifacts) als Endung haben
     renameDirs(args.VersDir)
 
-    # erstelle das 'manifest.json' aller ESP Architekturen im Hauptverzeichnis der Version
+    # Suche nach 'manifest.json'-Dateien und extrahiere daraus die Daten für 
+    # das 'manifest_all.json' aller ESP Architekturen im Hauptverzeichnis der Version
     process_manifests(args.VersDir)
 
     # Suche nach 'manifest.json'-Dateien und extrahiere daraus die Daten für die 'versions.json'

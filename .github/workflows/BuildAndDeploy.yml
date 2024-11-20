@@ -110,20 +110,20 @@ jobs:
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ matrix.variant.firmware }}.zip"
+          name: ${{ matrix.variant.firmware }}
           path: artifacts/*
   
-      - name: Upload to AWS S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: '--acl public-read --follow-symlinks'
-        env:
-          AWS_S3_BUCKET: 'tfa-releases'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
-          SOURCE_DIR: 'release'      # optional: defaults to entire repository
-          DEST_DIR: ${{ env.REPOSITORY }}     
+#      - name: Upload to AWS S3
+#        uses: jakejarvis/s3-sync-action@master
+#        with:
+#          args: '--acl public-read --follow-symlinks'
+#        env:
+#          AWS_S3_BUCKET: 'tfa-releases'
+#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
+#          SOURCE_DIR: 'release'      # optional: defaults to entire repository
+#          DEST_DIR: ${{ env.REPOSITORY }}     
 
 
   web-installer:
@@ -189,34 +189,40 @@ jobs:
       BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout web-installer Repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'web-installer'
+          path: 'web-installer'
+
+      - name: Checkout Application Repository
+        uses: actions/checkout@v4
+        with:
+          path: 'app'
+          sparse-checkout: |
+            .github
       
       - name: Download all Artifacts 
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v4
         with:
           path: ./release
 
-      - name: Display files
-        run: |
-            ls -R ./release
-    
       - name: set Environment Variables
         id: set_env_var
         run: |
-                 VERSION=$(sed 's/[^0-9|.]//g' include/_Release.h)  # zb. 2.4.2 
+                 VERSION=$(sed 's/[^0-9|.]//g' app/include/_Release.h)  # zb. 2.4.2 
                  if [ ${{ env.BRANCH_NAME }} == 'master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
                  if [ ${{ env.BRANCH_NAME }} == 'master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
-                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' ChangeLog.md)
+                 RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' app/ChangeLog.md)
                  echo "${RELEASEBODY}" > CHANGELOG.md
 
             
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
@@ -226,17 +232,46 @@ jobs:
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
               
-      - name: Upload Release Assets
-        id: upload-release-assets
-        uses: dwenegar/upload-release-assets@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.create_release.outputs.id }}
-          assets_path: ./release
 
+      - name: Create manifest file
+        run: |
+          python app/.github/workflows/createReleaseAssetManifest.py \
+            --FwDir ./release \
+            --ReleaseURL ${{ steps.create_release.outputs.upload_url }}
+           
+      
+      # suche alle Dateien aus dem Ordner release, incl aller unterordner und lade diese einzeln als release-asset hoch
+      # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
+      - name: Upload Release Assets
+        run: |
+          for dir in $(find ./release -type d); do
+            for file in "$dir"/*; do
+              if [ -f "$file" ]; then
+                gh release upload ${{ steps.create_release.outputs.id }} "$dir/$file" --clobber --name "$file"
+              fi
+            done
+          done
+
+        
+      # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
+      # Lade diese herunter ins lokale verzeichnis ./manifests 
+      - name: Download Manifests, create ReleaseVersions
+        run: |
+          mkdir -p manifests
+          tagNames=$(gh release ls --json tagName)
+          for tagName in $tagNames; do
+            gh release download "$tagName" \
+              --pattern "manifest_all.json" \
+              --dir ./manifests \
+              --output "./manifests/${tagName}_manifest_all.json" || true
+          done 
+          python app/.github/workflows/createReleaseVersions.py \
+            --ManifestDir manifests \
+            --VersionDir web-installer
+          ls -R ./release
+        
       - name: Upload Changelog artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4  
         with:
           name: CHANGELOG.md
           path: CHANGELOG.md
