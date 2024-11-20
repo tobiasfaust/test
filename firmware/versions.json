@@ -6,16 +6,16 @@
         "build": 272
     },
     {
-        "path": "firmware/v2.5.1-268-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "build": 268
-    },
-    {
         "path": "firmware/v2.5.1-270-prelive/manifest_all.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "build": 270
+    },
+    {
+        "path": "firmware/v2.5.1-274-prelive/manifest_all.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "build": 274
     },
     {
         "path": "firmware/v2.5.1-269-prelive/manifest_all.json",
