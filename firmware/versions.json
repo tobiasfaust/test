@@ -30,9 +30,9 @@
         "build": 263
     },
     {
-        "path": "firmware/v2.5.1-260-prelive/manifest_all.json",
+        "path": "firmware/v2.5.1-266-prelive/manifest_all.json",
         "version": "v2.5.1",
         "stage": "prelive",
-        "build": 260
+        "build": 266
     }
 ]
