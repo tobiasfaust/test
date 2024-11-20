@@ -2,11 +2,11 @@
     "name": "test (v2.5.1-prelive)",
     "chipFamily": "ESP32-S2",
     "stage": "prelive",
-    "build": 258,
+    "build": 264,
     "version": "v2.5.1",
     "parts": [
         {
-            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-258-prelive/firmware_ESP32-S2/merged-firmware.ESP32-S2.v2.5.1-258.prelive.bin",
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-264-prelive/firmware_ESP32-S2/merged-firmware.ESP32-S2.v2.5.1-264.prelive.bin",
             "offset": 0
         }
     ]
