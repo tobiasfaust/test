@@ -30,6 +30,12 @@
         "build": 278
     },
     {
+        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-11937645943/manifest_all.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "build": 284
+    },
+    {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-11935230894/manifest_all.json",
         "version": "v2.5.1",
         "stage": "prelive",
