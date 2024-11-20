@@ -95,7 +95,7 @@ jobs:
         id: json_params 
         run: |
           mkdir -p release artifacts
-          python .github/workflows/generateJSON.py \
+          python .github/scripts/createManifest.py \
                 --arch ${{ matrix.variant.architecture }} \
                 --variant ${{ matrix.variant.subvariant }} \
                 --stage ${{ env.BRANCH_NAME }} \
@@ -163,10 +163,11 @@ jobs:
         run: |
           ls -R ./
 
-      - name: Handle Manifest JSON
+      # 
+      - name: create "manifest_all" and "versions" JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/workflows/createManifest.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
+          python app/.github/scripts/createVersionsFile.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
 
       - name: Commit and push changes
         run: |
@@ -199,10 +200,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: 'app'
-          sparse-checkout: |
-            .github
       
-      - name: Download all Artifacts 
+      - name: Download Artifacts 
         uses: actions/download-artifact@v4
         with:
           path: ./release
@@ -218,6 +217,7 @@ jobs:
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
                  RELEASEBODY=$(awk -v RS='Release ' '/'$VERSION':(.*)/ {print $0}' app/ChangeLog.md)
                  echo "${RELEASEBODY}" > CHANGELOG.md
+                 echo "tagname=v.${VERSION}-${POSTFIX}-${{ github.run_id }}" >> "$GITHUB_OUTPUT"
 
             
       - name: Create Release
@@ -226,50 +226,70 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: v.${{ steps.set_env_var.outputs.version }}-${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}-${{ github.run_id }}
+          tag_name: ${{ steps.set_env_var.outputs.tagname }}
           release_name: Release ${{ steps.set_env_var.outputs.version }} ${{ steps.set_env_var.outputs.RELEASENAME_POSTFIX }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
-              
-
-      - name: Create manifest file
+        
+      # erstelle das manifest_all.json speziell für das release mit den korrekten Pfaden
+      - name: Create manifest_all file
         run: |
-          python app/.github/workflows/createReleaseAssetManifest.py \
-            --FwDir ./release \
-            --ReleaseURL ${{ steps.create_release.outputs.upload_url }}
+          python app/.github/scripts/createReleaseAssetManifest.py \
+            --ReleaseDir release \
+            --ReleaseURL "https://github.com/tobiasfaust/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
            
       
-      # suche alle Dateien aus dem Ordner release, incl aller unterordner und lade diese einzeln als release-asset hoch
+      # suche alle Dateien aus dem Ordner release (siehe asset-download), incl aller unterordner und lade diese einzeln als release-asset hoch
       # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
       - name: Upload Release Assets
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          for dir in $(find ./release -type d); do
+          for dir in $(find release -type d); do
             for file in "$dir"/*; do
               if [ -f "$file" ]; then
-                gh release upload ${{ steps.create_release.outputs.id }} "$dir/$file" --clobber --name "$file"
+                echo "Uploading $file"
+                gh release upload -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} ${{ steps.set_env_var.outputs.tagname }} "$file" --clobber
               fi
             done
           done
 
         
       # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
-      # Lade diese herunter ins lokale verzeichnis ./manifests 
-      - name: Download Manifests, create ReleaseVersions
+      # Lade diese herunter ins lokale verzeichnis ./manifests und erstelle auf dieser Grundlage die releaseversions.json
+      - name: Download all Manifests, create ReleaseVersions
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p manifests
-          tagNames=$(gh release ls --json tagName)
-          for tagName in $tagNames; do
-            gh release download "$tagName" \
+          tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
+          #Beispiel TageNames: [{"tagName":"v.2.5.1-PRE-11935230894"},{"tagName":"v.2.5.1-PRE-11935083446"},{"tagName":"v.2.5.1-PRE-11934890507"},{"tagName":"v.2.5.0-PRE-5218822714"},{"tagName":"v.2.5.0-PRE-5218686311"},{"tagName":"v.2.5.0-PRE-5185111746"},{"tagName":"v.2.5.0-PRE-5179141026"},{"tagName":"v.2.5.0-PRE-5179098548"},{"tagName":"v.2.5.0-PRE-5179063279"},{"tagName":"v.2.5.0-PRE-5178990163"},{"tagName":"v.2.5.0-PRE-5178880279"},{"tagName":"v.2.5.0-PRE-5178666290"},{"tagName":"v.2.5.0-PRE-5178453676"},{"tagName":"v.2.5.0-PRE-5177774441"},{"tagName":"v.2.5.0-PRE-5177649258"},{"tagName":"v.2.5.0-PRE-5177594993"},{"tagName":"v.2.5.0-PRE-5177564195"},{"tagName":"v.2.5.0-PRE-5143099563"},{"tagName":"v.2.5.0-PRE-5143063918"},{"tagName":"v.2.5.0-PRE-5143034241"},{"tagName":"v.2.5.0-PRE-5142955799"},{"tagName":"v.2.5.0-PRE-5142928963"},{"tagName":"v.2.5.0-PRE-5142840006"},{"tagName":"v.2.5.0-PRE-5142801085"},{"tagName":"v.2.5.0-PRE-5142535620"},{"tagName":"v.2.5.0-PRE-5142528468"},{"tagName":"v.2.5.0-PRE-5142503306"},{"tagName":"v.2.5.0-PRE-5142483405"},{"tagName":"v.2.5.0-PRE-5142406641"},{"tagName":"v.2.5.0-PRE-5142378345"}] 
+          for tag in $(echo "$tagNames" | jq -r '.[].tagName'); do
+            echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/${tag}_manifest_all.json'"
+            gh release download $tag \
+              -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
               --pattern "manifest_all.json" \
-              --dir ./manifests \
-              --output "./manifests/${tagName}_manifest_all.json" || true
+                --output "manifests/${tag}/manifest_all.json" || true
           done 
-          python app/.github/workflows/createReleaseVersions.py \
+          python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
             --VersionDir web-installer
-          ls -R ./release
+            ls -R ./manifests
+            ls -R ./release
         
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            cd web-installer
+            git pull
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add *
+            git commit -m "update releaseversions.json"
+            git push origin web-installer  
+
       - name: Upload Changelog artifact
         uses: actions/upload-artifact@v4  
         with:
