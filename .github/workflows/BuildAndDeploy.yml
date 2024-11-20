@@ -256,7 +256,7 @@ jobs:
         
       # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
       # Lade diese herunter ins lokale verzeichnis ./manifests 
-      - name: Download Manifests, create ReleaseVersions
+      - name: Download all Manifests, create ReleaseVersions
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -268,7 +268,7 @@ jobs:
             gh release download $tag \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
               --pattern "manifest_all.json" \
-                --output "manifests/${tag}_manifest_all.json" || true
+                --output "manifests/${tag}/manifest_all.json" || true
           done 
           python app/.github/workflows/createReleaseVersions.py \
             --ManifestDir manifests \

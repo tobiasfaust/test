@@ -124,13 +124,14 @@ def process_manifests(root: str) -> None:
         logging.info(f"Manifest-Daten erfolgreich in {new_manifest_path} gespeichert.")
             
 
-def search_manifests_and_extract_version(root: str) -> list :
+def search_manifests_and_extract_version(root: str, keepPath: bool) -> list :
     """
     Funktion zum Suchen und Extrahieren der relevanten Informationen aus manifest_all.json-Dateien
          
     <b>Parameter:</b>
         root (string): das Root verzeichnis über welches iteriert werden soll
-         
+        keepPath (bool): ob der originale Pfad aus manifest_all.json behalten werden soll
+
     <b>Rückgabewert:</b>
         Liste von JsonObjekten
     """
@@ -154,11 +155,18 @@ def search_manifests_and_extract_version(root: str) -> list :
                         stage = manifest_data.get('stage', None)
                         build = manifest_data.get('build', None)
 
+                        # Extrahiere den ersten 'path' aus 'parts' falls vorhanden
+                        parts = manifest_data.get('parts', [])
+                        path = parts[0].get('path') if parts else None
+
+                        if keepPath is False or path is None:
+                           # entferne den root-folder "web-installer" aus dem Pfad
+                           path =  os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:])
+
                         # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
-                        # entferne den root-folder "web-installer" aus dem Pfad
                         if version is not None and stage is not None:
                             results.append({
-                                'path': os.sep.join(manifest_path.strip(os.sep).split(os.sep)[1:]) ,
+                                'path': path ,
                                 'version': version,
                                 'stage': stage,
                                 'build': int(build) if build else 0
