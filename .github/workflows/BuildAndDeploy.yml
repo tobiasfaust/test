@@ -243,7 +243,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          for dir in $(find ./release -type d); do
+          for dir in $(find release -type d); do
             for file in "$dir"/*; do
               if [ -f "$file" ]; then
                 echo "Uploading $file"
@@ -256,6 +256,8 @@ jobs:
       # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
       # Lade diese herunter ins lokale verzeichnis ./manifests 
       - name: Download Manifests, create ReleaseVersions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p manifests
           tagNames=$(gh release ls --json tagName)
@@ -271,6 +273,8 @@ jobs:
           ls -R ./release
         
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
             cd web-installer
             git config --global user.name "GitHub Actions"
