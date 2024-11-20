@@ -130,7 +130,7 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list :
          
     <b>Parameter:</b>
         root (string): das Root verzeichnis über welches iteriert werden soll
-        keepPath (bool): ob der originale Pfad aus manifest_all.json behalten werden soll
+        keepPath (bool): ob der originale Pfad aus manifest_all.json behalten werden soll, anosnsten wird der lokale Pfad gesetzt
 
     <b>Rückgabewert:</b>
         Liste von JsonObjekten

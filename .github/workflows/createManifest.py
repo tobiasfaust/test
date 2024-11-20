@@ -20,13 +20,13 @@ if Path(args.VersDir).is_dir() and Path(args.FwDir).is_dir():
     process_manifests(args.VersDir)
 
     # Suche nach 'manifest.json'-Dateien und extrahiere daraus die Daten für die 'versions.json'
-    extracted_data = search_manifests_and_extract_version(args.FwDir)
+    extracted_data = search_manifests_and_extract_version(args.FwDir, False)
 
     # Lösche die ältesten Versionen
     deleteVersions(args.FwDir, 6, extracted_data)
 
     # lade die Versionen erneut
-    extracted_data = search_manifests_and_extract_version(args.FwDir)
+    extracted_data = search_manifests_and_extract_version(args.FwDir, False)
 
     # Wenn Daten extrahiert wurden, speichere sie in der JSON-Datei 'versions.json'
     if extracted_data:

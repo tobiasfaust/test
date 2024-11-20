@@ -12,7 +12,7 @@ args = parser.parse_args()
 
 if args.ManifestDir:
     # lade die Versionen erneut
-    extracted_data = search_manifests_and_extract_version(args.ManifestDir)
+    extracted_data = search_manifests_and_extract_version(args.ManifestDir, True)
 
     # Wenn Daten extrahiert wurden, speichere sie in der JSON-Datei 'versions.json'
     if extracted_data:
