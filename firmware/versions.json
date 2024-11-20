@@ -1,9 +1,9 @@
 [
     {
-        "path": "firmware/v2.5.1-272-prelive/manifest_all.json",
+        "path": "firmware/v2.5.1-278-prelive/manifest_all.json",
         "version": "v2.5.1",
         "stage": "prelive",
-        "build": 272
+        "build": 278
     },
     {
         "path": "firmware/v2.5.1-277-prelive/manifest_all.json",
