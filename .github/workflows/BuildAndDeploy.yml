@@ -95,7 +95,7 @@ jobs:
         id: json_params 
         run: |
           mkdir -p release artifacts
-          python .github/workflows/createManifest.py \
+          python .github/scripts/createManifest.py \
                 --arch ${{ matrix.variant.architecture }} \
                 --variant ${{ matrix.variant.subvariant }} \
                 --stage ${{ env.BRANCH_NAME }} \
@@ -167,7 +167,7 @@ jobs:
       - name: create "manifest_all" and "versions" JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/workflows/createVersionsFile.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
+          python app/.github/scripts/createVersionsFile.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
 
       - name: Commit and push changes
         run: |
@@ -235,7 +235,7 @@ jobs:
       # erstelle das manifest_all.json speziell für das release mit den korrekten Pfaden
       - name: Create manifest_all file
         run: |
-          python app/.github/workflows/createReleaseAssetManifest.py \
+          python app/.github/scripts/createReleaseAssetManifest.py \
             --ReleaseDir release \
             --ReleaseURL "https://github.com/tobiasfaust/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
            
@@ -272,7 +272,7 @@ jobs:
               --pattern "manifest_all.json" \
                 --output "manifests/${tag}/manifest_all.json" || true
           done 
-          python app/.github/workflows/createReleaseVersions.py \
+          python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
             --VersionDir web-installer
             ls -R ./manifests
