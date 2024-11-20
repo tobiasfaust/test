@@ -263,10 +263,11 @@ jobs:
           mkdir -p manifests
           tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
           for tagName in $tagNames; do
-            gh release download "$tagName" \
+            echo "Downloading manifest: gh release download $tagName -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/$tagName_manifest_all.json'"
+            gh release download $tagName \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
               --pattern "manifest_all.json" \
-              --output "manifests/${tagName}_manifest_all.json" || true
+              --output "manifests/$tagName_manifest_all.json" || true
           done 
           python app/.github/workflows/createReleaseVersions.py \
             --ManifestDir manifests \
