@@ -241,7 +241,7 @@ jobs:
       # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
       - name: Upload Release Assets
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           for dir in $(find release -type d); do
             for file in "$dir"/*; do
@@ -257,7 +257,7 @@ jobs:
       # Lade diese herunter ins lokale verzeichnis ./manifests 
       - name: Download Manifests, create ReleaseVersions
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p manifests
           tagNames=$(gh release ls --json tagName)
