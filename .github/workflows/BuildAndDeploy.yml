@@ -264,11 +264,11 @@ jobs:
           tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
           #Beispiel TageNames: [{"tagName":"v.2.5.1-PRE-11935230894"},{"tagName":"v.2.5.1-PRE-11935083446"},{"tagName":"v.2.5.1-PRE-11934890507"},{"tagName":"v.2.5.0-PRE-5218822714"},{"tagName":"v.2.5.0-PRE-5218686311"},{"tagName":"v.2.5.0-PRE-5185111746"},{"tagName":"v.2.5.0-PRE-5179141026"},{"tagName":"v.2.5.0-PRE-5179098548"},{"tagName":"v.2.5.0-PRE-5179063279"},{"tagName":"v.2.5.0-PRE-5178990163"},{"tagName":"v.2.5.0-PRE-5178880279"},{"tagName":"v.2.5.0-PRE-5178666290"},{"tagName":"v.2.5.0-PRE-5178453676"},{"tagName":"v.2.5.0-PRE-5177774441"},{"tagName":"v.2.5.0-PRE-5177649258"},{"tagName":"v.2.5.0-PRE-5177594993"},{"tagName":"v.2.5.0-PRE-5177564195"},{"tagName":"v.2.5.0-PRE-5143099563"},{"tagName":"v.2.5.0-PRE-5143063918"},{"tagName":"v.2.5.0-PRE-5143034241"},{"tagName":"v.2.5.0-PRE-5142955799"},{"tagName":"v.2.5.0-PRE-5142928963"},{"tagName":"v.2.5.0-PRE-5142840006"},{"tagName":"v.2.5.0-PRE-5142801085"},{"tagName":"v.2.5.0-PRE-5142535620"},{"tagName":"v.2.5.0-PRE-5142528468"},{"tagName":"v.2.5.0-PRE-5142503306"},{"tagName":"v.2.5.0-PRE-5142483405"},{"tagName":"v.2.5.0-PRE-5142406641"},{"tagName":"v.2.5.0-PRE-5142378345"}] 
           for tag in $(echo "$tagNames" | jq -r '.[].tagName'); do
-            echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/$tag_manifest_all.json'"
+            echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/${tag}_manifest_all.json'"
             gh release download $tag \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
               --pattern "manifest_all.json" \
-              --output "manifests/$tag_manifest_all.json" || true
+                --output "manifests/${tag}_manifest_all.json" || true
           done 
           python app/.github/workflows/createReleaseVersions.py \
             --ManifestDir manifests \
