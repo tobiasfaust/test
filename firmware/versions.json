@@ -12,10 +12,10 @@
         "build": 284
     },
     {
-        "path": "firmware/v2.5.1-278-prelive/manifest_all.json",
+        "path": "firmware/v2.5.1-285-development/manifest_all.json",
         "version": "v2.5.1",
-        "stage": "prelive",
-        "build": 278
+        "stage": "development",
+        "build": 285
     },
     {
         "path": "firmware/v2.5.1-282-prelive/manifest_all.json",
