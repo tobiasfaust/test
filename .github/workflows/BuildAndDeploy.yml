@@ -246,7 +246,7 @@ jobs:
           for dir in $(find ./release -type d); do
             for file in "$dir"/*; do
               if [ -f "$file" ]; then
-                gh release upload ${{ steps.create_release.outputs.id }} "$dir/$file" --clobber
+                gh release upload ${{ steps.create_release.outputs.id }} "$file" --clobber
               fi
             done
           done
