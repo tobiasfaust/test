@@ -237,23 +237,33 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
         # Extrahiere 'build' und 'path' falls vorhanden
         build = entry.get('build', None)
         path = entry.get('path', None)
-        
+        stage = entry.get('stage', None)
+
+        # TODO: stage wird aktuell nicht berücksichtigt
+
         # Wenn 'build' und 'path' vorhanden sind, füge sie zum Dictionary hinzu
-        if build is not None and path is not None:
+        if build is not None and path is not None and stage is not None:
             path = os.path.dirname(path)
-            if build not in versions:
-                versions[build] = []
-            versions[build].append(path)
+            if stage not in versions:
+                versions[stage] = {}
+            if build not in versions[stage]:
+                versions[stage][build] = []
+                versions[stage][build].append(path)
+            if build not in versions[stage]:
+                versions[stage][build] = []
+                versions[stage][build].append(path)
     
-    # Sortiere die 'build' Nummern aufsteigend
-    sorted_builds = sorted(versions.keys())
-    logging.info(f"Folgende Build Nummern wurden gefunden: {sorted_builds}")
-    # Lösche alle 'build' Nummern, die nicht in den ersten 'keepVersions' enthalten sind
-    for build in sorted_builds[:-keepVersions]:
-        for path in versions[build]:
-            # Lösche den Ordner
-            shutil.rmtree(f'web-installer/{path}')
-            logging.info(f"{path} gelöscht")
+    # Sortiere die 'build' Nummern aufsteigend pro stage
+    for stage in versions:
+        sorted_builds = sorted(versions[stage].keys())
+        logging.info(f"Folgende Build Nummern wurden für Stage {stage} gefunden: {sorted_builds}")
+        # Lösche alle 'build' Nummern, die nicht in den ersten 'keepVersions' enthalten sind
+        for build in sorted_builds[:-keepVersions]:
+            for path in versions[stage][build]:
+                # Lösche den Ordner
+                #shutil.rmtree(f'web-installer/{path}')
+                logging.info(f"{path} gelöscht")
+    
 
 # das manifest.json sieht folgendermassen aus:
 #{
