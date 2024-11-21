@@ -52,5 +52,11 @@
         "version": "v2.5.1",
         "stage": "prelive",
         "build": 281
+    },
+    {
+        "path": "firmware/v2.5.1-289-prelive/manifest_all.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "build": 289
     }
 ]
