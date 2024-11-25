@@ -68,24 +68,21 @@ jobs:
           pip install -U esptool
 
       - name: Run PlatformIO
+        id: buildFw
         run: |
           platformio run -e ${{ matrix.variant.firmware }}
           if [ -d "data" ]; then
             platformio run --target buildfs -e ${{ matrix.variant.firmware }}
           fi
+          python createMergedFirmware.py \
+            --ChipFamily ${{ matrix.variant.architecture }} \
+            --BuildDir .pio/build/${{ matrix.variant.firmware }} \
+            --PathOfPartitionsCSV partitions.csv \
+            >> "$GITHUB_OUTPUT"
 
-      - name: Build merged Firmware for ESP32
-        if: contains(matrix.variant.architecture, 'ESP32')
+      - name: Build merged Firmware
         run: |
-          esptool.py --chip ${{ matrix.variant.architecture }} merge_bin \
-            --output .pio/build/${{ matrix.variant.firmware }}/merged-firmware.bin \
-            --flash_mode dout \
-            --flash_freq 80m \
-            --flash_size 4MB \
-            0x1000 .pio/build/${{ matrix.variant.firmware }}/bootloader.bin \
-            0x8000 .pio/build/${{ matrix.variant.firmware }}/partitions.bin \
-            0x10000 .pio/build/${{ matrix.variant.firmware }}/firmware.bin 
-#            0x350000 .pio/build/${{ matrix.variant.firmware }}/littlefs.bin
+          ${{steps.buildFw.outputs.command}}
 
       - name: Display generated files
         run: |
