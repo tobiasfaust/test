@@ -47,7 +47,6 @@ def readOffsetFromPartitionCSV(path: str, name: str) -> int:
             for line in lines[1:]:
                 columns = line.strip().split(',')
                 if columns[offset_index].strip() == '':
-                    print(f'Offset is empty: {previous_offset} + {previous_size}')
                     columns[offset_index] = str(previous_offset + previous_size)
                 previous_size = int(columns[size_index], 0)
                 previous_offset = int(columns[offset_index], 0)
