@@ -254,7 +254,7 @@ jobs:
 
         
       # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
-      # Lade diese herunter ins lokale verzeichnis ./manifests und erstelle auf dieser Grundlage die releaseversions.json
+      # Lade diese herunter ins lokale verzeichnis ./manifests und erstelle auf dieser Grundlage die releases.json
       - name: Download all Manifests, create ReleaseVersions
         env:
           GH_TOKEN: ${{ github.token }}
@@ -284,7 +284,7 @@ jobs:
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
             git add *
-            git commit -m "update releaseversions.json"
+            git commit -m "update releases.json"
             git push origin web-installer  
 
       - name: Upload Changelog artifact
