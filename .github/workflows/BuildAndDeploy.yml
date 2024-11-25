@@ -74,7 +74,7 @@ jobs:
           if [ -d "data" ]; then
             platformio run --target buildfs -e ${{ matrix.variant.firmware }}
           fi
-          python createMergedFirmware.py \
+          python .github/scripts/createMergedFirmware.py \
             --ChipFamily ${{ matrix.variant.architecture }} \
             --BuildDir .pio/build/${{ matrix.variant.firmware }} \
             --PathOfPartitionsCSV partitions.csv \
