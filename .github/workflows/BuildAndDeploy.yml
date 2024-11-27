@@ -264,11 +264,13 @@ jobs:
           tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
           
           for tag in $(echo "$tagNames" | jq -r '.[].tagName'); do
-            echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/${tag}_manifest_all.json'"
-            gh release download $tag \
-              -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
-              --pattern "manifestAll*.json" \
-              --output "manifests/${tag}/" || true
+            for asset in $(gh release view $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json assets --jq '.assets[].name' | grep 'manifestAll'); do
+              echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern '$asset' --output 'manifests/${tag}/'"
+              gh release download $tag \
+                -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
+                --pattern "$asset" \
+                --output "manifests/${tag}/" || true
+            done
           done 
           python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
