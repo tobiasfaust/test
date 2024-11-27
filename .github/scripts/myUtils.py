@@ -85,6 +85,7 @@ def process_manifests(root: str) -> None:
                         version = manifest_data.get('version')
                         stage = manifest_data.get('stage')
                         build = manifest_data.get('build')
+                        variant = manifest_data.get('variant')
                         
                         # Wenn die erforderlichen Felder vorhanden sind, erstelle die neue 'manifest_all.json' Datei
                         if name and version and stage:
@@ -94,6 +95,7 @@ def process_manifests(root: str) -> None:
                                 "name": name,
                                 "version": version,
                                 "stage": stage,
+                                "variant": variant,
                                 "build": build, 
                                 "builds": []  # Wir werden die "builds" später mit chipFamily und parts füllen
                             }
@@ -154,6 +156,7 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list :
                         version = manifest_data.get('version', None)
                         stage = manifest_data.get('stage', None)
                         build = manifest_data.get('build', None)
+                        variant = manifest_data.get('variant', None)
 
                         # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
                         # extrahiere daraus den Pfad
@@ -173,6 +176,7 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list :
                                 'path': path ,
                                 'version': version,
                                 'stage': stage,
+                                'variant': variant,
                                 'build': int(build) if build else 0
                             })
                 
@@ -238,8 +242,6 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
         build = entry.get('build', None)
         path = entry.get('path', None)
         stage = entry.get('stage', None)
-
-        # TODO: stage wird aktuell nicht berücksichtigt
 
         # Wenn 'build' und 'path' vorhanden sind, füge sie zum Dictionary hinzu
         if build is not None and path is not None and stage is not None:
