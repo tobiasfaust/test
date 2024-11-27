@@ -269,12 +269,12 @@ jobs:
               gh release download $tag \
                 -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
                 --pattern "$asset" \
-                --output "manifests/${tag}/" || true
+                --dir "manifests/${tag}/" || true
             done
           done 
           python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
-            --VersionDir web-installer
+            --VersionDir web-installer/firmware
             ls -R ./manifests
             ls -R ./release
         
