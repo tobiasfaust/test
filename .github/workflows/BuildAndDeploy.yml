@@ -45,9 +45,9 @@ jobs:
           - firmware: firmware_ESP32-C3
             architecture: ESP32-C3
             subvariant: standard
-#          - firmware: firmware_ESP32.WebSerial
-#            architecture: ESP32
-#            subvariant: webSerial
+          - firmware: firmware_ESP32-WebSerial
+            architecture: ESP32
+            subvariant: webSerial
           - firmware: firmware_ESP8266
             architecture: ESP8266
             subvariant: standard  
@@ -68,24 +68,22 @@ jobs:
           pip install -U esptool
 
       - name: Run PlatformIO
+        id: buildFw
         run: |
           platformio run -e ${{ matrix.variant.firmware }}
           if [ -d "data" ]; then
             platformio run --target buildfs -e ${{ matrix.variant.firmware }}
           fi
+          python .github/scripts/createMergedFirmware.py \
+            --ChipFamily ${{ matrix.variant.architecture }} \
+            --BuildDir .pio/build/${{ matrix.variant.firmware }} \
+            --PathOfPartitionsCSV partitions.csv \
+            >> "$GITHUB_OUTPUT"
 
-      - name: Build merged Firmware for ESP32
-        if: contains(matrix.variant.architecture, 'ESP32')
+      - name: Build merged Firmware
+        if: ${{ steps.buildFw.outputs.command != 'None' }}
         run: |
-          esptool.py --chip ${{ matrix.variant.architecture }} merge_bin \
-            --output .pio/build/${{ matrix.variant.firmware }}/merged-firmware.bin \
-            --flash_mode dout \
-            --flash_freq 80m \
-            --flash_size 4MB \
-            0x1000 .pio/build/${{ matrix.variant.firmware }}/bootloader.bin \
-            0x8000 .pio/build/${{ matrix.variant.firmware }}/partitions.bin \
-            0x10000 .pio/build/${{ matrix.variant.firmware }}/firmware.bin 
-#            0x350000 .pio/build/${{ matrix.variant.firmware }}/littlefs.bin
+          ${{steps.buildFw.outputs.command}}
 
       - name: Display generated files
         run: |
@@ -257,20 +255,20 @@ jobs:
 
         
       # gehe durch alle verfügbaren releases im Repository durch, suche die manifest_all.json.
-      # Lade diese herunter ins lokale verzeichnis ./manifests und erstelle auf dieser Grundlage die releaseversions.json
+      # Lade diese herunter ins lokale verzeichnis ./manifests und erstelle auf dieser Grundlage die releases.json
       - name: Download all Manifests, create ReleaseVersions
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p manifests
           tagNames=$(gh release ls -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json tagName)
-          #Beispiel TageNames: [{"tagName":"v.2.5.1-PRE-11935230894"},{"tagName":"v.2.5.1-PRE-11935083446"},{"tagName":"v.2.5.1-PRE-11934890507"},{"tagName":"v.2.5.0-PRE-5218822714"},{"tagName":"v.2.5.0-PRE-5218686311"},{"tagName":"v.2.5.0-PRE-5185111746"},{"tagName":"v.2.5.0-PRE-5179141026"},{"tagName":"v.2.5.0-PRE-5179098548"},{"tagName":"v.2.5.0-PRE-5179063279"},{"tagName":"v.2.5.0-PRE-5178990163"},{"tagName":"v.2.5.0-PRE-5178880279"},{"tagName":"v.2.5.0-PRE-5178666290"},{"tagName":"v.2.5.0-PRE-5178453676"},{"tagName":"v.2.5.0-PRE-5177774441"},{"tagName":"v.2.5.0-PRE-5177649258"},{"tagName":"v.2.5.0-PRE-5177594993"},{"tagName":"v.2.5.0-PRE-5177564195"},{"tagName":"v.2.5.0-PRE-5143099563"},{"tagName":"v.2.5.0-PRE-5143063918"},{"tagName":"v.2.5.0-PRE-5143034241"},{"tagName":"v.2.5.0-PRE-5142955799"},{"tagName":"v.2.5.0-PRE-5142928963"},{"tagName":"v.2.5.0-PRE-5142840006"},{"tagName":"v.2.5.0-PRE-5142801085"},{"tagName":"v.2.5.0-PRE-5142535620"},{"tagName":"v.2.5.0-PRE-5142528468"},{"tagName":"v.2.5.0-PRE-5142503306"},{"tagName":"v.2.5.0-PRE-5142483405"},{"tagName":"v.2.5.0-PRE-5142406641"},{"tagName":"v.2.5.0-PRE-5142378345"}] 
+          
           for tag in $(echo "$tagNames" | jq -r '.[].tagName'); do
             echo "Downloading manifest: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern 'manifest_all.json' --output 'manifests/${tag}_manifest_all.json'"
             gh release download $tag \
               -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
-              --pattern "manifest_all.json" \
-                --output "manifests/${tag}/manifest_all.json" || true
+              --pattern "manifestAll*.json" \
+              --output "manifests/${tag}/" || true
           done 
           python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
@@ -287,7 +285,7 @@ jobs:
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
             git add *
-            git commit -m "update releaseversions.json"
+            git commit -m "update releases.json"
             git push origin web-installer  
 
       - name: Upload Changelog artifact
