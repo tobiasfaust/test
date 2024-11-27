@@ -12,5 +12,19 @@
         "stage": "development",
         "variant": "standard",
         "build": 298
+    },
+    {
+        "path": "firmware/v2.5.1-299-development/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "webSerial",
+        "build": 299
+    },
+    {
+        "path": "firmware/v2.5.1-299-development/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "standard",
+        "build": 299
     }
 ]
