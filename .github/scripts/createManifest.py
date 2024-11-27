@@ -92,7 +92,7 @@ for root, _, files in os.walk(args.binarypath):
                 "parts": []
             }
 
-            SubDir = f'v{VERSION}-{args.build}.{args.variant}-{args.stage}'
+            SubDir = f'v{VERSION}-{args.build}-{args.stage}'
 
             if os.path.isfile(os.path.join(args.binarypath, "merged-firmware.bin")):
                 manifest_data["parts"].append({
