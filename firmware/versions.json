@@ -1,86 +1,16 @@
 [
     {
-        "path": "firmware/v2.5.1-297-development/manifest_all.json",
+        "path": "firmware/v2.5.1-298-development/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
-        "build": 297
+        "build": 298
     },
     {
-        "path": "firmware/v2.5.1-283-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 283
-    },
-    {
-        "path": "firmware/v2.5.1-284-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 284
-    },
-    {
-        "path": "firmware/v2.5.1-288-development/manifest_all.json",
+        "path": "firmware/v2.5.1-298-development/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "development",
-        "variant": null,
-        "build": 288
-    },
-    {
-        "path": "firmware/v2.5.1-282-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 282
-    },
-    {
-        "path": "firmware/v2.5.1-287-development/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": null,
-        "build": 287
-    },
-    {
-        "path": "firmware/v2.5.1-294-development/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": null,
-        "build": 294
-    },
-    {
-        "path": "firmware/v2.5.1-279-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 279
-    },
-    {
-        "path": "firmware/v2.5.1-293-development/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": null,
-        "build": 293
-    },
-    {
-        "path": "firmware/v2.5.1-281-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 281
-    },
-    {
-        "path": "firmware/v2.5.1-289-prelive/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": null,
-        "build": 289
-    },
-    {
-        "path": "firmware/v2.5.1-295-development/manifest_all.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": null,
-        "build": 295
+        "variant": "standard",
+        "build": 298
     }
 ]
