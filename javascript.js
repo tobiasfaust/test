@@ -27,9 +27,9 @@ function init() {
             .catch(() => [])
     ])
     .then(([versions, releases]) => {
-        GenerateSelectList(versions, releases);
         window.versions = versions;
         window.releases = releases;
+        GenerateSelectList(true, false);
         checkSupported(); 
         resetCheckboxes();
     })
@@ -162,8 +162,8 @@ function resetCheckboxes() {
 /**
  * Generates a select list with grouped and sorted versions and releases.
  * 
- * @param {Array} versions - An array of version objects, each containing `stage`, `build`, `version`, and `path` properties.
- * @param {Array} releases - An array of release objects, each containing `stage`, `build`, `version`, and `path` properties.
+ * @param {bool} UseReleases - bool, use release.json für prelive and master or use all versions from versions.json
+ * @param {bool} PreSelectHighestBuild - bool, preselect the highest build number or not
  * 
  * The function performs the following steps:
  * 1. Groups the `versions` array by `stage`, including only those with the stage "development".
@@ -172,14 +172,14 @@ function resetCheckboxes() {
  * 4. Creates `optgroup` elements for each stage and `option` elements for each version/release.
  * 5. Appends the `optgroup` elements to the select element with the id 'versions'.
  */
-function GenerateSelectList(versions, releases) {
+function GenerateSelectList(useReleases=true, PreSelectHighestBuild=true) {
 
     const select = document.getElementById('versions');
     const stages = {};
 
     // Group by stage, only include development versions
     versions.forEach(obj => {
-        if (obj.stage == "development") {
+        if ((useReleases && obj.stage == "development") || !useReleases) {
             if (!stages[obj.stage]) {
                 stages[obj.stage] = {};
             }
@@ -191,16 +191,18 @@ function GenerateSelectList(versions, releases) {
         }
     });
 
-    // Group by stage, for all releases
-    releases.forEach(obj => {
-        if (!stages[obj.stage]) {
-                stages[obj.stage] = [];
+    if (useReleases) {
+        // Group by stage, for all releases
+        releases.forEach(obj => {
+            if (!stages[obj.stage]) {
+                    stages[obj.stage] = [];
+                }
+            if (!stages[obj.stage][obj.build]) {
+                stages[obj.stage][obj.build] = [];
             }
-        if (!stages[obj.stage][obj.build]) {
-            stages[obj.stage][obj.build] = [];
-        }
-        stages[obj.stage][obj.build].push(obj);
-    });
+            stages[obj.stage][obj.build].push(obj);
+        });
+    }
 
     // Sort each stage by build number in descending order
     for (const stage in stages) {
@@ -211,13 +213,23 @@ function GenerateSelectList(versions, releases) {
 
     // store the highest build number
     let highestBuild = 0;
-    for (const stage in stages) {
-        for (const build in stages[stage]) {
-            if (build > highestBuild) {
-                highestBuild = build;
+    if (PreSelectHighestBuild) {
+        for (const stage in stages) {
+            for (const build in stages[stage]) {
+                if (build > highestBuild) {
+                    highestBuild = build;
+                }
             }
         }
     }
+
+    //<option value="" disabled selected>Select Version</option>
+    const o = document.createElement('option');
+    o.value = "";
+    o.disabled = true;
+    o.selected = true;
+    o.text = "Select Version";
+    select.appendChild(o);
 
     // Create optgroups and options
     for (const stage in stages) {
@@ -229,7 +241,8 @@ function GenerateSelectList(versions, releases) {
             const option = document.createElement('option');
             option.value = uniqueBuild.build;
             option.text = uniqueBuild.version + " (Build " + uniqueBuild.build + ")";
-            option.selected = uniqueBuild.build == highestBuild;
+            if (PreSelectHighestBuild) 
+                option.selected = uniqueBuild.build == highestBuild;
             optgroup.appendChild(option);
         }
         select.appendChild(optgroup);
