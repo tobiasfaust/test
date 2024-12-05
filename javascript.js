@@ -31,7 +31,7 @@ function init() {
         window.releases = releases;
         GenerateSelectList(true, false);
         checkSupported(); 
-        resetCheckboxes();
+        resetCheckboxes(setManifest);
     })
     .catch(error => console.error('Error loading versions:', error));
 }
@@ -100,13 +100,15 @@ function unsupported() {
  * `checked` property to `false` and their `disabled` property to `false`.
  * It effectively unchecks and enables all radio buttons.
  */
-function resetCheckboxes() {
+function resetCheckboxes(onClickEvent) {
     // gehe durch die json date versions und releases. Suche alle möglichen Ausprägungen zum Key "variant"
     // und erstelle für jede Ausprägung ein radio button. Wenn der radio button ausgewählt wird, dann wird
     // die Funktion setManifest aufgerufen und der Wert des radio buttons wird als Parameter übergeben.
     
     // disable install button
-    document.getElementById('web-install-div').classList.add('disabled');
+    if (document.getElementById('web-install-div')) {
+        document.getElementById('web-install-div').classList.add('disabled');
+    }
 
     const radioButtonsContainer = document.getElementById('variants');
     radioButtonsContainer.innerHTML = ''; // Clear existing radio buttons
@@ -128,7 +130,7 @@ function resetCheckboxes() {
 
     // Create radio buttons for each variant if > 1
     if (variants.size > 1) {
-        document.getElementById('versions').removeEventListener('change', setManifest); 
+        document.getElementById('versions').removeEventListener('change', onClickEvent); 
 
         variants.forEach(variant => {
             const radio = document.createElement('input');
@@ -137,7 +139,7 @@ function resetCheckboxes() {
             radio.value = variant;
             radio.id = variant;
             radio.classList.add('radio__input');
-            radio.addEventListener('change', () => setManifest());
+            radio.addEventListener('change', onClickEvent);
             radio.disabled = false;
             radio.checked = false;
 
@@ -151,9 +153,9 @@ function resetCheckboxes() {
             radioButtonsContainer.appendChild(label);
         });
     } else {
-        document.getElementById('versions').addEventListener('change', setManifest);
+        document.getElementById('versions').addEventListener('change', onClickEvent);
         document.getElementById('web-install-div').classList.remove('disabled');
-        setManifest();
+        //onClickEvent();
         console.log('Only one variant found. Skipping radio buttons.');
     }
 } 
@@ -259,6 +261,7 @@ function GenerateSelectList(useReleases=true, PreSelectHighestBuild=true) {
  * to the ID 'web-install-button'.
  */
 function setManifest() {
+    console.log('setManifest');
     build = document.getElementById('versions').value;
     variant = document.querySelector('input[name="variant"]:checked')?.value || undefined
 
