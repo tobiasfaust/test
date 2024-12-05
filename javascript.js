@@ -154,8 +154,10 @@ function resetCheckboxes(onClickEvent) {
         });
     } else {
         document.getElementById('versions').addEventListener('change', onClickEvent);
-        document.getElementById('web-install-div').classList.remove('disabled');
-        //onClickEvent();
+        if (document.getElementById('web-install-div')) {
+            document.getElementById('web-install-div').classList.remove('disabled');
+        }
+        onClickEvent();
         console.log('Only one variant found. Skipping radio buttons.');
     }
 } 
