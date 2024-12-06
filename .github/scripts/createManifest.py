@@ -82,7 +82,7 @@ for root, _, files in os.walk(args.binarypath):
             shutil.copyfile(os.path.join(root, file), os.path.join(args.releasepath, f'{FILENAME}.{FileExtension}.{FILEEXT}'))
             
             ################ Create Manifest.json and Files.json ##################
-            manifest_data = files_data = {
+            manifest_data = {
                 "name": f"{args.repository} (v{VERSION}-{args.stage})",
                 "chipFamily": args.arch,
                 "stage": args.stage,
@@ -91,6 +91,8 @@ for root, _, files in os.walk(args.binarypath):
                 "version": f"v{VERSION}",
                 "parts": []
             }
+
+            files_data = json.loads(json.dumps(manifest_data))
 
             SubDir = f'v{VERSION}-{args.build}-{args.stage}'
 
