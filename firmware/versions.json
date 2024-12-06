@@ -70,6 +70,20 @@
         "build": 299
     },
     {
+        "path": "firmware/v2.5.1-304-development/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "webSerial",
+        "build": 304
+    },
+    {
+        "path": "firmware/v2.5.1-304-development/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "standard",
+        "build": 304
+    },
+    {
         "path": "firmware/v2.5.1-301-prelive/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
