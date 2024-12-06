@@ -234,7 +234,6 @@ function GenerateSelectList(useReleases=true, PreSelectHighestBuild=true) {
         }
     }
 
-    //<option value="" disabled selected>Select Version</option>
     const o = document.createElement('option');
     o.value = "";
     o.disabled = true;
