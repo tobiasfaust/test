@@ -1,1 +1,1 @@
-{"owner": "tobiasfaust", "repository": "HomeStatusDisplay", "chipfamily": "ESP32", "withFS": true}
+{"owner": "tobiasfaust", "repository": "HomeStatusDisplay", "chipfamily": "ESP32", "withFS": "0"}
