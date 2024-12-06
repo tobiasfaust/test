@@ -29,7 +29,7 @@ function init() {
     .then(([versions, releases]) => {
         window.versions = versions;
         window.releases = releases;
-        GenerateSelectList(true, false);
+        GenerateSelectList(true, true);
         checkSupported(); 
         resetCheckboxes(setManifest);
     })
@@ -220,8 +220,8 @@ function GenerateSelectList(useReleases=true, PreSelectHighestBuild=true) {
     if (PreSelectHighestBuild) {
         for (const stage in stages) {
             for (const build in stages[stage]) {
-                if (build > highestBuild) {
-                    highestBuild = build;
+                if (parseInt(build, 10) > highestBuild) {
+                    highestBuild = parseInt(build, 10);
                 }
             }
         }
@@ -246,7 +246,7 @@ function GenerateSelectList(useReleases=true, PreSelectHighestBuild=true) {
             option.value = uniqueBuild.build;
             option.text = uniqueBuild.version + " (Build " + uniqueBuild.build + ")";
             if (PreSelectHighestBuild) 
-                option.selected = uniqueBuild.build == highestBuild;
+                option.selected = parseInt(uniqueBuild.build, 10) == highestBuild;
             optgroup.appendChild(option);
         }
         select.appendChild(optgroup);
