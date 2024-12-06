@@ -124,11 +124,12 @@ for root, _, files in os.walk(args.binarypath):
             if os.path.isfile(os.path.join(args.binarypath, "littlefs.bin")):
                 files_data["parts"].append({
                     "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/{SubDir}/{FIRMWARENAME}/littlefs.{FileExtension}.bin",
-                    "offset": readOffsetFromPartitionCSV("partitions.csv", "spiffs"),
+                    "offset": int(readOffsetFromPartitionCSV("partitions.csv", "spiffs"), 16),
                     "filetype": "filesystem"
                 })
 
-            OFFSET = 0 if "ESP8266" in args.arch else readOffsetFromPartitionCSV("partitions.csv", "app0")
+
+            OFFSET = 0 if "ESP8266" in args.arch else int(readOffsetFromPartitionCSV("partitions.csv", "app0"), 16)
             files_data["parts"].append({
                 "path": f"https://tobiasfaust.github.io/{args.repository}/firmware/{SubDir}/{FIRMWARENAME}/{FILENAME}.{FileExtension}.{FILEEXT}",
                 "offset": OFFSET,
