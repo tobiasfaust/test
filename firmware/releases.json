@@ -4,69 +4,95 @@
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 300
+        "build": 300,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 300
+        "build": 300,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 302
+        "build": 302,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 302
+        "build": 302,
+        "releasetag": ""
+    },
+    {
+        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 311,
+        "releasetag": ""
+    },
+    {
+        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 311,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 301
+        "build": 301,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 301
+        "build": 301,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 310
+        "build": 310,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 310
+        "build": 310,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 309
+        "build": 309,
+        "releasetag": ""
     },
     {
         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 309
+        "build": 309,
+        "releasetag": ""
     }
 ]
