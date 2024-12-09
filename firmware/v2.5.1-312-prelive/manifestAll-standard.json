@@ -2,14 +2,15 @@
     "name": "test (v2.5.1-prelive)",
     "version": "v2.5.1",
     "stage": "prelive",
-    "build": 300,
+    "build": 312,
     "variant": "standard",
+    "releasetag": "",
     "builds": [
         {
             "chipFamily": "ESP32-S2",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-300-prelive/firmware_ESP32-S2/merged-firmware.ESP32-S2.v2.5.1-300.standard.prelive.bin",
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-312-prelive/firmware_ESP32-S2/merged-firmware.ESP32-S2.v2.5.1-312.standard.prelive.bin",
                     "offset": 0
                 }
             ]
@@ -18,7 +19,7 @@
             "chipFamily": "ESP32-S3",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-300-prelive/firmware_ESP32-S3/merged-firmware.ESP32-S3.v2.5.1-300.standard.prelive.bin",
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-312-prelive/firmware_ESP32-S3/merged-firmware.ESP32-S3.v2.5.1-312.standard.prelive.bin",
                     "offset": 0
                 }
             ]
@@ -27,7 +28,7 @@
             "chipFamily": "ESP32-C3",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-300-prelive/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-300.standard.prelive.bin",
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-312-prelive/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-312.standard.prelive.bin",
                     "offset": 0
                 }
             ]
@@ -36,7 +37,7 @@
             "chipFamily": "ESP8266",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-300-prelive/firmware_ESP8266/merged-firmware.ESP8266.v2.5.1-300.standard.prelive.bin",
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-312-prelive/firmware_ESP8266/merged-firmware.ESP8266.v2.5.1-312.standard.prelive.bin",
                     "offset": 0
                 }
             ]
@@ -45,7 +46,7 @@
             "chipFamily": "ESP32",
             "parts": [
                 {
-                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-300-prelive/firmware_ESP32/merged-firmware.ESP32.v2.5.1-300.standard.prelive.bin",
+                    "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-312-prelive/firmware_ESP32/merged-firmware.ESP32.v2.5.1-312.standard.prelive.bin",
                     "offset": 0
                 }
             ]
