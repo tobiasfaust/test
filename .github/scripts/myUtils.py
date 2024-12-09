@@ -328,6 +328,7 @@ def changeURL(root: str, url: str, TagName: str) -> None:
                             new_url = os.path.join(url, os.path.basename(old_url))
                             part['path'] = new_url
                             part['releasetag'] = TagName
+                            logging.info(f"json: {part}")
                     save_results_to_json(manifest_data, manifest_path)
                     logging.info(f"URLs in {manifest_path} geändert.")
             except json.JSONDecodeError:

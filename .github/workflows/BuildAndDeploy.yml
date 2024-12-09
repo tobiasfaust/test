@@ -240,7 +240,6 @@ jobs:
             --ReleaseTagName ${{ steps.set_env_var.outputs.tagname }} \
             --ReleaseURL "${{github.server_url}}/${{env.GITHUB_OWNER}}/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
            
-      
       # suche alle Dateien aus dem Ordner release (siehe asset-download), incl aller unterordner und lade diese einzeln als release-asset hoch
       # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
       - name: Upload Release Assets
