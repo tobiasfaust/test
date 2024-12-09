@@ -1,0 +1,30 @@
+{
+    "name": "test (v2.5.1-prelive)",
+    "chipFamily": "ESP32",
+    "stage": "prelive",
+    "build": 310,
+    "variant": "webSerial",
+    "version": "v2.5.1",
+    "parts": [
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-310-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-310.webSerial.prelive.bin",
+            "offset": 4096,
+            "filetype": "bootloader"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-310-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-310.webSerial.prelive.bin",
+            "offset": 32768,
+            "filetype": "partitions"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-310-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-310.webSerial.prelive.bin",
+            "offset": 3473408,
+            "filetype": "filesystem"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-310-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-310.webSerial.prelive.bin",
+            "offset": 65536,
+            "filetype": "firmware"
+        }
+    ]
+}

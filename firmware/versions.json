@@ -1,5 +1,19 @@
 [
     {
+        "path": "firmware/v2.5.1-310-prelive/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 310
+    },
+    {
+        "path": "firmware/v2.5.1-310-prelive/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 310
+    },
+    {
         "path": "firmware/v2.5.1-309-prelive/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
