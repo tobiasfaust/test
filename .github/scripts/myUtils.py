@@ -303,7 +303,7 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
 #    ]
 #}
 
-def changeURL(root: str, url: str) -> None:
+def changeURL(root: str, url: str, TagName: str) -> None:
     """
     Ändert den URL-Pfad in allen 'manifest.json'-Dateien unterhalb des angegebenen Verzeichnisses 
     in allen 'path' Variablen im Array 'parts' zur angegebenen URL. Speichert die Änderungen in den Dateien.
@@ -327,6 +327,7 @@ def changeURL(root: str, url: str) -> None:
                             old_url = part['path']
                             new_url = os.path.join(url, os.path.basename(old_url))
                             part['path'] = new_url
+                            part['releasetag'] = TagName
                     save_results_to_json(manifest_data, manifest_path)
                     logging.info(f"URLs in {manifest_path} geändert.")
             except json.JSONDecodeError:
