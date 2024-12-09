@@ -233,6 +233,7 @@ jobs:
           prerelease: ${{ steps.set_env_var.outputs.IS_PRERELEASE }}
         
       # erstelle das manifest_all.json speziell für das release mit den korrekten Pfaden
+      # füge gleichzeitg das ReleaseTag hinzu
       - name: Create manifest_all file
         run: |
           python app/.github/scripts/createReleaseAssetManifest.py \

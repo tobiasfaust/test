@@ -178,6 +178,7 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                         stage = manifest_data.get('stage', None)
                         build = manifest_data.get('build', None)
                         variant = manifest_data.get('variant', None)
+                        releasetag = manifest_data.get('releasetag', None) 
                         
                         # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
                         # extrahiere daraus den Pfad
@@ -198,7 +199,8 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                                 'version': version,
                                 'stage': stage,
                                 'variant': variant,
-                                'build': int(build) if build else 0
+                                'build': int(build) if build else 0,
+                                'releasetag': releasetag if releasetag is not None else ''
                             })
                 
                 except json.JSONDecodeError:
@@ -321,14 +323,13 @@ def changeURL(root: str, url: str, TagName: str) -> None:
             try:
                 manifest_data = read_json_file(manifest_path)
                 if manifest_data is not None:
+                    manifest_data['releasetag'] = TagName # set the release tag
                     parts = manifest_data.get('parts', [])
                     for part in parts:
                         if 'path' in part:
                             old_url = part['path']
                             new_url = os.path.join(url, os.path.basename(old_url))
                             part['path'] = new_url
-                            part['releasetag'] = TagName
-                            logging.info(f"json: {part}")
                     save_results_to_json(manifest_data, manifest_path)
                     logging.info(f"URLs in {manifest_path} geändert.")
             except json.JSONDecodeError:
