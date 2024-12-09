@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+      - stable
       - prelive
       - development
     paths:
@@ -181,11 +182,12 @@ jobs:
     needs: [build]
     
     runs-on: ubuntu-latest
-    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'prelive')
+    if: endsWith(github.ref, 'master') || endsWith(github.ref, 'stable') || endsWith(github.ref, 'prelive')
     
     env:
       GITHUB_REPOSITORY: ${{ github.event.repository.name }}
       BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
+      GITHUB_OWNER: ${{ github.repository_owner }}
 
     steps:
       - name: Checkout web-installer Repository
@@ -208,8 +210,8 @@ jobs:
         id: set_env_var
         run: |
                  VERSION=$(sed 's/[^0-9|.]//g' app/include/_Release.h)  # zb. 2.4.2 
-                 if [ ${{ env.BRANCH_NAME }} == 'master' ]; then IS_PRE='false'; else IS_PRE='true'; fi
-                 if [ ${{ env.BRANCH_NAME }} == 'master' ]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
+                 if [[ "master stable" == *${{ env.BRANCH_NAME }}* ]]; then IS_PRE='false'; else IS_PRE='true'; fi
+                 if [[ "master stable" == *${{ env.BRANCH_NAME }}* ]]; then POSTFIX=''    ; else POSTFIX='PRE'; fi
                  echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                  echo "IS_PRERELEASE=${IS_PRE}" >> "$GITHUB_OUTPUT"
                  echo "RELEASENAME_POSTFIX=${POSTFIX}" >> "$GITHUB_OUTPUT"
@@ -235,7 +237,8 @@ jobs:
         run: |
           python app/.github/scripts/createReleaseAssetManifest.py \
             --ReleaseDir release \
-            --ReleaseURL "https://github.com/tobiasfaust/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
+            --ReleaseTagName ${{ steps.set_env_var.outputs.tagname }} \
+            --ReleaseURL "${{github.server_url}}/${{env.GITHUB_OWNER}}/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
            
       
       # suche alle Dateien aus dem Ordner release (siehe asset-download), incl aller unterordner und lade diese einzeln als release-asset hoch
