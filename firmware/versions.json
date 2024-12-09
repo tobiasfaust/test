@@ -32,22 +32,6 @@
         "releasetag": ""
     },
     {
-        "path": "firmware/v2.5.1-303-development/manifestAll-webSerial.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "webSerial",
-        "build": 303,
-        "releasetag": ""
-    },
-    {
-        "path": "firmware/v2.5.1-303-development/manifestAll-standard.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "standard",
-        "build": 303,
-        "releasetag": ""
-    },
-    {
         "path": "firmware/v2.5.1-302-prelive/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
@@ -125,6 +109,22 @@
         "stage": "development",
         "variant": "standard",
         "build": 305,
+        "releasetag": ""
+    },
+    {
+        "path": "firmware/v2.5.1-313-development/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "webSerial",
+        "build": 313,
+        "releasetag": ""
+    },
+    {
+        "path": "firmware/v2.5.1-313-development/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "standard",
+        "build": 313,
         "releasetag": ""
     },
     {
