@@ -25,6 +25,6 @@ if args.ReleaseURL:
     # im array 'parts' zur Release-URL
     changeURL(args.ReleaseDir, args.ReleaseURL, args.ReleaseTagName)
 
-    # erstelle das manifest_all.json
+    # erstelle das manifestAll.json
     process_manifests(args.ReleaseDir)
 

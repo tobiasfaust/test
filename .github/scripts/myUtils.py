@@ -109,6 +109,7 @@ def process_manifests(root: str) -> None:
                             version = manifest_data.get('version')
                             stage = manifest_data.get('stage')
                             build = manifest_data.get('build')
+                            releasetag = manifest_data.get('releasetag', None)
                             
                             # Wenn die erforderlichen Felder vorhanden sind, erstelle die neue 'manifestAll.json' Datei
                             if name and version and stage:
@@ -120,6 +121,7 @@ def process_manifests(root: str) -> None:
                                     "stage": stage,
                                     "build": build, 
                                     "variant": variant,
+                                    "releasetag": releasetag if releasetag is not None else '',
                                     "builds": []  # Wir werden die "builds" später mit chipFamily und parts füllen
                                 }
 
