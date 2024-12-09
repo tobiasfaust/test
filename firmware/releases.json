@@ -40,5 +40,19 @@
         "stage": "prelive",
         "variant": "standard",
         "build": 301
+    },
+    {
+        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 309
+    },
+    {
+        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 309
     }
 ]
