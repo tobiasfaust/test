@@ -61,7 +61,7 @@ def build_releasejson(root: str) -> list:
                     
                     # extrahiere zugehörigen builds aus filesAll.json
                     files = os.path.join(dirpath, 'filesAll.json')
-                    if files:
+                    if os.path.isfile(files):
                         with open(files, 'r') as file:
                             items = json.loads(file.read())
                             for item in items:
@@ -69,19 +69,19 @@ def build_releasejson(root: str) -> list:
                                     builds = item.get('builds', [])
                                     break
                             
-                    # hole aus assets.json für jede datei die dazu passende asset_id
-                    f_asset_obj = os.path.join(dirpath, 'assets.json')
-                    if f_asset_obj:
-                        with open(f_asset_obj, 'r') as f_assets:
-                            assets = json.loads(f_assets.read())
-                            for b in builds:
-                                for part in b.get('parts', []):
-                                    part_path = part.get('path')
-                                    for asset in assets.get('assets', []):
-                                        if asset.get('url') == part_path:
-                                            part['asset_id'] = asset.get('id')
-                                            part['asset_apiUrl'] = asset.get('apiUrl')
-                                            break   
+                        # hole aus assets.json für jede datei die dazu passende asset_id
+                        f_asset_obj = os.path.join(dirpath, 'assets.json')
+                        if os.path.isfile(f_asset_obj):
+                            with open(f_asset_obj, 'r') as f_assets:
+                                assets = json.loads(f_assets.read())
+                                for b in builds:
+                                    for part in b.get('parts', []):
+                                        part_path = part.get('path')
+                                        for asset in assets.get('assets', []):
+                                            if asset.get('url') == part_path:
+                                                part['asset_id'] = asset.get('id')
+                                                part['asset_apiUrl'] = asset.get('apiUrl')
+                                                break   
                     
                     # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
                     if version is not None and stage is not None:

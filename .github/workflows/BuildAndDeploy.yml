@@ -239,8 +239,6 @@ jobs:
           python app/.github/scripts/createReleaseAssetManifestAll.py \
             --ReleaseDir release \
             --ReleaseURL "${{github.server_url}}/${{env.GITHUB_OWNER}}/${{ env.GITHUB_REPOSITORY }}/releases/download/${{ steps.set_env_var.outputs.tagname }}"
-          [ -f release/files.json ] && rm release/files.json
-          [ -f release/manifest.json ] && rm release/manifest.json
             
       # suche alle Dateien aus dem Ordner release (siehe asset-download), incl aller unterordner und lade diese einzeln als release-asset hoch
       # jede Datei behält ihren originalen Namen und contenttype. Identische Dateinamen werden überschrieben
@@ -251,6 +249,9 @@ jobs:
           for dir in $(find release -type d); do
             for file in "$dir"/*; do
               if [ -f "$file" ]; then
+                if [[ "$file" == *files.json || "$file" == *manifest.json ]]; then
+                  continue
+                fi
                 echo "Uploading $file"
                 gh release upload -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} ${{ steps.set_env_var.outputs.tagname }} "$file" --clobber
               fi
@@ -269,19 +270,20 @@ jobs:
           
           for tag in $(echo "$tagNames" | jq -r '.[].tagName'); do
             for asset in $(gh release view $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json assets --jq '.assets[].name' | grep -E 'manifestAll|filesAll'); do
-              echo "Downloading file: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern '$asset' --dir "manifests/${tag}/'"
+              echo "Downloading file: gh release download $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --pattern '$asset' --dir 'manifests/${tag}/'"
               gh release download $tag \
                 -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} \
                 --pattern "$asset" \
                 --dir "manifests/${tag}/" || true
             done
+            mkdir -p manifests/${tag}/
             gh release view $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json assets > "manifests/${tag}/assets.json"
           done 
           python app/.github/scripts/createReleaseVersions.py \
             --ManifestDir manifests \
             --TargetDir web-installer/firmware
-            ls -R ./manifests
-            ls -R ./release
+          ls -R ./manifests
+          ls -R ./release
         
       - name: Commit and push changes
         env:
