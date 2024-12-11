@@ -19,10 +19,10 @@
         "build": 310,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -45,10 +45,10 @@
         "build": 309,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -71,10 +71,10 @@
         "build": 318,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -97,10 +97,10 @@
         "build": 302,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -123,10 +123,36 @@
         "build": 320,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
+        ]
+    },
+    {
+        "manifest": "firmware/v2.5.1-325-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-325-prelive/filesAll.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 325,
+        "chipFamilies": [
+            "ESP32"
+        ]
+    },
+    {
+        "manifest": "firmware/v2.5.1-325-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-325-prelive/filesAll.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 325,
+        "chipFamilies": [
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-S3",
+            "ESP32-C3",
+            "ESP32"
         ]
     },
     {
@@ -149,10 +175,10 @@
         "build": 322,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -175,10 +201,10 @@
         "build": 316,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -201,10 +227,10 @@
         "build": 324,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -227,10 +253,10 @@
         "build": 304,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -253,10 +279,10 @@
         "build": 319,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -279,10 +305,10 @@
         "build": 321,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -305,10 +331,10 @@
         "build": 308,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -331,10 +357,10 @@
         "build": 301,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -357,10 +383,10 @@
         "build": 305,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -383,10 +409,10 @@
         "build": 315,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -409,10 +435,10 @@
         "build": 313,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -435,10 +461,10 @@
         "build": 311,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -461,10 +487,10 @@
         "build": 314,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -487,10 +513,10 @@
         "build": 306,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -513,10 +539,10 @@
         "build": 312,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -539,10 +565,10 @@
         "build": 323,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -565,10 +591,10 @@
         "build": 307,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     },
     {
@@ -591,10 +617,10 @@
         "build": 317,
         "chipFamilies": [
             "ESP8266",
-            "ESP32",
+            "ESP32-S2",
             "ESP32-S3",
             "ESP32-C3",
-            "ESP32-S2"
+            "ESP32"
         ]
     }
 ]
