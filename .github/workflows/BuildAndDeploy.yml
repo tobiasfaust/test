@@ -275,6 +275,7 @@ jobs:
                 --pattern "$asset" \
                 --dir "manifests/${tag}/" || true
             done
+            mkdir -p manifests/${tag}/
             gh release view $tag -R tobiasfaust/${{ env.GITHUB_REPOSITORY }} --json assets > "manifests/${tag}/assets.json"
           done 
           python app/.github/scripts/createReleaseVersions.py \
