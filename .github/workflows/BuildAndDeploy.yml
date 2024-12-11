@@ -163,10 +163,10 @@ jobs:
           ls -R ./
 
       # 
-      - name: create "manifest_all" and "versions" JSON
+      - name: create "manifestAll" and "versions" JSON
         run: |
           python -m pip install --upgrade pip
-          python app/.github/scripts/createVersionsFile.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
+          python app/.github/scripts/createManifestAll_VersionsFile.py --FwDir ${{ env.FwDir }} --VersDir ${{ env.VersDir }}
 
       - name: Commit and push changes
         run: |

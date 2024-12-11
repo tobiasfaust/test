@@ -109,7 +109,7 @@ def process_manifests(root: str) -> None:
                             version = manifest_data.get('version')
                             stage = manifest_data.get('stage')
                             build = manifest_data.get('build')
-                            releasetag = manifest_data.get('releasetag', None)
+                            #releasetag = manifest_data.get('releasetag', None)
                             
                             # Wenn die erforderlichen Felder vorhanden sind, erstelle die neue 'manifestAll.json' Datei
                             if name and version and stage:
@@ -121,7 +121,7 @@ def process_manifests(root: str) -> None:
                                     "stage": stage,
                                     "build": build, 
                                     "variant": variant,
-                                    "releasetag": releasetag if releasetag is not None else '',
+                                    #"releasetag": releasetag if releasetag is not None else '',
                                     "builds": []  # Wir werden die "builds" später mit chipFamily und parts füllen
                                 }
 
@@ -180,13 +180,19 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                         stage = manifest_data.get('stage', None)
                         build = manifest_data.get('build', None)
                         variant = manifest_data.get('variant', None)
-                        releasetag = manifest_data.get('releasetag', None) 
+                        #releasetag = manifest_data.get('releasetag', None) 
+                        
+                        chipFamilies = set()
+                        for b in manifest_data.get('builds', []):
+                            chipFamily = b.get('chipFamily')
+                            if chipFamily:
+                                chipFamilies.add(chipFamily)
                         
                         # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
                         # extrahiere daraus den Pfad
                         try:
                             path = manifest_data.get('builds', [])[0].get('parts', [])[0].get('path')
-                            path = os.path.join(os.path.dirname(path), filename)
+                            #path = os.path.join(os.path.dirname(path), filename)
                         except:
                             path = None
                         
@@ -197,12 +203,13 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                         # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
                         if version is not None and stage is not None:
                             results.append({
-                                'path': path,
+                                'manifest': os.path.join(os.path.dirname(path), filename),
                                 'version': version,
                                 'stage': stage,
                                 'variant': variant,
                                 'build': int(build) if build else 0,
-                                'releasetag': releasetag if releasetag is not None else ''
+                                #'releasetag': releasetag if releasetag is not None else '',
+                                'chipFamilies': list(chipFamilies)
                             })
                 
                 except json.JSONDecodeError:
