@@ -1,6 +1,7 @@
 [
     {
         "manifest": "firmware/v2.5.1-310-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-310-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -11,20 +12,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-310-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-310-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 310,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-309-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-309-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -35,20 +38,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-309-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-309-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 309,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-302-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-302-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -59,20 +64,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-302-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-302-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 302,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-304-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-304-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -83,20 +90,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-304-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-304-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 304,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-308-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-308-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -107,20 +116,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-308-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-308-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 308,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-301-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-301-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -131,20 +142,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-301-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-301-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 301,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-305-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-305-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -155,20 +168,48 @@
     },
     {
         "manifest": "firmware/v2.5.1-305-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-305-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 305,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
+            "ESP32-S2"
+        ]
+    },
+    {
+        "manifest": "firmware/v2.5.1-315-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-315-development/filesAll.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "webSerial",
+        "build": 315,
+        "chipFamilies": [
+            "ESP32"
+        ]
+    },
+    {
+        "manifest": "firmware/v2.5.1-315-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-315-development/filesAll.json",
+        "version": "v2.5.1",
+        "stage": "development",
+        "variant": "standard",
+        "build": 315,
+        "chipFamilies": [
+            "ESP32-C3",
+            "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-313-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-313-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -179,20 +220,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-313-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-313-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 313,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-311-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-311-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -203,20 +246,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-311-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-311-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 311,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-314-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-314-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -227,20 +272,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-314-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-314-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 314,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-306-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-306-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -251,20 +298,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-306-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-306-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 306,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-312-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-312-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -275,20 +324,22 @@
     },
     {
         "manifest": "firmware/v2.5.1-312-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-312-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 312,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     },
     {
         "manifest": "firmware/v2.5.1-307-development/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-307-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "webSerial",
@@ -299,15 +350,16 @@
     },
     {
         "manifest": "firmware/v2.5.1-307-development/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-307-development/filesAll.json",
         "version": "v2.5.1",
         "stage": "development",
         "variant": "standard",
         "build": 307,
         "chipFamilies": [
             "ESP32-C3",
-            "ESP32-S3",
-            "ESP8266",
             "ESP32",
+            "ESP8266",
+            "ESP32-S3",
             "ESP32-S2"
         ]
     }
