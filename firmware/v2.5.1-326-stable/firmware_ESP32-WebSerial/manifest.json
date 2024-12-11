@@ -1,0 +1,14 @@
+{
+    "name": "test (v2.5.1-stable)",
+    "chipFamily": "ESP32",
+    "stage": "stable",
+    "build": 326,
+    "variant": "webSerial",
+    "version": "v2.5.1",
+    "parts": [
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-326-stable/firmware_ESP32-WebSerial/merged-firmware.ESP32.v2.5.1-326.webSerial.stable.bin",
+            "offset": 0
+        }
+    ]
+}
