@@ -60,6 +60,7 @@ def build_releasejson(root: str) -> list:
                         path = None
                     
                     # extrahiere zugehörigen builds aus filesAll.json
+                    builds = []
                     files = os.path.join(dirpath, 'filesAll.json')
                     if os.path.isfile(files):
                         with open(files, 'r') as file:
