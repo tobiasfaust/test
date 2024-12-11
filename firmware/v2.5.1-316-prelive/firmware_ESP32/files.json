@@ -1,0 +1,30 @@
+{
+    "name": "test (v2.5.1-prelive)",
+    "chipFamily": "ESP32",
+    "stage": "prelive",
+    "build": 316,
+    "variant": "standard",
+    "version": "v2.5.1",
+    "parts": [
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-316.standard.prelive.bin",
+            "offset": 4096,
+            "filetype": "bootloader"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-316.standard.prelive.bin",
+            "offset": 32768,
+            "filetype": "partitions"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-316.standard.prelive.bin",
+            "offset": 3473408,
+            "filetype": "filesystem"
+        },
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-316.standard.prelive.bin",
+            "offset": 65536,
+            "filetype": "firmware"
+        }
+    ]
+}
