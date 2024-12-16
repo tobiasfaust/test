@@ -105,13 +105,13 @@ function unsupported() {
 function getAvailableVariants(v, r, versionNumber, chipFamily = '') {
     let variants = new Set();
     v.forEach(version => {
-        if ((!versionNumber || version.build == versionNumber) && (chipFamily == '' || version.chipFamily == chipFamily ) && version.variant) {
+    if ((!versionNumber || version.build == versionNumber) && (chipFamily == '' || version.chipFamilies.includes(chipFamily)) && version.variant) {
             variants.add(version.variant);
         }
     });
 
     r.forEach(release => {
-        if ((!versionNumber ||  release.build == versionNumber) && (chipFamily == '' || release.chipFamily == chipFamily ) && release.variant) {
+        if ((!versionNumber ||  release.build == versionNumber) && (chipFamily == '' || release.chipFamilies.includes(chipFamily)) && release.variant) {
             variants.add(release.variant);
         }
     });
