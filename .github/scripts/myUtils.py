@@ -203,6 +203,17 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                             if chipFamily:
                                 chipFamilies.add(chipFamily)
                         
+                        # extrahiere zugehörigen builds aus filesAll.json
+                        builds = []
+                        files = os.path.join(dirpath, 'filesAll.json')
+                        if os.path.isfile(files):
+                            with open(files, 'r') as file:
+                                items = json.loads(file.read())
+                                for item in items:
+                                    if item.get('variant') == variant:
+                                        builds = item.get('builds', [])
+                                        break
+
                         # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
                         # extrahiere daraus den Pfad
                         try:
@@ -225,7 +236,8 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                                 'variant': variant,
                                 'build': int(build) if build else 0,
                                 #'releasetag': releasetag if releasetag is not None else '',
-                                'chipFamilies': list(chipFamilies)
+                                'chipFamilies': list(chipFamilies),
+                                'builds': builds
                             })
                 
                 except json.JSONDecodeError:
