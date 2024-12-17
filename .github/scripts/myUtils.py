@@ -203,6 +203,17 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                             if chipFamily:
                                 chipFamilies.add(chipFamily)
                         
+                        # extrahiere zugehörigen builds aus filesAll.json
+                        builds = []
+                        files = os.path.join(dirpath, 'filesAll.json')
+                        if os.path.isfile(files):
+                            with open(files, 'r') as file:
+                                items = json.loads(file.read())
+                                for item in items:
+                                    if item.get('variant') == variant:
+                                        builds = item.get('builds', [])
+                                        break
+
                         # Extrahiere den ersten 'path' aus 'parts' falls vorhanden, 
                         # extrahiere daraus den Pfad
                         try:
@@ -225,7 +236,8 @@ def search_manifests_and_extract_version(root: str, keepPath: bool) -> list:
                                 'variant': variant,
                                 'build': int(build) if build else 0,
                                 #'releasetag': releasetag if releasetag is not None else '',
-                                'chipFamilies': list(chipFamilies)
+                                'chipFamilies': list(chipFamilies),
+                                'builds': builds
                             })
                 
                 except json.JSONDecodeError:
@@ -256,52 +268,50 @@ def save_results_to_json(results, output_file):
         logging.error(f"Fehler beim Speichern der Ergebnisse: {e}")
 
 
-def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
+def deleteVersions(root: str, keepVersions: int, json: list = None) -> None:
     """
     lädt das json 'versions.json' in 'root' und durchsucht das array darin. Lädt die Attribute 'build' und 'path'. 
     Sortiert alle aufsteigend nach 'build' und entfernt daraus die ersten 'keepVersions' einträge.
     Die 'path' variable zeigt auf die manifestAll datei. Dessen gesamter Ordner wird nun für alle übrigen Einträge gelöscht.
 
     <b>Parameter:</b>
-        root (string): das Root verzeichnis über welches iteriert werden soll
+       root (string): das Root verzeichnis über welches iteriert werden soll
         keepVersions (int): die Anzahl der Build´s, die behalten werden sollen
+        json (list): die Liste der Versionen (Optional, falls leer wird es erzeugt)
         
     <b>Rückgabewert:</b>
         keiner
     """
     logging.info(f"Lösche alle Versionen, behalte die letzten {keepVersions} Versionen")
     
-    if versions is None:
+    if json is None:
         # Lade die 'versions.json' Datei
         versions_file = os.path.join(root, 'versions.json')
-        versions_data = read_json_file(versions_file)
-        if versions_data is None:
+        json = read_json_file(versions_file)
+        if versions is None:
             logging.error(f"Fehler beim Verarbeiten der Datei {versions_file}")
             return
-    else:
-        versions_data = versions
-    
+
     # Dictionary zum Speichern der 'build' Nummern und der Pfadangabe
     versions = {}
     
     # Durchlaufe alle Einträge in der 'versions.json' Datei
-    for entry in versions_data:
+    for entry in json:
         # Extrahiere 'build' und 'path' falls vorhanden
         build = entry.get('build', None)
-        path = entry.get('path', None)
+        path = entry.get('files', None)
         stage = entry.get('stage', None)
-
+        
         # Wenn 'build' und 'path' vorhanden sind, füge sie zum Dictionary hinzu
         if build is not None and path is not None and stage is not None:
             path = os.path.dirname(path)
+
             if stage not in versions:
                 versions[stage] = {}
             if build not in versions[stage]:
                 versions[stage][build] = []
-                versions[stage][build].append(path)
-            if build not in versions[stage]:
-                versions[stage][build] = []
-                versions[stage][build].append(path)
+                versions[stage][build].append(path)  # add the path only once
+            
     
     # Sortiere die 'build' Nummern aufsteigend pro stage
     for stage in versions:
@@ -312,23 +322,8 @@ def deleteVersions(root: str, keepVersions: int, versions: list = None) -> None:
             for path in versions[stage][build]:
                 # Lösche den Ordner
                 shutil.rmtree(f'web-installer/{path}')
-                logging.info(f"{path} gelöscht")
+                logging.info(f"web-installer/{path} gelöscht")
     
-
-# das manifest.json sieht folgendermassen aus:
-#{
-#    "name": "test (v2.5.1-development)",
-#    "chipFamily": "ESP32-C3",
-#    "stage": "development",
-#    "build": 254,
-#    "version": "v2.5.1",
-#    "parts": [
-#        {
-#            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-254-development/firmware_ESP32-C3/merged-firmware.ESP32-C3.v2.5.1-254.development.bin",
-#            "offset": 0
-#        }
-#    ]
-#}
 
 def changeURL(root: str, url: str) -> None:
     """
