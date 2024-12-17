@@ -1,0 +1,14 @@
+{
+    "name": "test (v2.5.1-development)",
+    "chipFamily": "ESP32",
+    "stage": "development",
+    "build": 330,
+    "variant": "standard",
+    "version": "v2.5.1",
+    "parts": [
+        {
+            "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-330-development/firmware_ESP32/merged-firmware.ESP32.v2.5.1-330.standard.development.bin",
+            "offset": 0
+        }
+    ]
+}
