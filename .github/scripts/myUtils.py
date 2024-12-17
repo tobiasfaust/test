@@ -321,8 +321,8 @@ def deleteVersions(root: str, keepVersions: int, json: list = None) -> None:
         for build in sorted_builds[:-keepVersions]:
             for path in versions[stage][build]:
                 # Lösche den Ordner
-                shutil.rmtree(f'{root}/{path}')
-                logging.info(f"{root}/{path} gelöscht")
+                shutil.rmtree(f'web-installer/{path}')
+                logging.info(f"web-installer/{path} gelöscht")
     
 
 def changeURL(root: str, url: str) -> None:
