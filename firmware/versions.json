@@ -1,33 +1,5 @@
 [
     {
-        "manifest": "firmware/v2.5.1-310-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-310-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 310,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-310-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-310-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 310,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
         "manifest": "firmware/v2.5.1-326-stable/manifestAll-webSerial.json",
         "files": "firmware/v2.5.1-326-stable/filesAll.json",
         "version": "v2.5.1",
@@ -73,11 +45,11 @@
         "variant": "standard",
         "build": 326,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -198,232 +170,6 @@
         ]
     },
     {
-        "manifest": "firmware/v2.5.1-309-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-309-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 309,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-309-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-309-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 309,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-318-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-318-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 318,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-318.webSerial.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-318.webSerial.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-318.webSerial.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-318.webSerial.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-318-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-318-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 318,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32-S2",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S2/bootloader.ESP32-S2.v2.5.1-318.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S2/partitions.ESP32-S2.v2.5.1-318.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-318.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-318.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-S3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S3/bootloader.ESP32-S3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-C3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-C3/bootloader.ESP32-C3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-C3/partitions.ESP32-C3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-318.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP8266",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP8266/littlefs.ESP8266.v2.5.1-318.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-318.standard.prelive.bin",
-                        "offset": 0,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-318.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-318.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-318.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-318-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-318.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-302-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-302-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 302,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-302-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-302-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 302,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
         "manifest": "firmware/v2.5.1-320-prelive/manifestAll-webSerial.json",
         "files": "firmware/v2.5.1-320-prelive/filesAll.json",
         "version": "v2.5.1",
@@ -469,11 +215,11 @@
         "variant": "standard",
         "build": 320,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -639,11 +385,11 @@
         "variant": "standard",
         "build": 325,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -809,11 +555,11 @@
         "variant": "standard",
         "build": 322,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -934,176 +680,6 @@
         ]
     },
     {
-        "manifest": "firmware/v2.5.1-316-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-316-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 316,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-316.webSerial.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-316.webSerial.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-316.webSerial.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-316.webSerial.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-316-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-316-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 316,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32-S2",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S2/bootloader.ESP32-S2.v2.5.1-316.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S2/partitions.ESP32-S2.v2.5.1-316.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-316.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-316.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-S3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S3/bootloader.ESP32-S3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-C3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-C3/bootloader.ESP32-C3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-C3/partitions.ESP32-C3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-316.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP8266",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP8266/littlefs.ESP8266.v2.5.1-316.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-316.standard.prelive.bin",
-                        "offset": 0,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-316.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-316.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-316.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-316-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-316.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "manifest": "firmware/v2.5.1-324-development/manifestAll-webSerial.json",
         "files": "firmware/v2.5.1-324-development/filesAll.json",
         "version": "v2.5.1",
@@ -1149,11 +725,11 @@
         "variant": "standard",
         "build": 324,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -1274,204 +850,6 @@
         ]
     },
     {
-        "manifest": "firmware/v2.5.1-304-development/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-304-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "webSerial",
-        "build": 304,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-304-development/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-304-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "standard",
-        "build": 304,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-319-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-319-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 319,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-319.webSerial.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-319.webSerial.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-319.webSerial.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-319.webSerial.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-319-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-319-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 319,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32-S2",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S2/bootloader.ESP32-S2.v2.5.1-319.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S2/partitions.ESP32-S2.v2.5.1-319.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-319.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-319.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-S3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S3/bootloader.ESP32-S3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-C3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-C3/bootloader.ESP32-C3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-C3/partitions.ESP32-C3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-319.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP8266",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP8266/littlefs.ESP8266.v2.5.1-319.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-319.standard.prelive.bin",
-                        "offset": 0,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-319.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-319.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-319.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-319-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-319.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "manifest": "firmware/v2.5.1-321-prelive/manifestAll-webSerial.json",
         "files": "firmware/v2.5.1-321-prelive/filesAll.json",
         "version": "v2.5.1",
@@ -1517,11 +895,11 @@
         "variant": "standard",
         "build": 321,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -1661,67 +1039,11 @@
         "variant": "standard",
         "build": 308,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-301-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-301-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 301,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-301-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-301-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 301,
-        "chipFamilies": [
-            "ESP32-S3",
             "ESP8266",
+            "ESP32",
             "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-305-development/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-305-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "webSerial",
-        "build": 305,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-305-development/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-305-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "standard",
-        "build": 305,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
+            "ESP32-S3"
         ],
         "builds": []
     },
@@ -1771,11 +1093,11 @@
         "variant": "standard",
         "build": 315,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -1915,11 +1237,11 @@
         "variant": "standard",
         "build": 313,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": []
     },
@@ -1969,11 +1291,11 @@
         "variant": "standard",
         "build": 327,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -2094,34 +1416,6 @@
         ]
     },
     {
-        "manifest": "firmware/v2.5.1-311-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-311-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 311,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-311-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-311-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 311,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
         "manifest": "firmware/v2.5.1-314-development/manifestAll-webSerial.json",
         "files": "firmware/v2.5.1-314-development/filesAll.json",
         "version": "v2.5.1",
@@ -2141,69 +1435,183 @@
         "variant": "standard",
         "build": 314,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-306-development/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-306-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "webSerial",
-        "build": 306,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-306-development/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-306-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "standard",
-        "build": 306,
-        "chipFamilies": [
-            "ESP32-S3",
             "ESP8266",
+            "ESP32",
             "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
+            "ESP32-S3"
         ],
         "builds": []
     },
     {
-        "manifest": "firmware/v2.5.1-312-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-312-prelive/filesAll.json",
+        "manifest": "firmware/v2.5.1-331-prelive/manifestAll-webSerial.json",
+        "files": "firmware/v2.5.1-331-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
-        "build": 312,
+        "build": 331,
         "chipFamilies": [
             "ESP32"
         ],
-        "builds": []
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "manifest": "firmware/v2.5.1-312-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-312-prelive/filesAll.json",
+        "manifest": "firmware/v2.5.1-331-prelive/manifestAll-standard.json",
+        "files": "firmware/v2.5.1-331-prelive/filesAll.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
-        "build": 312,
+        "build": 331,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
-        "builds": []
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S2/bootloader.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S2/partitions.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S3/bootloader.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-C3/bootloader.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-C3/partitions.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP8266/littlefs.ESP8266.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-331.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem"
+                    },
+                    {
+                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-331-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware"
+                    }
+                ]
+            }
+        ]
     },
     {
         "manifest": "firmware/v2.5.1-323-development/manifestAll-webSerial.json",
@@ -2251,11 +1659,11 @@
         "variant": "standard",
         "build": 323,
         "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
             "ESP32-S2",
-            "ESP32"
+            "ESP8266",
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S3"
         ],
         "builds": [
             {
@@ -2368,204 +1776,6 @@
                     },
                     {
                         "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-323-development/firmware_ESP32/firmware.ESP32.v2.5.1-323.standard.development.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-307-development/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-307-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "webSerial",
-        "build": 307,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-307-development/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-307-development/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "development",
-        "variant": "standard",
-        "build": 307,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": []
-    },
-    {
-        "manifest": "firmware/v2.5.1-317-prelive/manifestAll-webSerial.json",
-        "files": "firmware/v2.5.1-317-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "webSerial",
-        "build": 317,
-        "chipFamilies": [
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-WebSerial/bootloader.ESP32.v2.5.1-317.webSerial.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-WebSerial/partitions.ESP32.v2.5.1-317.webSerial.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-WebSerial/littlefs.ESP32.v2.5.1-317.webSerial.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-WebSerial/firmware.ESP32.v2.5.1-317.webSerial.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "manifest": "firmware/v2.5.1-317-prelive/manifestAll-standard.json",
-        "files": "firmware/v2.5.1-317-prelive/filesAll.json",
-        "version": "v2.5.1",
-        "stage": "prelive",
-        "variant": "standard",
-        "build": 317,
-        "chipFamilies": [
-            "ESP32-S3",
-            "ESP8266",
-            "ESP32-C3",
-            "ESP32-S2",
-            "ESP32"
-        ],
-        "builds": [
-            {
-                "chipFamily": "ESP32-S2",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S2/bootloader.ESP32-S2.v2.5.1-317.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S2/partitions.ESP32-S2.v2.5.1-317.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S2/littlefs.ESP32-S2.v2.5.1-317.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S2/firmware.ESP32-S2.v2.5.1-317.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-S3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S3/bootloader.ESP32-S3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S3/partitions.ESP32-S3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S3/littlefs.ESP32-S3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-S3/firmware.ESP32-S3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32-C3",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-C3/bootloader.ESP32-C3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-C3/partitions.ESP32-C3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-C3/littlefs.ESP32-C3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32-C3/firmware.ESP32-C3.v2.5.1-317.standard.prelive.bin",
-                        "offset": 65536,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP8266",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP8266/littlefs.ESP8266.v2.5.1-317.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP8266/firmware.ESP8266.v2.5.1-317.standard.prelive.bin",
-                        "offset": 0,
-                        "filetype": "firmware"
-                    }
-                ]
-            },
-            {
-                "chipFamily": "ESP32",
-                "parts": [
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32/bootloader.ESP32.v2.5.1-317.standard.prelive.bin",
-                        "offset": 4096,
-                        "filetype": "bootloader"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32/partitions.ESP32.v2.5.1-317.standard.prelive.bin",
-                        "offset": 32768,
-                        "filetype": "partitions"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32/littlefs.ESP32.v2.5.1-317.standard.prelive.bin",
-                        "offset": 3473408,
-                        "filetype": "filesystem"
-                    },
-                    {
-                        "path": "https://tobiasfaust.github.io/test/firmware/v2.5.1-317-prelive/firmware_ESP32/firmware.ESP32.v2.5.1-317.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware"
                     }
