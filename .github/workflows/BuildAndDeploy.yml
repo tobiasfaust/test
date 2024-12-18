@@ -19,13 +19,13 @@ on:
       - '**.py'
 
 jobs:
-    
   build:
     name: BuildAndDeploy-${{ matrix.variant.firmware }}
     runs-on: ubuntu-latest
     env:
       REPOSITORY: ${{ github.event.repository.name }}
       BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
+      GITHUB_RUN: ${{ github.run_number }}
 
     outputs:
       fw_version: ${{ steps.json_params.outputs.version }}
