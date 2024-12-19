@@ -1,1 +1,27 @@
-{"owner": "tobiasfaust", "repository": "test", "chipfamily": "ESP8266"}
+{
+    "owner": "tobiasfaust",
+    "repository": "SolaxModbusGateway",
+    "chipfamily": "ESP32",
+    "branch": "development",
+    "FWVersion": "3.3.0(@development) / Build: ",
+    "HwId": "",
+    "backup": [
+        {
+            "path": "/config",
+            "content": [
+                {
+                    "name": "baseconfig.json",
+                    "isDir": 0
+                },
+                {
+                    "name": "modbusconfig.json",
+                    "isDir": 0
+                },
+                {
+                    "name": "modbusitemconfig.json",
+                    "isDir": 0
+                }
+            ]
+        }
+    ]
+}
