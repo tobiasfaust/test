@@ -81,7 +81,7 @@ def build_releasejson(root: str) -> list:
                                         part_filename = os.path.basename(part_path)
                                         for asset in assets.get('assets', []):
                                             if asset.get('name') == part_filename:
-                                                part['asset_apiUrl'] = "http://www.diefaeuste.de:30080/" + asset.get('apiUrl')
+                                                part['asset_apiUrl'] = asset.get('apiUrl')
                                                 break   
                     
                     # Falls sowohl 'version', 'build' und 'stage' vorhanden sind, füge sie zum Ergebnis hinzu
