@@ -1,6 +1,6 @@
 [
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -16,46 +16,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/bootloader.ESP32.v2.5.1-320.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrMJI",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648520"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648520"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/partitions.ESP32.v2.5.1-320.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrMJz",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648563"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648563"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP32.v2.5.1-320.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrMJi",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648546"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648546"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP32.v2.5.1-320.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrMJe",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648542"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648542"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 320,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -65,29 +61,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/bootloader.ESP32-S2.v2.5.1-320.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrMJ3",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648567"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648567"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/partitions.ESP32-S2.v2.5.1-320.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrMKd",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648605"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648605"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP32-S2.v2.5.1-320.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrMKI",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648584"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648584"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP32-S2.v2.5.1-320.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrMKE",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648580"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648580"
                     }
                 ]
             },
@@ -98,29 +90,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/bootloader.ESP32-S3.v2.5.1-320.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrMKl",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648613"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648613"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/partitions.ESP32-S3.v2.5.1-320.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrMLR",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648657"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648657"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP32-S3.v2.5.1-320.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrMK7",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648635"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648635"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP32-S3.v2.5.1-320.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrMKy",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648626"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648626"
                     }
                 ]
             },
@@ -131,29 +119,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/bootloader.ESP32-C3.v2.5.1-320.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrMLU",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648660"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648660"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/partitions.ESP32-C3.v2.5.1-320.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrMLy",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648690"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648690"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP32-C3.v2.5.1-320.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrMLi",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648674"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648674"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP32-C3.v2.5.1-320.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrMLb",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648667"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648667"
                     }
                 ]
             },
@@ -164,15 +148,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP8266.v2.5.1-320.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrML_",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648703"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648703"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP8266.v2.5.1-320.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrML8",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648700"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648700"
                     }
                 ]
             },
@@ -183,36 +165,32 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/bootloader.ESP32.v2.5.1-320.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrMMV",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648725"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648725"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/partitions.ESP32.v2.5.1-320.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrMM7",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648763"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648763"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/littlefs.ESP32.v2.5.1-320.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrMMk",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648740"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648740"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/firmware.ESP32.v2.5.1-320.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrMMh",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212648737"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212648737"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -228,46 +206,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/bootloader.ESP32.v2.5.1-322.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNm5",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654521"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654521"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/partitions.ESP32.v2.5.1-322.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNnE",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654532"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654532"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP32.v2.5.1-322.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNm9",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654525"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654525"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP32.v2.5.1-322.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNm6",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654522"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654522"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 322,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -277,29 +251,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/bootloader.ESP32-S2.v2.5.1-322.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNnG",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654534"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654534"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/partitions.ESP32-S2.v2.5.1-322.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNnL",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654539"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654539"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP32-S2.v2.5.1-322.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNnJ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654537"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654537"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP32-S2.v2.5.1-322.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNnH",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654535"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654535"
                     }
                 ]
             },
@@ -310,29 +280,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/bootloader.ESP32-S3.v2.5.1-322.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNnO",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654542"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654542"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/partitions.ESP32-S3.v2.5.1-322.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNnU",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654548"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654548"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP32-S3.v2.5.1-322.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNnS",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654546"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654546"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP32-S3.v2.5.1-322.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNnQ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654544"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654544"
                     }
                 ]
             },
@@ -343,29 +309,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/bootloader.ESP32-C3.v2.5.1-322.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNnW",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654550"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654550"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/partitions.ESP32-C3.v2.5.1-322.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNnn",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654567"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654567"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP32-C3.v2.5.1-322.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNna",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654554"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654554"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP32-C3.v2.5.1-322.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNnY",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654552"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654552"
                     }
                 ]
             },
@@ -376,15 +338,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP8266.v2.5.1-322.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNnx",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654577"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654577"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP8266.v2.5.1-322.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNnq",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654570"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654570"
                     }
                 ]
             },
@@ -395,36 +355,32 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/bootloader.ESP32.v2.5.1-322.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNn9",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654589"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654589"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/partitions.ESP32.v2.5.1-322.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNoU",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654612"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654612"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/littlefs.ESP32.v2.5.1-322.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNoP",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654607"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654607"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/firmware.ESP32.v2.5.1-322.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNoK",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212654602"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212654602"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -435,22 +391,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 300,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -461,22 +417,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 302,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -487,22 +443,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 312,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -513,22 +469,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 311,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -544,46 +500,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/bootloader.ESP32.v2.5.1-318.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLaK",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645514"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645514"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/partitions.ESP32.v2.5.1-318.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLaf",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645535"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645535"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP32.v2.5.1-318.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLaW",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645526"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645526"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP32.v2.5.1-318.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLaR",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645521"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645521"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 318,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -593,29 +545,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/bootloader.ESP32-S2.v2.5.1-318.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLak",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645540"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645540"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/partitions.ESP32-S2.v2.5.1-318.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLa8",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645564"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645564"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP32-S2.v2.5.1-318.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLax",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645553"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645553"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP32-S2.v2.5.1-318.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLas",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645548"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645548"
                     }
                 ]
             },
@@ -626,29 +574,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/bootloader.ESP32-S3.v2.5.1-318.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLa-",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645566"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645566"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/partitions.ESP32-S3.v2.5.1-318.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLbW",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645590"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645590"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP32-S3.v2.5.1-318.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLbI",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645576"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645576"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP32-S3.v2.5.1-318.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLbF",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645573"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645573"
                     }
                 ]
             },
@@ -659,29 +603,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/bootloader.ESP32-C3.v2.5.1-318.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLba",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645594"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645594"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/partitions.ESP32-C3.v2.5.1-318.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLbw",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645616"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645616"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP32-C3.v2.5.1-318.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLbh",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645601"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645601"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP32-C3.v2.5.1-318.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLbf",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645599"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645599"
                     }
                 ]
             },
@@ -692,15 +632,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP8266.v2.5.1-318.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLb3",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645623"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645623"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP8266.v2.5.1-318.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLb1",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645621"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645621"
                     }
                 ]
             },
@@ -711,36 +649,412 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/bootloader.ESP32.v2.5.1-318.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLb6",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645626"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645626"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/partitions.ESP32.v2.5.1-318.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLcJ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645641"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645641"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/littlefs.ESP32.v2.5.1-318.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLcB",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645633"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645633"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/firmware.ESP32.v2.5.1-318.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLb9",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212645629"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212645629"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 335,
+        "chipFamilies": [
+            "ESP32"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/bootloader.ESP32.v2.5.1-335.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327930"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/partitions.ESP32.v2.5.1-335.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327935"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP32.v2.5.1-335.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327932"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP32.v2.5.1-335.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327931"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 335,
+        "chipFamilies": [
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S2",
+            "ESP32-S3",
+            "ESP8266"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/bootloader.ESP32-S2.v2.5.1-335.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327936"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/partitions.ESP32-S2.v2.5.1-335.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327941"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP32-S2.v2.5.1-335.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327938"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP32-S2.v2.5.1-335.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327937"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/bootloader.ESP32-S3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327944"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/partitions.ESP32-S3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327950"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP32-S3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327946"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP32-S3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327945"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/bootloader.ESP32-C3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327951"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/partitions.ESP32-C3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327960"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP32-C3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327954"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP32-C3.v2.5.1-335.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327952"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP8266.v2.5.1-335.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327964"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP8266.v2.5.1-335.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327962"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/bootloader.ESP32.v2.5.1-335.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327967"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/partitions.ESP32.v2.5.1-335.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327975"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/littlefs.ESP32.v2.5.1-335.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327972"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/firmware.ESP32.v2.5.1-335.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215327970"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 331,
+        "chipFamilies": [
+            "ESP32"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/bootloader.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172181"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/partitions.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172192"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172184"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP32.v2.5.1-331.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172182"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 331,
+        "chipFamilies": [
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S2",
+            "ESP32-S3",
+            "ESP8266"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/bootloader.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172194"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/partitions.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172201"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172198"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP32-S2.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172196"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/bootloader.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172204"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/partitions.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172224"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172213"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP32-S3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172207"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/bootloader.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172233"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/partitions.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172250"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172244"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP32-C3.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172240"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP8266.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172259"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP8266.v2.5.1-331.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172257"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/bootloader.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172264"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/partitions.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172274"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/littlefs.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172269"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/firmware.ESP32.v2.5.1-331.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/214172268"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -751,22 +1065,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 301,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -782,46 +1096,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/bootloader.ESP32.v2.5.1-319.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLxL",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212646987"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212646987"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/partitions.ESP32.v2.5.1-319.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLxf",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647007"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647007"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP32.v2.5.1-319.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLxV",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212646997"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212646997"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP32.v2.5.1-319.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLxR",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212646993"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212646993"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 319,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -831,29 +1141,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/bootloader.ESP32-S2.v2.5.1-319.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLxh",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647009"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647009"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/partitions.ESP32-S2.v2.5.1-319.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLx6",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647034"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647034"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP32-S2.v2.5.1-319.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLxr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647019"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647019"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP32-S2.v2.5.1-319.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLxn",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647015"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647015"
                     }
                 ]
             },
@@ -864,29 +1170,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/bootloader.ESP32-S3.v2.5.1-319.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLx9",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647037"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647037"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/partitions.ESP32-S3.v2.5.1-319.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLyg",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647072"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647072"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP32-S3.v2.5.1-319.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLyK",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647050"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647050"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP32-S3.v2.5.1-319.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLyC",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647042"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647042"
                     }
                 ]
             },
@@ -897,29 +1199,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/bootloader.ESP32-C3.v2.5.1-319.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrLyh",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647073"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647073"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/partitions.ESP32-C3.v2.5.1-319.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrLzk",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647140"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647140"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP32-C3.v2.5.1-319.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLzU",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647124"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647124"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP32-C3.v2.5.1-319.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLzJ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647113"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647113"
                     }
                 ]
             },
@@ -930,15 +1228,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP8266.v2.5.1-319.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrLzr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647147"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647147"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP8266.v2.5.1-319.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrLzo",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647144"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647144"
                     }
                 ]
             },
@@ -949,36 +1245,32 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/bootloader.ESP32.v2.5.1-319.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrL0X",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647191"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647191"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/partitions.ESP32.v2.5.1-319.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrL0x",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647217"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647217"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/littlefs.ESP32.v2.5.1-319.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrL0q",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647210"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647210"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/firmware.ESP32.v2.5.1-319.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrL0o",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212647208"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212647208"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -989,22 +1281,212 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 310,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 329,
+        "chipFamilies": [
+            "ESP32"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/bootloader.ESP32.v2.5.1-329.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927796"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/partitions.ESP32.v2.5.1-329.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927803"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP32.v2.5.1-329.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927800"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP32.v2.5.1-329.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927799"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 329,
+        "chipFamilies": [
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S2",
+            "ESP32-S3",
+            "ESP8266"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/bootloader.ESP32-S2.v2.5.1-329.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927805"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/partitions.ESP32-S2.v2.5.1-329.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927813"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP32-S2.v2.5.1-329.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927807"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP32-S2.v2.5.1-329.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927806"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/bootloader.ESP32-S3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927814"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/partitions.ESP32-S3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927821"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP32-S3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927817"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP32-S3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927815"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/bootloader.ESP32-C3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927822"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/partitions.ESP32-C3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927829"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP32-C3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927825"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP32-C3.v2.5.1-329.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927823"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP8266.v2.5.1-329.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927831"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP8266.v2.5.1-329.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927830"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/bootloader.ESP32.v2.5.1-329.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927837"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/partitions.ESP32.v2.5.1-329.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927846"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/littlefs.ESP32.v2.5.1-329.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927843"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/firmware.ESP32.v2.5.1-329.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213927839"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1020,46 +1502,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/bootloader.ESP32.v2.5.1-321.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNJc",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652636"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652636"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/partitions.ESP32.v2.5.1-321.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNJ7",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652667"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652667"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP32.v2.5.1-321.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNJs",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652652"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652652"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP32.v2.5.1-321.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNJn",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652647"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652647"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 321,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -1069,29 +1547,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/bootloader.ESP32-S2.v2.5.1-321.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNKA",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652672"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652672"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/partitions.ESP32-S2.v2.5.1-321.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNKh",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652705"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652705"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP32-S2.v2.5.1-321.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNKS",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652690"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652690"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP32-S2.v2.5.1-321.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNKL",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652683"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652683"
                     }
                 ]
             },
@@ -1102,29 +1576,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/bootloader.ESP32-S3.v2.5.1-321.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNK5",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652729"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652729"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/partitions.ESP32-S3.v2.5.1-321.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNLX",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652759"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652759"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP32-S3.v2.5.1-321.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNLE",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652740"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652740"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP32-S3.v2.5.1-321.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNLB",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652737"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652737"
                     }
                 ]
             },
@@ -1135,29 +1605,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/bootloader.ESP32-C3.v2.5.1-321.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNLd",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652765"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652765"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/partitions.ESP32-C3.v2.5.1-321.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNL2",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652790"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652790"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP32-C3.v2.5.1-321.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNLr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652779"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652779"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP32-C3.v2.5.1-321.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNLl",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652773"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652773"
                     }
                 ]
             },
@@ -1168,15 +1634,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP8266.v2.5.1-321.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNMI",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652808"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652808"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP8266.v2.5.1-321.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNMC",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652802"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652802"
                     }
                 ]
             },
@@ -1187,36 +1651,32 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/bootloader.ESP32.v2.5.1-321.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrNMa",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652826"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652826"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/partitions.ESP32.v2.5.1-321.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrNM_",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652863"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652863"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/littlefs.ESP32.v2.5.1-321.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrNMr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652843"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652843"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/firmware.ESP32.v2.5.1-321.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrNMk",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212652836"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212652836"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "stable",
         "variant": "webSerial",
@@ -1232,46 +1692,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/bootloader.ESP32.v2.5.1-326.webSerial.stable.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYYk",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698660"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698660"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/partitions.ESP32.v2.5.1-326.webSerial.stable.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYYr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698667"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698667"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP32.v2.5.1-326.webSerial.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYYo",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698664"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698664"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP32.v2.5.1-326.webSerial.stable.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYYn",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698663"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698663"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "stable",
         "variant": "standard",
         "build": 326,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -1281,29 +1737,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/bootloader.ESP32-S2.v2.5.1-326.standard.stable.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYYu",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698670"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698670"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/partitions.ESP32-S2.v2.5.1-326.standard.stable.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYYz",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698675"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698675"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP32-S2.v2.5.1-326.standard.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYYx",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698673"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698673"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP32-S2.v2.5.1-326.standard.stable.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYYw",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698672"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698672"
                     }
                 ]
             },
@@ -1314,29 +1766,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/bootloader.ESP32-S3.v2.5.1-326.standard.stable.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYY0",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698676"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698676"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/partitions.ESP32-S3.v2.5.1-326.standard.stable.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYY-",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698686"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698686"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP32-S3.v2.5.1-326.standard.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYY5",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698681"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698681"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP32-S3.v2.5.1-326.standard.stable.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYY2",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698678"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698678"
                     }
                 ]
             },
@@ -1347,29 +1795,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/bootloader.ESP32-C3.v2.5.1-326.standard.stable.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYY_",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698687"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698687"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/partitions.ESP32-C3.v2.5.1-326.standard.stable.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYZH",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698695"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698695"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP32-C3.v2.5.1-326.standard.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYZE",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698692"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698692"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP32-C3.v2.5.1-326.standard.stable.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYZA",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698688"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698688"
                     }
                 ]
             },
@@ -1380,15 +1824,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP8266.v2.5.1-326.standard.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYZJ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698697"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698697"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP8266.v2.5.1-326.standard.stable.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYZI",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698696"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698696"
                     }
                 ]
             },
@@ -1399,36 +1841,32 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/bootloader.ESP32.v2.5.1-326.standard.stable.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYZP",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698703"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698703"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/partitions.ESP32.v2.5.1-326.standard.stable.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYZY",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698712"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698712"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/littlefs.ESP32.v2.5.1-326.standard.stable.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYZR",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698705"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698705"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/firmware.ESP32.v2.5.1-326.standard.stable.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYZQ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212698704"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212698704"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1444,46 +1882,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/bootloader.ESP32.v2.5.1-325.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYBQ",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697168"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697168"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/partitions.ESP32.v2.5.1-325.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYBe",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697182"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697182"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP32.v2.5.1-325.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYBW",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697174"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697174"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP32.v2.5.1-325.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYBS",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697170"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697170"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 325,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -1493,29 +1927,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/bootloader.ESP32-S2.v2.5.1-325.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYBf",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697183"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697183"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/partitions.ESP32-S2.v2.5.1-325.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYBq",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697194"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697194"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP32-S2.v2.5.1-325.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYBl",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697189"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697189"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP32-S2.v2.5.1-325.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYBj",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697187"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697187"
                     }
                 ]
             },
@@ -1526,29 +1956,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/bootloader.ESP32-S3.v2.5.1-325.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYBr",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697195"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697195"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/partitions.ESP32-S3.v2.5.1-325.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYBz",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697203"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697203"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP32-S3.v2.5.1-325.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYBx",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697201"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697201"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP32-S3.v2.5.1-325.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYBw",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697200"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697200"
                     }
                 ]
             },
@@ -1559,29 +1985,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/bootloader.ESP32-C3.v2.5.1-325.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYB0",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697204"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697204"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/partitions.ESP32-C3.v2.5.1-325.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYB6",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697210"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697210"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP32-C3.v2.5.1-325.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYB4",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697208"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697208"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP32-C3.v2.5.1-325.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYB3",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697207"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697207"
                     }
                 ]
             },
@@ -1592,15 +2014,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP8266.v2.5.1-325.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYB8",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697212"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697212"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP8266.v2.5.1-325.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYB7",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697211"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697211"
                     }
                 ]
             },
@@ -1611,36 +2031,222 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/bootloader.ESP32.v2.5.1-325.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MrYCE",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697220"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697220"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/partitions.ESP32.v2.5.1-325.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MrYCN",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697229"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697229"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/littlefs.ESP32.v2.5.1-325.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MrYCH",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697223"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697223"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/firmware.ESP32.v2.5.1-325.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MrYCG",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/212697222"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/212697222"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 328,
+        "chipFamilies": [
+            "ESP32"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/bootloader.ESP32.v2.5.1-328.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926876"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/partitions.ESP32.v2.5.1-328.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926891"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP32.v2.5.1-328.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926879"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP32.v2.5.1-328.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926878"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 328,
+        "chipFamilies": [
+            "ESP32",
+            "ESP32-C3",
+            "ESP32-S2",
+            "ESP32-S3",
+            "ESP8266"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/bootloader.ESP32-S2.v2.5.1-328.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926893"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/partitions.ESP32-S2.v2.5.1-328.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926911"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP32-S2.v2.5.1-328.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926901"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP32-S2.v2.5.1-328.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926895"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/bootloader.ESP32-S3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926915"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/partitions.ESP32-S3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926924"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP32-S3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926918"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP32-S3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926917"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/bootloader.ESP32-C3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926928"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/partitions.ESP32-C3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926939"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP32-C3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926932"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP32-C3.v2.5.1-328.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926930"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP8266.v2.5.1-328.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926950"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP8266.v2.5.1-328.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926941"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/bootloader.ESP32.v2.5.1-328.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926971"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/partitions.ESP32.v2.5.1-328.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926986"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/littlefs.ESP32.v2.5.1-328.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926977"
+                    },
+                    {
+                        "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/firmware.ESP32.v2.5.1-328.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213926973"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1651,22 +2257,22 @@
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 309,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": []
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1682,46 +2288,42 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/bootloader.ESP32.v2.5.1-327.webSerial.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MvP9a",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712730"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712730"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/partitions.ESP32.v2.5.1-327.webSerial.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MvP9g",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712736"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712736"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP32.v2.5.1-327.webSerial.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP9e",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712734"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712734"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP32.v2.5.1-327.webSerial.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP9b",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712731"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712731"
                     }
                 ]
             }
         ]
     },
     {
-        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 327,
         "chipFamilies": [
+            "ESP32",
             "ESP32-C3",
-            "ESP8266",
-            "ESP32-S3",
             "ESP32-S2",
-            "ESP32"
+            "ESP32-S3",
+            "ESP8266"
         ],
         "builds": [
             {
@@ -1731,29 +2333,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/bootloader.ESP32-S2.v2.5.1-327.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MvP9i",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712738"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712738"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/partitions.ESP32-S2.v2.5.1-327.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MvP93",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712759"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712759"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP32-S2.v2.5.1-327.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP9n",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712743"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712743"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP32-S2.v2.5.1-327.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP9j",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712739"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712739"
                     }
                 ]
             },
@@ -1764,29 +2362,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/bootloader.ESP32-S3.v2.5.1-327.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MvP97",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712763"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712763"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/partitions.ESP32-S3.v2.5.1-327.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MvP-N",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712781"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712781"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP32-S3.v2.5.1-327.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP-E",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712772"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712772"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP32-S3.v2.5.1-327.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP9_",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712767"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712767"
                     }
                 ]
             },
@@ -1797,29 +2391,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/bootloader.ESP32-C3.v2.5.1-327.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MvP-P",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712783"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712783"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/partitions.ESP32-C3.v2.5.1-327.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MvP-d",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712797"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712797"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP32-C3.v2.5.1-327.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP-W",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712790"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712790"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP32-C3.v2.5.1-327.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP-T",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712787"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712787"
                     }
                 ]
             },
@@ -1830,15 +2420,13 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP8266.v2.5.1-327.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP-j",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712803"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712803"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP8266.v2.5.1-327.standard.prelive.bin",
                         "offset": 0,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP-h",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712801"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712801"
                     }
                 ]
             },
@@ -1849,29 +2437,25 @@
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/bootloader.ESP32.v2.5.1-327.standard.prelive.bin",
                         "offset": 4096,
                         "filetype": "bootloader",
-                        "asset_id": "RA_kwDOD7eZD84MvP-n",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712807"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712807"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/partitions.ESP32.v2.5.1-327.standard.prelive.bin",
                         "offset": 32768,
                         "filetype": "partitions",
-                        "asset_id": "RA_kwDOD7eZD84MvP-7",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712827"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712827"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/littlefs.ESP32.v2.5.1-327.standard.prelive.bin",
                         "offset": 3473408,
                         "filetype": "filesystem",
-                        "asset_id": "RA_kwDOD7eZD84MvP-v",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712815"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712815"
                     },
                     {
                         "path": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/firmware.ESP32.v2.5.1-327.standard.prelive.bin",
                         "offset": 65536,
                         "filetype": "firmware",
-                        "asset_id": "RA_kwDOD7eZD84MvP-p",
-                        "asset_apiUrl": "https://api.github.com/repos/tobiasfaust/test/releases/assets/213712809"
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/213712809"
                     }
                 ]
             }
