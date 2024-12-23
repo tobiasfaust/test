@@ -1,6 +1,6 @@
 [
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -41,17 +41,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278275795/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 320,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -190,7 +190,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -231,17 +231,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278792620/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 322,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -380,7 +380,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -391,22 +391,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047191190/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 300,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -417,22 +417,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047924247/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 302,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -443,22 +443,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233880967/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 312,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -469,22 +469,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233228780/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 311,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -525,17 +525,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278003985/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 318,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -674,7 +674,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -715,17 +715,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-standard.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465133576/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 335,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -864,7 +864,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -905,17 +905,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12390957844/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 331,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -1054,7 +1054,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1065,22 +1065,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12047511253/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 301,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1121,17 +1121,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278165786/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 319,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -1270,7 +1270,197 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-webSerial.json",
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/manifestAll-webSerial.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "webSerial",
+        "build": 336,
+        "chipFamilies": [
+            "ESP32"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/bootloader.ESP32.v2.5.1-336.webSerial.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331380"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/partitions.ESP32.v2.5.1-336.webSerial.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331385"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP32.v2.5.1-336.webSerial.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331383"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP32.v2.5.1-336.webSerial.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331382"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/manifestAll-standard.json",
+        "version": "v2.5.1",
+        "stage": "prelive",
+        "variant": "standard",
+        "build": 336,
+        "chipFamilies": [
+            "ESP32-S3",
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
+        ],
+        "builds": [
+            {
+                "chipFamily": "ESP32-S2",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/bootloader.ESP32-S2.v2.5.1-336.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331386"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/partitions.ESP32-S2.v2.5.1-336.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331391"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP32-S2.v2.5.1-336.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331388"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP32-S2.v2.5.1-336.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331387"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-S3",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/bootloader.ESP32-S3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331393"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/partitions.ESP32-S3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331400"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP32-S3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331398"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP32-S3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331395"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32-C3",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/bootloader.ESP32-C3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331401"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/partitions.ESP32-C3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331407"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP32-C3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331404"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP32-C3.v2.5.1-336.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331403"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP8266",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP8266.v2.5.1-336.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331411"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP8266.v2.5.1-336.standard.prelive.bin",
+                        "offset": 0,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331408"
+                    }
+                ]
+            },
+            {
+                "chipFamily": "ESP32",
+                "parts": [
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/bootloader.ESP32.v2.5.1-336.standard.prelive.bin",
+                        "offset": 4096,
+                        "filetype": "bootloader",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331418"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/partitions.ESP32.v2.5.1-336.standard.prelive.bin",
+                        "offset": 32768,
+                        "filetype": "partitions",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331433"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/littlefs.ESP32.v2.5.1-336.standard.prelive.bin",
+                        "offset": 3473408,
+                        "filetype": "filesystem",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331423"
+                    },
+                    {
+                        "path": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12465535356/firmware.ESP32.v2.5.1-336.standard.prelive.bin",
+                        "offset": 65536,
+                        "filetype": "firmware",
+                        "asset_apiUrl": "http://www.diefaeuste.de:30080/https://api.github.com/repos/tobiasfaust/test/releases/assets/215331420"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1281,22 +1471,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12233043153/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 310,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1337,17 +1527,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372343736/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 329,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -1486,7 +1676,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1527,17 +1717,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12278625751/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 321,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -1676,7 +1866,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "stable",
         "variant": "webSerial",
@@ -1717,17 +1907,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1--12282878285/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "stable",
         "variant": "standard",
         "build": 326,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -1866,7 +2056,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -1907,17 +2097,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12282703218/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 325,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -2056,7 +2246,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -2097,17 +2287,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12372274224/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 328,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
@@ -2246,7 +2436,7 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -2257,22 +2447,22 @@
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12232765987/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 309,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": []
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-webSerial.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-webSerial.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "webSerial",
@@ -2313,17 +2503,17 @@
         ]
     },
     {
-        "manifest": "http://www.diefaeuste.de:30080/https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-standard.json",
+        "manifest": "https://github.com/tobiasfaust/test/releases/download/v.2.5.1-PRE-12355806644/manifestAll-standard.json",
         "version": "v2.5.1",
         "stage": "prelive",
         "variant": "standard",
         "build": 327,
         "chipFamilies": [
-            "ESP32",
-            "ESP32-C3",
-            "ESP32-S2",
             "ESP32-S3",
-            "ESP8266"
+            "ESP32",
+            "ESP8266",
+            "ESP32-S2",
+            "ESP32-C3"
         ],
         "builds": [
             {
