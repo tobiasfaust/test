@@ -21,9 +21,9 @@ parser.add_argument('-f', '--ReleaseDir', type=str, help='Release Verzeichnis f�
 args = parser.parse_args()
 
 if args.ReleaseURL:
-    # ändere in allen manifest.json/files.json Dateien unterhalb args.ReleaseDir den URL-Pfad in allen 'path' variablen 
+    # ändere in allen manifest.json-Dateien unterhalb args.ReleaseDir den URL-Pfad in allen 'path' variablen 
     # im array 'parts' zur Release-URL
-    changeURL(args.ReleaseDir, "http://www.diefaeuste.de:30080/" + args.ReleaseURL) #, args.ReleaseTagName)
+    changeURL(args.ReleaseDir, args.ReleaseURL) #, args.ReleaseTagName)
 
     # Suche nach 'manifest.json'-Dateien und extrahiere daraus die Daten für 
     # das 'manifestAll.json' aller ESP Architekturen im Hauptverzeichnis der Version
