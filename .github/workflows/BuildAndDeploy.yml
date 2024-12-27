@@ -46,6 +46,12 @@ jobs:
           - firmware: firmware_ESP32-C3
             architecture: ESP32-C3
             subvariant: standard
+          - firmware: firmware_ESP32-C6
+            architecture: ESP32-C6
+            subvariant: standard
+          - firmware: firmware_ESP32-H2
+            architecture: ESP32-H2
+            subvariant: standard
           - firmware: firmware_ESP32-WebSerial
             architecture: ESP32
             subvariant: webSerial
