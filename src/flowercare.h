@@ -8,8 +8,6 @@
 #include <NimBLEAdvertisedDevice.h>
 #include <Arduino.h>
 
-#include <ReactESP.h>
-
 class FlowerCareDevice {
  public:
     NimBLEAddress address;
@@ -19,8 +17,19 @@ class FlowerCareDevice {
     int moisture;
     int fertility;
     String firmwareVersion;
+    unsigned long lastLiveDataUpdate;
+    unsigned long lastBatteryUpdate;
 
-    FlowerCareDevice(NimBLEAddress addr) : address(addr), battery(0), brightness(0), temperature(0.0), moisture(0), fertility(0), firmwareVersion("") {}
+    FlowerCareDevice(NimBLEAddress addr) : 
+        address(addr),
+        battery(0),
+        brightness(0),
+        temperature(0.0),
+        moisture(0),
+        fertility(0),
+        firmwareVersion(""),
+        lastLiveDataUpdate(0),
+        lastBatteryUpdate(0) {}
 };
 
 class FlowerCare {
@@ -33,13 +42,11 @@ class FlowerCare {
     void addDevice(NimBLEAddress address);
     
   private:
-    reactesp::EventLoop event_loop;
 
     NimBLEScan* pBLEScan;
     std::vector<FlowerCareDevice> devices;
 
     unsigned long previousMillis;
-    unsigned long previousBatteryMillis;
     const unsigned long LiveDataInterval = 1 * 60 * 1000; // 5 minutes
     const unsigned long batteryInterval =  1 * 60 * 1000; // 1 hour
 
@@ -54,12 +61,6 @@ class FlowerCare {
                 }
             }
     
-            /** onScanEnd */
-            //void onScanEnd(const NimBLEScanResults& results, int reason) override {
-            //    flowerCare.ReadSensors();
-                //flowerCare.ReadBatteryLevels();
-            //}
-    
         private:
             FlowerCare& flowerCare;
     };
@@ -67,7 +68,6 @@ class FlowerCare {
     scanCallbacks scanCallbacksInstance;
 
     void ScanBLE();
-    void ReadSensors();
     void ReadSensor(FlowerCareDevice& device, bool getBatteryLevel = false);
     void updateDeviceData(FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
     void updateBatteryLevel(FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
