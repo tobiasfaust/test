@@ -45,6 +45,8 @@ class FlowerCare {
     void loop();
     void setCb2getValues(void (*callback)(JsonDocument&));
     void setActive(String macaddress, bool active); // mac like: c4:7c:8d:64:42:d0
+    
+    const std::vector<FlowerCareDevice>* getDevices() const { return &devices; }
 
   protected:
     void addDevice(NimBLEAddress address);

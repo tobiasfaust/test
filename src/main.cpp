@@ -10,6 +10,7 @@ unsigned long lastMillis = 0;
 FlowerCare* flowerCare = nullptr;
 
 void flowerCareCallbackGetValues(JsonDocument& json) {
+  // sending over MQTT
   serializeJson(json, Serial); Serial.println();
 }
 
@@ -18,8 +19,10 @@ void setup() {
   
   Serial.println("Starting FlowerCare");
   flowerCare = new FlowerCare();
-  flowerCare->init();
+  flowerCare->init(); // Scan BLE for devices
   flowerCare->setCb2getValues(flowerCareCallbackGetValues);
+  
+  const std::vector<FlowerCareDevice>* devices = flowerCare->getDevices();
 }
 
 void loop() {
