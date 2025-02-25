@@ -44,8 +44,9 @@ class FlowerCare {
     void init();
     void loop();
     void setCb2getValues(void (*callback)(JsonDocument&));
+    void setCb2log(void (*callback)(const int, const char*, ...));
     void setActive(String macaddress, bool active); // mac like: c4:7c:8d:64:42:d0
-    
+
     const std::vector<FlowerCareDevice>* getDevices() const { return &devices; }
 
   protected:
@@ -78,6 +79,7 @@ class FlowerCare {
     
     scanCallbacks scanCallbacksInstance;
     void (*cb2getValues)(JsonDocument&) = nullptr;
+    void (*cb2log)(const int, const char*, ...) = nullptr;
 
     void ScanBLE();
     void ReadSensor(FlowerCareDevice& device, bool getBatteryLevel = false);

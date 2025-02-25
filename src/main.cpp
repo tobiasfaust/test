@@ -14,13 +14,24 @@ void flowerCareCallbackGetValues(JsonDocument& json) {
   serializeJson(json, Serial); Serial.println();
 }
 
+void logN(const int loglevel, const char* format, ...) {
+  va_list args;
+  va_start(args, format);
+  char buffer[256];
+  vsnprintf(buffer, sizeof(buffer), format, args);
+  Serial.printf("[Log %d] ", loglevel);
+  Serial.println(buffer);
+  va_end(args);
+}
+
 void setup() {
   Serial.begin(115200);
   
-  Serial.println("Starting FlowerCare");
+  logN(1, "Starting FlowerCare");
   flowerCare = new FlowerCare();
   flowerCare->init(); // Scan BLE for devices
   flowerCare->setCb2getValues(flowerCareCallbackGetValues);
+  flowerCare->setCb2log(logN);
   
   const std::vector<FlowerCareDevice>* devices = flowerCare->getDevices();
 }
@@ -34,7 +45,7 @@ void loop() {
     unsigned int hours = uptime / 3600;
     unsigned int minutes = (uptime % 3600) / 60;
     unsigned int seconds = uptime % 60;
-    Serial.printf("uptime: %02d:%02d:%02d\n", hours, minutes, seconds);
+    logN(1, "uptime: %02d:%02d:%02d", hours, minutes, seconds);
   }
 }
 
