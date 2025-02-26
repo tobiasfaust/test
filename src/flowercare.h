@@ -98,7 +98,8 @@ class FlowerCare {
      * @brief Callback for logging
      * @param function(const int, const char*, ...) the callback function
      ************************/
-    void onLog(void (*callback)(const int, const char*, ...));
+    //void onLog(void (*callback)(const int, const char*, ...));
+    void onLog(std::function<void(int, const char*, va_list)> onlogCallback);
 
     /************************
      * @brief Callback for scan end
@@ -152,6 +153,8 @@ class FlowerCare {
     bool updateBatteryLevel(JsonDocument& json, FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
 
     void printDebugHexValue(const char* value, int len);
+
+    std::function<void(int, const char*, va_list)> onlogCallback; // Callback function pointer
 };
 
 #endif // FLOWERCARE_H

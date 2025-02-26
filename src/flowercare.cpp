@@ -39,9 +39,12 @@ void FlowerCare::onValues(void (*callback)(JsonDocument&)) {
     this->cb2getValues = callback;
 }
 
-void FlowerCare::onLog(void (*callback)(const int, const char*, ...)) {
+/*void FlowerCare::onLog(void (*callback)(const int, const char*, ...)) {
     this->log = callback;
-}
+}*/
+void FlowerCare::onLog(std::function<void(int, const char*, va_list)> onlogCallback) {
+    this->onlogCallback = onlogCallback;
+  }
 
 void FlowerCare::onScanEnd(void (*callback)()) {
     this->cbOnScanEnd = callback;
