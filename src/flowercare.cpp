@@ -1,20 +1,18 @@
 #include "flowercare.h"
 
-FlowerCare::FlowerCare() : previousMillis(0), scanCallbacksInstance(*this) {
+FlowerCare::FlowerCare() : previousMillis(0), isScanActive(false), scanCallbacksInstance(*this) {
     NimBLEDevice::init("");
     pBLEScan = NimBLEDevice::getScan();
     pBLEScan->setScanCallbacks(&scanCallbacksInstance, false); // Set the callback for when devices are discovered, no duplicates.
     pBLEScan->setActiveScan(true);
-}
-
-void FlowerCare::init() {
-    ScanBLE();
+    NimBLEDevice::setPower(ESP_PWR_LVL_P9); /** +9db */
 }
 
 void FlowerCare::ScanBLE() {
+    this->isScanActive = true;
     bool scanStarted = pBLEScan->start(10000, false);
     if (scanStarted) {
-        if (cb2log) cb2log(3, "Scanning for FlowerCare devices...");
+        if (log) log(3, "Scanning for FlowerCare devices...");
     }
 }
 
@@ -24,22 +22,35 @@ void FlowerCare::addDevice(NimBLEAddress address) {
             return;
         }
     }
-    if (cb2log) cb2log(3, "Adding device: %s", address.toString().c_str());
+    if (log) log(3, "Adding device: %s", address.toString().c_str());
     devices.emplace_back(address);
 }
 
-void FlowerCare::setCb2getValues(void (*callback)(JsonDocument&)) {
+const FlowerCareDevice* FlowerCare::getDevice(NimBLEAddress address) {
+    for (auto& device : devices) {
+        if (device.address == address) {
+            return &device;
+        }
+    }
+    return nullptr;
+}
+
+void FlowerCare::onValues(void (*callback)(JsonDocument&)) {
     this->cb2getValues = callback;
 }
 
-void FlowerCare::setCb2log(void (*callback)(const int, const char*, ...)) {
-    this->cb2log = callback;
+void FlowerCare::onLog(void (*callback)(const int, const char*, ...)) {
+    this->log = callback;
+}
+
+void FlowerCare::onScanEnd(void (*callback)()) {
+    this->cbOnScanEnd = callback;
 }
 
 void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
     bool success = false;
     NimBLEClient* pClient = NimBLEDevice::createClient();
-    if (cb2log) cb2log(4, "Connecting to %s for updating data (%d bytes free Heap)", device.address.toString().c_str(), ESP.getFreeHeap());
+    if (log) log(4, "Connecting to %s for updating data (%d bytes free Heap)", device.address.toString().c_str(), ESP.getFreeHeap());
     
     if (pClient->connect(device.address)) {
         NimBLERemoteService* pRemoteService = pClient->getService(NimBLEUUID("00001204-0000-1000-8000-00805f9b34fb"));
@@ -55,10 +66,10 @@ void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
                 cb2getValues(json);
             }
         } else {
-            if (cb2log) cb2log(1, "Failed to get service from %s", device.address.toString().c_str());
+            if (log) log(1, "Failed to get service from %s", device.address.toString().c_str());
         }
     } else {
-        if (cb2log) cb2log(1, "Failed to connect to %s for updating live data", device.address.toString().c_str());
+        if (log) log(2, "Failed to connect to %s for updating live data", device.address.toString().c_str());
     }
 
     NimBLEDevice::deleteClient(pClient);
@@ -68,7 +79,9 @@ void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
         device.lastLiveDataUpdate = millis();
         if (device.failedReads >= this->maxFailedReads) {
             device.active = false;
-            if (cb2log) cb2log(2, "Marking device %s as inactive", device.address.toString().c_str());
+            if (log) log(2, "Marking device %s as inactive", device.address.toString().c_str());
+        } else {
+            if (log) log(2, "%d retries left of %d before marking device %s as inactive", this->maxFailedReads - device.failedReads, this->maxFailedReads, device.address.toString().c_str());
         }
     } else {
         device.failedReads = 0;
@@ -82,14 +95,14 @@ bool FlowerCare::updateDeviceData(JsonDocument& json, FlowerCareDevice& device, 
     if (pWriteCharacteristic) {
         uint8_t requestData[2] = {0xA0, 0x1F};
         if (pWriteCharacteristic->writeValue(requestData, 2, true)) {
-            if (cb2log) cb2log(4, "Sent real-time data read request to %s", device.address.toString().c_str());
+            if (log) log(4, "Sent real-time data read request to %s", device.address.toString().c_str());
                     
             NimBLERemoteCharacteristic* pReadCharacteristic = pRemoteService->getCharacteristic(NimBLEUUID("00001a01-0000-1000-8000-00805f9b34fb"));
             if (pReadCharacteristic) {
                 device.lastLiveDataUpdate = millis();
                 std::string value = pReadCharacteristic->readValue();
                 const char* val = value.c_str();
-                if (cb2log) this->printDebugHexValue(val, 16);
+                if (log) this->printDebugHexValue(val, 16);
                         
                 device.temperature = (float)(val[0] | (val[1] << 8)) / 10.0;
                 device.moisture = val[7];
@@ -104,13 +117,13 @@ bool FlowerCare::updateDeviceData(JsonDocument& json, FlowerCareDevice& device, 
                 ret = true;
 
             } else {
-                if (cb2log) cb2log(1, "Failed to get characteristics for reading from %s", device.address.toString().c_str());
+                if (log) log(1, "Failed to get characteristics for reading from %s", device.address.toString().c_str());
             }
         } else {
-            if (cb2log) cb2log(1, "Failed to send real-time data read request to %s", device.address.toString().c_str());
+            if (log) log(1, "Failed to send real-time data read request to %s", device.address.toString().c_str());
         }
     } else {
-        if (cb2log) cb2log(1, "Failed to get characteristics for writing from %s", device.address.toString().c_str());
+        if (log) log(1, "Failed to get characteristics for writing from %s", device.address.toString().c_str());
     }
     return ret;
 }
@@ -123,7 +136,7 @@ bool FlowerCare::updateBatteryLevel(JsonDocument& json, FlowerCareDevice& device
         device.lastBatteryUpdate = millis();
         std::string value = pBatteryCharacteristic->readValue();
         const char* val = value.c_str();
-        if (cb2log) this->printDebugHexValue(val, 7);
+        if (log) this->printDebugHexValue(val, 7);
       
         if (value.length() >= 4) {
             // Convert hex string to battery level and firmware version
@@ -136,7 +149,7 @@ bool FlowerCare::updateBatteryLevel(JsonDocument& json, FlowerCareDevice& device
             ret = true;
         }
     } else {
-        if (cb2log) cb2log(1, "Failed to get characteristics from %s", device.address.toString().c_str());
+        if (log) log(1, "Failed to get characteristics from %s", device.address.toString().c_str());
     }
     return ret;
 }
@@ -148,14 +161,14 @@ void FlowerCare::printDebugHexValue(const char* value, int len) {
     snprintf(buffer, sizeof(buffer), "0x%02x ", (int)value[i]);
     str += buffer;
   }
-  cb2log(4, "Value length n = %d, Hex: %s", len, str.c_str());
+  log(4, "Value length n = %d, Hex: %s", len, str.c_str());
 }
 
 void FlowerCare::setActive(String macaddress, bool active) {
     for (auto& device : devices) {
         if (device.address.toString() == macaddress.c_str()) {
             device.active = active;
-            if (cb2log) cb2log(3, "Setting device %s to active: %d", macaddress.c_str(), active);
+            if (log) log(3, "Setting device %s to active: %d", macaddress.c_str(), active);
             return;
         }
     }
@@ -163,7 +176,7 @@ void FlowerCare::setActive(String macaddress, bool active) {
 
 void FlowerCare::loop() {
     unsigned long currentMillis = millis();
-    if (currentMillis - previousMillis >= 2000) { // check every second to do a job
+    if (!this->isScanActive && currentMillis - previousMillis >= 2000) { // check every second to do a job
         previousMillis = currentMillis;
         
         for (auto& device : devices) {

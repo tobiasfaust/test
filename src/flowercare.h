@@ -40,18 +40,75 @@ class FlowerCareDevice {
 
 class FlowerCare {
   public:
-    FlowerCare();
-    void init();
-    void loop();
-    void setCb2getValues(void (*callback)(JsonDocument&));
-    void setCb2log(void (*callback)(const int, const char*, ...));
-    void setActive(String macaddress, bool active); // mac like: c4:7c:8d:64:42:d0
 
+    /************************
+     * @brief Constructor
+     ************************/
+    FlowerCare();
+
+    /************************
+     * @brief loop function
+     ************************/
+    void loop();
+
+    /************************
+     * @brief start the scan for BLE devices
+     ************************/
+    void ScanBLE();
+
+    /************************
+     * @brief add a device to the list
+     * @param NimBLEAddress the address of the device
+     ************************/
+    void addDevice(NimBLEAddress address);
+
+    /************************
+     * @brief set the active state of a device
+     * @param String the mac address of the device like c4:7c:8d:64:42:d0
+     * @param bool set the active state
+     ************************/
+    void setActive(String macaddress, bool active);
+
+    /************************
+     * @brief get the device by address
+     * @param NimBLEAddress the address of the device
+     ************************/
+    const FlowerCareDevice* getDevice(NimBLEAddress address);
+
+    /************************
+     * @brief get all devices in a vector
+     * @return std::vector<FlowerCareDevice> the devices
+     ************************/
     const std::vector<FlowerCareDevice>* getDevices() const { return &devices; }
 
-  protected:
-    void addDevice(NimBLEAddress address);
+    /************************
+     * @brief get the active state of the scan
+     * @return bool the active state
+     ************************/
+    const bool& getIsScanActive() const { return isScanActive; }
+  
+    // callbacks
+    /************************
+     * @brief Callback for getting the values
+     * @param function(JsonDocument&) the callback function
+     ************************/
+    void onValues(void (*callback)(JsonDocument&));
+
+    /************************
+     * @brief Callback for logging
+     * @param function(const int, const char*, ...) the callback function
+     ************************/
+    void onLog(void (*callback)(const int, const char*, ...));
+
+    /************************
+     * @brief Callback for scan end
+     * @param function() the callback function
+     ************************/
+    void onScanEnd(void (*callback)());
     
+  protected:
+    void (*cbOnScanEnd)() = nullptr;
+
   private:
 
     NimBLEScan* pBLEScan;
@@ -61,6 +118,7 @@ class FlowerCare {
     const unsigned long LiveDataInterval = 1 * 60 * 1000; // 5 minutes
     const unsigned long batteryInterval =  1 * 60 * 1000; // 1 hour
     const uint8_t maxFailedReads = 5; // Number of failed continously reads before marking device as inactive
+    bool isScanActive;
 
     class scanCallbacks : public NimBLEScanCallbacks {
         public:
@@ -72,6 +130,13 @@ class FlowerCare {
                     flowerCare.addDevice(advertisedDevice->getAddress());
                 }
             }
+
+            void onScanEnd(const NimBLEScanResults& results, int reason) override {
+                flowerCare.isScanActive = false;
+                if (flowerCare.cbOnScanEnd) {
+                    flowerCare.cbOnScanEnd();
+                }
+            }
     
         private:
             FlowerCare& flowerCare;
@@ -79,9 +144,9 @@ class FlowerCare {
     
     scanCallbacks scanCallbacksInstance;
     void (*cb2getValues)(JsonDocument&) = nullptr;
-    void (*cb2log)(const int, const char*, ...) = nullptr;
+    void (*log)(const int, const char*, ...) = nullptr;
+    
 
-    void ScanBLE();
     void ReadSensor(FlowerCareDevice& device, bool getBatteryLevel = false);
     bool updateDeviceData(JsonDocument& json, FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
     bool updateBatteryLevel(JsonDocument& json, FlowerCareDevice& device, NimBLERemoteService* pRemoteService);

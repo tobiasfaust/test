@@ -29,10 +29,20 @@ void setup() {
   
   logN(1, "Starting FlowerCare");
   flowerCare = new FlowerCare();
-  flowerCare->init(); // Scan BLE for devices
-  flowerCare->setCb2getValues(flowerCareCallbackGetValues);
-  flowerCare->setCb2log(logN);
   
+  // define Callbacks
+  flowerCare->onValues(flowerCareCallbackGetValues);
+  flowerCare->onLog(logN);
+  flowerCare->onScanEnd([]() {
+    logN(1, "Scan ended");
+    const String value = "c4:7c:8d:64:42:d0";
+    flowerCare->addDevice(NimBLEAddress((std::string)value.c_str(), 0)); // per default active
+    const FlowerCareDevice* device = flowerCare->getDevice(NimBLEAddress((std::string)value.c_str(), 0));
+    logN(1, "FlowerCareDevice %s created", device->address.toString().c_str());
+  });
+
+  flowerCare->ScanBLE(); // Scan BLE for devices
+
   const std::vector<FlowerCareDevice>* devices = flowerCare->getDevices();
 }
 
