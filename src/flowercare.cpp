@@ -35,25 +35,25 @@ const FlowerCareDevice* FlowerCare::getDevice(NimBLEAddress address) {
     return nullptr;
 }
 
-void FlowerCare::onValues(void (*callback)(JsonDocument&)) {
-    this->cb2getValues = callback;
+void FlowerCare::onValues(std::function<void(JsonDocument&)> callback) {
+    this->onValuesCallback = callback;
 }
 
 void FlowerCare::onLog(std::function<void(int, const char*, va_list)> logCallback) {
-    this->logCallback = logCallback;
+    this->onlogCallback = logCallback;
 }
 
 void FlowerCare::log(int loglevel, const char* format, ...) {
-    if (logCallback) {
+    if (this->onlogCallback) {
         va_list args;
         va_start(args, format);
-        logCallback(loglevel, format, args);
+        this->onlogCallback(loglevel, format, args);
         va_end(args);
     }
 }
 
-void FlowerCare::onScanEnd(void (*callback)()) {
-    this->cbOnScanEnd = callback;
+void FlowerCare::onScanEnd(std::function<void()> OnScanEndCallback) {
+    this->OnScanEndCallback = OnScanEndCallback;
 }
 
 void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
@@ -71,8 +71,8 @@ void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
             // Send real-time data read request
             success = this->updateDeviceData(json, device, pRemoteService);
             // Send data to callback function, if defined
-            if (cb2getValues) {
-                cb2getValues(json);
+            if (this->onValuesCallback) {
+                this->onValuesCallback(json);
             }
         } else {
             log(1, "Failed to get service from %s", device.address.toString().c_str());

@@ -92,23 +92,22 @@ class FlowerCare {
      * @brief Callback for getting the values
      * @param function(JsonDocument&) the callback function
      ************************/
-    void onValues(void (*callback)(JsonDocument&));
+    void onValues(std::function<void(JsonDocument&)> callback);
 
     /************************
      * @brief Callback for logging
      * @param function(const int, const char*, ...) the callback function
      ************************/
-    //void onLog(void (*callback)(const int, const char*, ...));
-    void onLog(std::function<void(int, const char*, va_list)> logCallback);
+    void onLog(std::function<void(int, const char*, va_list)> onlogCallback);
 
     /************************
      * @brief Callback for scan end
      * @param function() the callback function
      ************************/
-    void onScanEnd(void (*callback)());
+    void onScanEnd(std::function<void()> OnScanEndCallback);
     
   protected:
-    void (*cbOnScanEnd)() = nullptr;
+    std::function<void()> OnScanEndCallback; // Callback function pointer
 
   private:
 
@@ -134,8 +133,8 @@ class FlowerCare {
 
             void onScanEnd(const NimBLEScanResults& results, int reason) override {
                 flowerCare.isScanActive = false;
-                if (flowerCare.cbOnScanEnd) {
-                    flowerCare.cbOnScanEnd();
+                if (flowerCare.OnScanEndCallback) {
+                    flowerCare.OnScanEndCallback();
                 }
             }
     
@@ -144,8 +143,7 @@ class FlowerCare {
     };
     
     scanCallbacks scanCallbacksInstance;
-    void (*cb2getValues)(JsonDocument&) = nullptr;
-
+    
     void ReadSensor(FlowerCareDevice& device, bool getBatteryLevel = false);
     bool updateDeviceData(JsonDocument& json, FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
     bool updateBatteryLevel(JsonDocument& json, FlowerCareDevice& device, NimBLERemoteService* pRemoteService);
@@ -153,7 +151,8 @@ class FlowerCare {
     void printDebugHexValue(const char* value, int len);
 
     void log(int loglevel, const char* format, ...);
-    std::function<void(int, const char*, va_list)> logCallback; // Callback function pointer
+    std::function<void(int, const char*, va_list)> onlogCallback; // Callback function pointer
+    std::function<void(JsonDocument&)> onValuesCallback; // Callback function pointer
 };
 
 #endif // FLOWERCARE_H
