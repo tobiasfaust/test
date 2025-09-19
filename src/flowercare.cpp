@@ -1,7 +1,7 @@
 #include "flowercare.h"
 
 FlowerCare::FlowerCare() : previousMillis(0), isScanActive(false), scanCallbacksInstance(*this) {
-    NimBLEDevice::init("");
+    NimBLEDevice::init("NimBLE-Client");
     pBLEScan = NimBLEDevice::getScan();
     pBLEScan->setScanCallbacks(&scanCallbacksInstance, false); // Set the callback for when devices are discovered, no duplicates.
     pBLEScan->setActiveScan(true);
@@ -39,7 +39,7 @@ void FlowerCare::onValues(std::function<void(JsonDocument&)> callback) {
     this->onValuesCallback = callback;
 }
 
-void FlowerCare::onLog(std::function<void(int, const char*, va_list)> logCallback) {
+void FlowerCare::onLog(std::function<void(int, const char*)> logCallback) {
     this->onlogCallback = logCallback;
 }
 
@@ -47,7 +47,9 @@ void FlowerCare::log(int loglevel, const char* format, ...) {
     if (this->onlogCallback) {
         va_list args;
         va_start(args, format);
-        this->onlogCallback(loglevel, format, args);
+        char buffer[256];
+        vsnprintf(buffer, sizeof(buffer), format, args);
+        onlogCallback(loglevel, buffer);
         va_end(args);
     }
 }
@@ -58,6 +60,8 @@ void FlowerCare::onScanEnd(std::function<void()> OnScanEndCallback) {
 
 void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
     bool success = false;
+    device.lastRead = millis();
+
     NimBLEClient* pClient = NimBLEDevice::createClient();
     log(4, "Connecting to %s for updating data (%d bytes free Heap)", device.address.toString().c_str(), ESP.getFreeHeap());
     
@@ -66,10 +70,10 @@ void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
         if (pRemoteService) {
             JsonDocument json;
             json["address"] = device.address.toString();
-            // get battery data
-            success = this->updateBatteryLevel(json, device, pRemoteService);
             // Send real-time data read request
             success = this->updateDeviceData(json, device, pRemoteService);
+            // get battery data
+            if (success && getBatteryLevel) this->updateBatteryLevel(json, device, pRemoteService);
             // Send data to callback function, if defined
             if (this->onValuesCallback) {
                 this->onValuesCallback(json);
@@ -85,7 +89,6 @@ void FlowerCare::ReadSensor(FlowerCareDevice& device, bool getBatteryLevel) {
 
     if (!success) {
         device.failedReads++;
-        device.lastLiveDataUpdate = millis();
         if (device.failedReads >= this->maxFailedReads) {
             device.active = false;
             log(2, "Marking device %s as inactive", device.address.toString().c_str());
@@ -173,14 +176,15 @@ void FlowerCare::printDebugHexValue(const char* value, int len) {
   log(4, "Value length n = %d, Hex: %s", len, str.c_str());
 }
 
-void FlowerCare::setActive(String macaddress, bool active) {
+bool FlowerCare::setActive(String macaddress, bool active) {
     for (auto& device : devices) {
         if (device.address.toString() == macaddress.c_str()) {
             device.active = active;
             log(3, "Setting device %s to active: %d", macaddress.c_str(), active);
-            return;
+            return true;
         }
     }
+    return false;
 }
 
 void FlowerCare::loop() {
@@ -189,8 +193,8 @@ void FlowerCare::loop() {
         previousMillis = currentMillis;
         
         for (auto& device : devices) {
-            if (device.active && (device.lastLiveDataUpdate == 0 || currentMillis - device.lastLiveDataUpdate >= this->LiveDataInterval)) {                
-                if (millis() - device.lastBatteryUpdate >= this->batteryInterval) {
+            if (device.active && (device.lastRead == 0 || currentMillis - device.lastRead >= this->LiveDataInterval)) {                
+                if (device.lastBatteryUpdate == 0 || millis() - device.lastBatteryUpdate >= this->batteryInterval) {
                     this->ReadSensor(device, true);
                 } else {
                     this->ReadSensor(device, false);
