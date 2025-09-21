@@ -128,3 +128,19 @@ void ethernet::ETH_event(WiFiEvent_t event)
       break;
   }
 }
+
+
+
+bool ethernet::http_get(String& content, const String& url) {
+  if (!this->eth_connected) return false;
+  HTTPClient http;
+  http.begin(url);
+  int httpCode = http.GET();
+  if (httpCode > 0) {
+    content = http.getString();
+    http.end();
+    return true;
+  }
+  http.end();
+  return false;
+}

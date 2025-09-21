@@ -44,6 +44,7 @@
 #include <ETH.h>
 #include <WiFi.h> 
 #include <vector>
+#include <HTTPClient.h>
 
 class ethernet {
 
@@ -64,6 +65,7 @@ class ethernet {
                 ethernet();
     void        ETH_waitForConnect();
     bool        ETH_isConnected();
+    bool        http_get(String& content, const String& url);
 
   private:
     

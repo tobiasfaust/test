@@ -14,6 +14,15 @@ void setup() {
 }
 
 void loop() {
-
+  static unsigned long lastCheck = 0;
+  if (millis() - lastCheck >= 10000) {
+    lastCheck = millis();
+    String content;
+    if (LAN->http_get(content, "https://www.google.de")) {
+      Serial.println("still Online");
+    } else {
+      Serial.println("Offline");
+    }
+  }
 }
 
